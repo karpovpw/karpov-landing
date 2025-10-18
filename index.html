@@ -1,9 +1,8 @@
 <body>
-<svg id="s" width="100vw" height="100vh" style="position:fixed;top:0;left:0"><path id="p" fill="#BFEFFF" d=""></path></svg>
+<canvas id="c"></canvas>
 <script>
-let p=document.getElementById('p');
-function d(t){let s="M";for(let i=0;i<6;i++){let a=i*Math.PI/3, r=140+Math.sin(t/900+a*3+t/600)*33;let x=260+Math.cos(a)*r,y=260+Math.sin(a)*r;s+=x+" "+y+(i?"L":" ");}
-p.setAttribute("d",s+"Z");requestAnimationFrame(d);}
-d(0);
+c.width=innerWidth;c.height=innerHeight;let k=c.getContext('2d');
+function d(t){k.clearRect(0,0,c.width,c.height);for(let x=0;x<30;x++)for(let y=0;y<18;y++){k.beginPath();k.rect(x*46,y*46,44,44);k.fillStyle=`hsl(${180+Math.sin(t/800+x+y)*180},70%,87%)`;k.fill();}requestAnimationFrame(d);}
+d();
 </script>
 </body>
