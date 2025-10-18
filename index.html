@@ -1,69 +1,9 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Flying Tunnel Animation</title>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      overflow: hidden;
-      background: #181828;
-    }
-    canvas {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100vh;
-      display: block;
-    }
-  </style>
-</head>
 <body>
-<canvas id="tunnel"></canvas>
+<canvas id="c"></canvas>
 <script>
-const canvas = document.getElementById('tunnel');
-const ctx = canvas.getContext('2d');
-
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
-
-const dots = [];
-for (let i = 0; i < 200; i++) {
-  const angle = Math.random() * 2 * Math.PI;
-  const radius = Math.random() * 140 + 40;
-  const z = Math.random() * 800 + 200;
-  dots.push({ angle, radius, z });
-}
-
-function draw() {
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  const cx = canvas.width/2;
-  const cy = canvas.height/2;
-  for (const dot of dots) {
-    // Animate movement forward
-    dot.z -= 6;
-    if (dot.z < 10) { dot.z += 1000; }
-    // Perspective projection
-    const k = 600 / dot.z;
-    const x = Math.cos(dot.angle) * dot.radius * k + cx;
-    const y = Math.sin(dot.angle) * dot.radius * k + cy;
-    // Brightness and size by depth
-    const alpha = 1 - dot.z/1000;
-    ctx.globalAlpha = alpha * 0.9 + 0.1;
-    ctx.beginPath();
-    ctx.arc(x, y, Math.max(0.5, 8-dot.z/140), 0, 2 * Math.PI);
-    ctx.fillStyle = "white";
-    ctx.fill();
-  }
-  ctx.globalAlpha = 1;
-  requestAnimationFrame(draw);
-}
-draw();
+let c=document.getElementById('c'),w=innerWidth,h=innerHeight;
+c.width=w;c.height=h;
+let a=[...Array(15)].map(()=>({x:Math.random()*w,y:Math.random()*h,r:40+40*Math.random(),dx:.6*Math.random(),dy:.6*Math.random(),c:`hsla(${360*Math.random()},70%,80%,.4)`}));
+setInterval(()=>{c.getContext('2d').clearRect(0,0,w,h);a.forEach(o=>{o.x+=o.dx;o.y+=o.dy;if(o.x<0||o.x>w)o.dx*=-1;if(o.y<0||o.y>h)o.dy*=-1;c.getContext('2d').beginPath();c.getContext('2d').arc(o.x,o.y,o.r,0,7);c.getContext('2d').fillStyle=o.c;c.getContext('2d').fill();});},32);
 </script>
 </body>
-</html>
