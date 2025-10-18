@@ -2,83 +2,213 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Coming Soon!</title>
+    <title>Animation</title>
     <style>
-      @import url('https://fonts.googleapis.com/css?family=Roboto:700');
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        font-size: 2em;
+      }
+html,
+body,
+main {
+  --font: "skolar-sans-latin", sans-serif;
+  --really-green: oklch(88.14% 0.203 158.82);
+  --green: oklch(78.59% 0.18 159.1);
+  --black: oklch(22.21% 0 0);
+  --gray: oklch(83.9% 0 0);
+  --speed: 1200ms;
 
-body {
-  margin:0px;
-  font-family:'Roboto';
-  text-align:center;
-}
+  height: 100%;
+  font-family: var(--font);
+  background-color: var(--black);
+  color: var(--gray);
 
-#container {
-  color:#999;
-  text-transform: uppercase;
-  font-size:36px;
-  font-weight:bold;
-  padding-top:200px;  
-  position:fixed;
-  width:100%;
-  bottom:45%;
-  display:block;
-}
-
-#flip {
-  height:50px;
-  overflow:hidden;
-}
-
-#flip > div > div {
-  color:#fff;
-  padding:4px 12px;
-  height:45px;
-  margin-bottom:45px;
-  display:inline-block;
+  & * {
+    font-family: inherit;
+  }
 }
 
-#flip div:first-child {
-  animation: show 5s linear infinite;
+main {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  text-align: center;
+  gap: 88px;
+
+  & article {
+    display: grid;
+    gap: 52px;
+  }
+
+  & h1 {
+    color: var(--green);
+    font-size: 14vw;
+    font-weight: 900;
+  }
+
+  & h2 {
+    font-size: 4.5vw;
+    text-transform: uppercase;
+    letter-spacing: 0.025ch;
+  }
 }
 
-#flip div div {
-  background:#42c58a;
-}
-#flip div:first-child div {
-  background:#4ec7f3;
-}
-#flip div:last-child div {
-  background:#DC143C;
+*[letter-animation="breath"] {
+  & > span {
+    display: inline-block;
+    white-space: break-spaces;
+  }
+
+  & > span {
+    animation: breath calc(var(--speed)) ease calc(var(--index) * 100 * 1ms)
+      infinite alternate;
+  }
 }
 
-@keyframes show {
-  0% {margin-top:-270px;}
-  5% {margin-top:-180px;}
-  33% {margin-top:-180px;}
-  38% {margin-top:-90px;}
-  66% {margin-top:-90px;}
-  71% {margin-top:0px;}
-  99.99% {margin-top:0px;}
-  100% {margin-top:-270px;}
+section {
+  width: 100%;
+  display: grid;
+  place-content: center;
+  place-items: center;
+
+  & div {
+    width: 50vw;
+
+    & span {
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 0.025ch;
+      position: relative;
+      margin-block-end: 8px;
+    }
+
+    & span:first-of-type {
+      float: left;
+      left: -12px;
+    }
+
+    & span:last-of-type {
+      float: right;
+      right: -12px;
+    }
+  }
+
+  & input[type="range"] {
+    width: 100%;
+  }
 }
 
-p {
-  position:fixed;
-  width:100%;
-  bottom:30px;
-  font-size:12px;
-  color:#999;
-  margin-top:200px;
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
 }
+
+input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--green);
+  height: 0.5rem;
+  border-radius: 12px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  margin-top: -12px;
+  background-color: oklch(22.21% 0 0);
+  border: 1px solid oklch(38% 0 0);
+  border-radius: 8px;
+  height: 2rem;
+  width: 1.25rem;
+}
+
+@keyframes breath {
+  from {
+    animation-timing-function: ease-out;
+  }
+  to {
+    transform: scale(1.25) translateY(-5px) perspective(1px);
+    text-shadow: 0 0 20px var(--really-green);
+    animation-timing-function: ease-in-out;
+  }
+}
+
     </style>
   </head>
   <body>
-    <div id=container>
-  <div id=flip>
-    <div><div>Coming</div></div>
-    <div><div>Cuming</div></div>
-  </div>
-      Soon!
+<main>
+  <article>
+    <h1 split-by="letter" letter-animation="breath">2024</h1>
+    <h2>The year of CSS</h2>
+  </article>
+  <section>
+    <div>
+
+      <span>Party</span>
+      <span>Chill</span>
+      <input min="100" max="2400" type="range" />
     </div>
+  </section>
+</main>
+    <!-- ...animation HTML elements here... -->
+    <script>
+const slider = document.querySelector('input[type="range"]');
+const root = document.querySelector("article");
+
+const span = (text, index) => {
+  const node = document.createElement("span");
+
+  node.textContent = text;
+  node.style.setProperty("--index", index);
+
+  return node;
+};
+
+export const byLetter = (text) => [...text].map(span);
+
+export const byWord = (text) => text.split(" ").map(span);
+
+const { matches: motionOK } = window.matchMedia(
+  "(prefers-reduced-motion: no-preference)"
+);
+
+if (motionOK) {
+  const splitTargets = document.querySelectorAll("[split-by]");
+
+  splitTargets.forEach((node) => {
+    const type = node.getAttribute("split-by");
+    let nodes = null;
+
+    if (type === "letter") nodes = byLetter(node.innerText);
+    else if (type === "word") nodes = byWord(node.innerText);
+
+    if (nodes) node.firstChild.replaceWith(...nodes);
+  });
+}
+
+function onInput() {
+  const value = slider.value;
+  root.style.setProperty("--speed", `${value}ms`);
+}
+
+slider.addEventListener("input", debounce(onInput, 10));
+
+function debounce(func, wait) {
+  let timeoutId;
+  return function () {
+    const context = this;
+    const args = arguments;
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(context, args);
+    }, wait);
+  };
+}
+
+    </script>
   </body>
 </html>
