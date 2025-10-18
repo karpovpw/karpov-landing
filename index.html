@@ -9,7 +9,11 @@
 </div>
 <canvas id="c"></canvas>
 <script>
-c.width=innerWidth;c.height=innerHeight;let r=[...Array(90)].map((_,i)=>({x:Math.random()*c.width,y:Math.random()*c.height,s:3+Math.random()*3,dy:5+Math.random()*8}));
-function d(){let k=c.getContext('2d');k.clearRect(0,0,c.width,c.height);r.forEach(o=>{o.y+=o.dy;if(o.y>c.height){o.x=Math.random()*c.width;o.y=0;}k.beginPath();k.moveTo(o.x,o.y);k.lineTo(o.x,o.y+18*o.s);k.strokeStyle="rgba(140,200,243,0.39)";k.lineWidth=o.s;k.stroke();});requestAnimationFrame(d);}d();
+c.width=innerWidth;c.height=innerHeight;function d(t){let k=c.getContext('2d'),w=c.width,h=c.height;
+for(let x=0;x<w;x+=8)for(let y=0;y<h;y+=8){
+let v=Math.sin(x/28+t/999)+Math.cos(y/36+t/1257);
+k.fillStyle=`hsl(${128+v*44},60%,92%)`;k.fillRect(x,y,8,8);}
+requestAnimationFrame(d);}
+d(0);
 </script>
 </body>
