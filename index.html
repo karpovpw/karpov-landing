@@ -1,9 +1,9 @@
 <body>
-<canvas id="c"></canvas>
+<svg id="s" width="100vw" height="100vh" style="position:fixed;top:0;left:0"><path id="p" fill="#BFEFFF" d=""></path></svg>
 <script>
-let c=document.getElementById('c'),w=innerWidth,h=innerHeight;
-c.width=w;c.height=h;
-let a=[...Array(15)].map(()=>({x:Math.random()*w,y:Math.random()*h,r:40+40*Math.random(),dx:.6*Math.random(),dy:.6*Math.random(),c:`hsla(${360*Math.random()},70%,80%,.4)`}));
-setInterval(()=>{c.getContext('2d').clearRect(0,0,w,h);a.forEach(o=>{o.x+=o.dx;o.y+=o.dy;if(o.x<0||o.x>w)o.dx*=-1;if(o.y<0||o.y>h)o.dy*=-1;c.getContext('2d').beginPath();c.getContext('2d').arc(o.x,o.y,o.r,0,7);c.getContext('2d').fillStyle=o.c;c.getContext('2d').fill();});},32);
+let p=document.getElementById('p');
+function d(t){let s="M";for(let i=0;i<6;i++){let a=i*Math.PI/3, r=140+Math.sin(t/900+a*3+t/600)*33;let x=260+Math.cos(a)*r,y=260+Math.sin(a)*r;s+=x+" "+y+(i?"L":" ");}
+p.setAttribute("d",s+"Z");requestAnimationFrame(d);}
+d(0);
 </script>
 </body>
