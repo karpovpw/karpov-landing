@@ -1,67 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karpov - Crypto Automation</title>
-    <style>
-        html, body {
-            height: 100%;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            min-height: 100vh;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        #particles-js {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 0;
-            pointer-events: none;
-        }
-        .centered {
-            z-index: 1;
-            position: relative;
-            text-align: center;
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            background: linear-gradient(90deg, #fff 60%, #a492e7 100%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
-        }
-        @media (max-width: 600px) {
-            h1 { font-size: 2rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Flying Tunnel Animation</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #181828;
+    }
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-    <div id="particles-js"></div>
-    <div class="centered">
-        <h1>Cuming soon</h1>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-    <script>
-      particlesJS('particles-js', {
-        particles: { number: { value: 60 }, size: { value: 3 }, color: { value: '#ffffff' } },
-        interactivity: { events: { onhover: { enable: true, mode: 'repulse' } } },
-        background: { color: 'transparent' }
-      });
-    </script>
+<canvas id="tunnel"></canvas>
+<script>
+const canvas = document.getElementById('tunnel');
+const ctx = canvas.getContext('2d');
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+const dots = [];
+for (let i = 0; i < 200; i++) {
+  const angle = Math.random() * 2 * Math.PI;
+  const radius = Math.random() * 140 + 40;
+  const z = Math.random() * 800 + 200;
+  dots.push({ angle, radius, z });
+}
+
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  const cx = canvas.width/2;
+  const cy = canvas.height/2;
+  for (const dot of dots) {
+    // Animate movement forward
+    dot.z -= 6;
+    if (dot.z < 10) { dot.z += 1000; }
+    // Perspective projection
+    const k = 600 / dot.z;
+    const x = Math.cos(dot.angle) * dot.radius * k + cx;
+    const y = Math.sin(dot.angle) * dot.radius * k + cy;
+    // Brightness and size by depth
+    const alpha = 1 - dot.z/1000;
+    ctx.globalAlpha = alpha * 0.9 + 0.1;
+    ctx.beginPath();
+    ctx.arc(x, y, Math.max(0.5, 8-dot.z/140), 0, 2 * Math.PI);
+    ctx.fillStyle = "white";
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
 </body>
 </html>
