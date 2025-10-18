@@ -1,8 +1,12 @@
 <body>
 <canvas id="c"></canvas>
 <script>
-c.width=innerWidth;c.height=innerHeight;let k=c.getContext('2d');
-function d(t){k.clearRect(0,0,c.width,c.height);for(let x=0;x<30;x++)for(let y=0;y<18;y++){k.beginPath();k.rect(x*46,y*46,44,44);k.fillStyle=`hsl(${180+Math.sin(t/800+x+y)*180},70%,87%)`;k.fill();}requestAnimationFrame(d);}
+c.width=innerWidth;c.height=innerHeight;
+function d(){let a=c.getContext('2d');a.clearRect(0,0,c.width,c.height);
+let g=a.createLinearGradient(0,0,0,c.height);g.addColorStop(0,"#FFF6E0");g.addColorStop(1,"#FFD6E0");
+a.fillStyle=g;a.fillRect(0,0,c.width,c.height);
+a.beginPath();a.arc(c.width/2,c.height-70,120,0,7);a.fillStyle="#FDB4C2";a.fill();
+requestAnimationFrame(d);}
 d();
 </script>
 </body>
