@@ -9,11 +9,12 @@
 </div>
 <canvas id="c"></canvas>
 <script>
-c.width=innerWidth;c.height=innerHeight;function d(t){let k=c.getContext('2d'),w=c.width,h=c.height;
-for(let x=0;x<w;x+=8)for(let y=0;y<h;y+=8){
-let v=Math.sin(x/28+t/999)+Math.cos(y/36+t/1257);
-k.fillStyle=`hsl(${128+v*44},60%,92%)`;k.fillRect(x,y,8,8);}
-requestAnimationFrame(d);}
-d(0);
+const w=innerWidth,h=innerHeight;c.width=w;c.height=h;
+let N=90;a=[];for(let i=0;i<N;i++)a[i]={t:Math.random()*6.3,z:Math.random()*800+120};
+function e(){let k=c.getContext("2d");k.clearRect(0,0,w,h);for(let o of a){o.z-=6;if(o.z<1)o.z+=850,o.t+=2;
+let R=180,l=o.z,X=Math.cos(o.t+t/800),Y=Math.sin(o.t+t/1000);
+let px=w/2+X*R*l/600,py=h/2+Y*R*l/600;
+k.beginPath();k.arc(px,py,5+(900-l)/200,0,7);k.fillStyle="hsla(188,70%,88%,.90)";k.fill();}t+=9;requestAnimationFrame(e);}
+let t=0;e();
 </script>
 </body>
