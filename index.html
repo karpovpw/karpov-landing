@@ -2,10 +2,10 @@
 <canvas id="c"></canvas>
 <script>
 c.width=innerWidth;c.height=innerHeight;
-function d(){let a=c.getContext('2d');a.clearRect(0,0,c.width,c.height);
-let g=a.createLinearGradient(0,0,0,c.height);g.addColorStop(0,"#FFF6E0");g.addColorStop(1,"#FFD6E0");
-a.fillStyle=g;a.fillRect(0,0,c.width,c.height);
-a.beginPath();a.arc(c.width/2,c.height-70,120,0,7);a.fillStyle="#FDB4C2";a.fill();
+let pts=[...Array(15)].map(_=>[Math.random()*c.width,Math.random()*c.height]);
+function d(){let g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);for(let i=0;i<c.width;i+=12)for(let j=0;j<c.height;j+=12){
+let b=0,m=1e9;for(let p=0;p<pts.length;p++){let dx=i-pts[p][0],dy=j-pts[p][1],l=dx*dx+dy*dy;if(l<m){m=l;b=p;}}g.fillStyle=`hsl(${22*b+230},50%,87%)`;g.fillRect(i,j,12,12);}
+pts.forEach(p=>{p[0]+=Math.sin(performance.now()/990)*1.6,p[1]+=Math.cos(performance.now()/880)*1.2;});
 requestAnimationFrame(d);}
 d();
 </script>
