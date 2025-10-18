@@ -1,4 +1,4 @@
-<body style="margin:0;background:#151926;">
+<body style="background:#141628;">
 <div style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:99;
 display:flex;flex-direction:column;justify-content:center;align-items:center;
 pointer-events:none;font-family:sans-serif;font-size:5vw;color:#fff;
@@ -12,14 +12,12 @@ text-shadow:0 2vw 3vw #575fff99;">
 </div>
 <canvas id="c"></canvas>
 <script>
-c.width=innerWidth;c.height=innerHeight;
-let o=c.getContext('2d'),r=255,p=[];
-for(let i=0;i<24;i++)p.push({a:Math.random()*7,r:0});
-function d(){o.clearRect(0,0,c.width,c.height);
-o.globalAlpha=0.22;o.fillStyle="#313a54";o.fillRect(0,0,c.width,c.height);o.globalAlpha=1;
-for(let i=0;i<p.length;i++){let t=p[i].a+((Date.now()/600)%14),d=44+i*18+Math.sin(Date.now()/890+i)*99,s=0.7+0.9*Math.sin(Date.now()/600+i);
-let x=c.width/2+Math.cos(t)*d,y=c.height/2+Math.sin(t)*d,oC=`hsl(${(t*40)%340},98%,70%)`;o.beginPath();o.arc(x,y,4*s,0,7);o.shadowBlur=16;o.shadowColor=oC;o.fillStyle=oC;o.fill();}
-o.shadowBlur=0;requestAnimationFrame(d);}
-d();
+const w=innerWidth,h=innerHeight;c.width=w;c.height=h;
+let N=90;a=[];for(let i=0;i<N;i++)a[i]={t:Math.random()*6.3,z:Math.random()*800+120};
+function e(){let k=c.getContext("2d");k.clearRect(0,0,w,h);for(let o of a){o.z-=6;if(o.z<1)o.z+=850,o.t+=2;
+let R=180,l=o.z,X=Math.cos(o.t+t/800),Y=Math.sin(o.t+t/1000);
+let px=w/2+X*R*l/600,py=h/2+Y*R*l/600;
+k.beginPath();k.arc(px,py,5+(900-l)/200,0,7);k.fillStyle="hsla(188,70%,88%,.90)";k.fill();}t+=9;requestAnimationFrame(e);}
+let t=0;e();
 </script>
 </body>
