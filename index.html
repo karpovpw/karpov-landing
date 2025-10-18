@@ -9,12 +9,7 @@
 </div>
 <canvas id="c"></canvas>
 <script>
-c.width=innerWidth;c.height=innerHeight;
-let pts=[...Array(15)].map(_=>[Math.random()*c.width,Math.random()*c.height]);
-function d(){let g=c.getContext('2d');g.clearRect(0,0,c.width,c.height);for(let i=0;i<c.width;i+=12)for(let j=0;j<c.height;j+=12){
-let b=0,m=1e9;for(let p=0;p<pts.length;p++){let dx=i-pts[p][0],dy=j-pts[p][1],l=dx*dx+dy*dy;if(l<m){m=l;b=p;}}g.fillStyle=`hsl(${22*b+230},50%,87%)`;g.fillRect(i,j,12,12);}
-pts.forEach(p=>{p[0]+=Math.sin(performance.now()/990)*1.6,p[1]+=Math.cos(performance.now()/880)*1.2;});
-requestAnimationFrame(d);}
-d();
+c.width=innerWidth;c.height=innerHeight;let r=[...Array(90)].map((_,i)=>({x:Math.random()*c.width,y:Math.random()*c.height,s:3+Math.random()*3,dy:5+Math.random()*8}));
+function d(){let k=c.getContext('2d');k.clearRect(0,0,c.width,c.height);r.forEach(o=>{o.y+=o.dy;if(o.y>c.height){o.x=Math.random()*c.width;o.y=0;}k.beginPath();k.moveTo(o.x,o.y);k.lineTo(o.x,o.y+18*o.s);k.strokeStyle="rgba(140,200,243,0.39)";k.lineWidth=o.s;k.stroke();});requestAnimationFrame(d);}d();
 </script>
 </body>
