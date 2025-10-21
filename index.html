@@ -1,76 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Visible Liquid Glass Top Bar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap');
-    body {
-      margin: 0;
-      min-height: 100vh;
-      font-family: 'Inter', Helvetica, Arial, sans-serif;
-      background: linear-gradient(135deg, #e3e7ee 0%, #c7cbe4 100%);
-    }
-    .top-bar {
-      width: 92vw;
-      max-width: 1050px;
-      margin: 2em auto 0 auto;
-      background: rgba(255,255,255,0.35); /* More visible glass */
-      backdrop-filter: blur(24px) saturate(180%);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      border-radius: 22px;
-      box-shadow: 0 8px 24px #6ab7ff28, 0 2px 12px #0002;
-      height: 62px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      z-index: 10;
-      border: 2px solid rgba(80,120,255,0.12);
-    }
-    .title {
-      font-size: 1.48em;
-      font-weight: 700;
-      color: #141515;
-      margin-right: 3em;
-      letter-spacing: 0.13em;
-      font-family: 'Inter', Helvetica, Arial, sans-serif;
-      text-shadow: 0 2px 14px #ddefff, 0 1px 0 #20968821;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2em;
-    }
-    .nav-links a {
-      color: #30353f;
-      text-decoration: none;
-      font-size: 1.07em;
-      font-weight: 600;
-      opacity: .85;
-      transition: opacity 0.2s, color 0.2s, background 0.2s;
-      font-family: 'Inter', Helvetica, Arial, sans-serif;
-      border-radius: 13px;
-      padding: 0.36em 1.06em;
-      background: rgba(255,255,255,0.22);
-      box-shadow: 0 1px 4px #0464ee10;
-    }
-    .nav-links a:hover {
-      opacity: 1;
-      color: #308ce2;
-      background: rgba(255,255,255,0.35);
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMad Method - BuildMode</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: linear-gradient(135deg, rgba(60, 130, 255, 0.3), rgba(170, 230, 255, 0.5));
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .glass-container {
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    width: 90%;
+    max-width: 700px;
+    height: 85vh;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    overflow-y: auto;
+    color: #111;
+  }
+
+  h1, h2, h3 {
+    color: #002f5e;
+  }
+
+  a {
+    color: #0a58ff;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.3);
+    border-radius: 4px;
+  }
+</style>
 </head>
 <body>
-  <div class="top-bar">
-    <span class="title">Vitek Arena</span>
-    <nav class="nav-links">
-      <a href="#">About Us</a>
-      <a href="#">Leaderboard</a>
-      <a href="#">Models</a>
-      <a href="#">Contact</a>
-    </nav>
+  <div class="glass-container">
+    <p>
+      <a href="https://buildmode.dev/">BuildMode</a> |
+      <a href="https://buildmode.dev/">Home</a> |
+      <a href="https://buildmode.dev/about">About</a>
+    </p>
+
+    <h2>Discovering BMad Method: Why Traditional AI Development is Broken (Part 1)</h2>
+    <p><strong>Jul 25, 2025</strong></p>
+    <p>Six months ago, I was drowning in AI-assisted development chaos. Sound familiar? 😅 You start with a brilliant idea, fire up Claude or ChatGPT, dump your requirements in a massive prompt, and hope for the best...</p>
+
+    <p>Then I discovered the BMad Method (Breakthrough Method of Agile AI-driven Development), and everything changed. This isn’t another AI coding assistant or yet another prompt engineering technique. This is a complete methodology that transforms chaotic AI development into systematic, predictable success. 🚀</p>
+
+    <p>Let me take you through my journey of discovery and explain why traditional AI development is fundamentally broken - and how BMad Method fixes it.</p>
+
+    <!-- You can continue pasting the rest of the BMad article text here as needed -->
   </div>
 </body>
 </html>
