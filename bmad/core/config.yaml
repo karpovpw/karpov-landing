@@ -6,3 +6,11 @@
 user_name: karpovpw
 communication_language: English
 output_folder: '{project-root}/docs'
+
+vcs:
+  provider: github
+  repo: karpovpw/karpov-landing
+  auto_commit: true            # Enable commit after agent file changes
+  auto_push: true              # Enable push after commit
+  commit_message: "BMAD agent autosave"
+  branch: main                 # Or your feature branch name
