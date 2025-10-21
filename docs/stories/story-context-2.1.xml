@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story_context>
+  <story_id>2.1</story_id>
+  <story_title>Personal Profile & Hero</story_title>
+  <epic_id>2</epic_id>
+  <epic_title>Content & User Features</epic_title>
+  <created_date>2025-10-21</created_date>
+  <created_by>karpovpw</created_by>
+
+  <context>
+    <source_documents>
+      <document type="epic-breakdown" path="docs/epic-stories.md">
+        <description>Project epic breakdown and story definitions</description>
+        <relevant_content>
+          <epic id="2">
+            <title>Content & User Features</title>
+            <story id="2.1">
+              <title>Personal Profile & Hero</title>
+              <description>Create hero section with professional photo, Build personal description and bio section, Implement skills and expertise showcase, Add animated introduction elements</description>
+            </story>
+          </epic>
+        </relevant_content>
+      </document>
+
+      <document type="prd" path="docs/PRD.md">
+        <description>Product Requirements Document with functional and non-functional requirements</description>
+        <relevant_content>
+          <requirement id="FR001">Users can view personal profile with professional photo, bio, and contact information</requirement>
+          <requirement id="FR004">Users can switch between dark and black theme modes seamlessly</requirement>
+          <requirement id="NFR004">WCAG 2.1 AA accessibility compliance for inclusive design</requirement>
+          <requirement id="NFR005">Mobile-first responsive design with touch-friendly interactions</requirement>
+        </relevant_content>
+      </document>
+
+      <document type="solution-architecture" path="docs/solution-architecture.md">
+        <description>Technical solution architecture and implementation guidance</description>
+        <relevant_content>
+          <hero_section>
+            <animated_background>Main landing with animated background</animated_background>
+            <hero_layout>Hero section (introduction with animated background)</hero_layout>
+            <visual_hierarchy>Use liquid glass effects strategically to guide attention</visual_hierarchy>
+          </hero_section>
+          <content_structure>
+            <profile_page>About/profile page with personal information</profile_page>
+            <content_presentation>Progressive disclosure for information hierarchy</content_presentation>
+            <responsive_adaptation>Multi-audience content presentation</responsive_adaptation>
+          </content_structure>
+        </relevant_content>
+      </document>
+
+      <document type="epic1-foundation" path="docs/stories/">
+        <description>Complete Core Infrastructure & Design System foundation</description>
+        <relevant_content>
+          <epic1_complete>Complete technical foundation with Next.js 15, TypeScript, glassmorphism, themes, responsive design, performance optimization, and accessibility compliance</epic1_complete>
+          <design_system_ready>Liquid glass design system ready for content implementation</design_system_ready>
+          <theme_system_ready>Dual theme support ready for hero section integration</theme_system_ready>
+          <responsive_framework_ready>6-breakpoint responsive grid system ready for hero layout</responsive_framework_ready>
+          <performance_optimized>Bundle optimization and Core Web Vitals ready for content loading</performance_optimized>
+          <accessibility_compliant>WCAG 2.1 AA accessibility foundation ready for inclusive content</accessibility_compliant>
+          <epic2_ready>Exceptional foundation ready for Epic 2 content and user features</epic2_ready>
+        </relevant_content>
+      </document>
+    </source_documents>
+
+    <implementation_guidance>
+      <hero_architecture>
+        <first_impression>Hero section as primary conversion point and brand impression</first_impression>
+        <glassmorphism_hero>Glassmorphism background enhancing professional presentation</glassmorphism_hero>
+        <animated_introduction>Animated typing effect for engaging user experience</animated_introduction>
+      </hero_architecture>
+
+      <profile_content>
+        <professional_bio>Comprehensive background information with markdown support</professional_bio>
+        <skills_showcase>Interactive skills tag system with filtering and icons</skills_showcase>
+        <expertise_display>Technical competencies showcase with visual indicators</expertise_display>
+      </profile_content>
+
+      <visual_integration>
+        <design_system_consistency>Liquid glass design system implementation</design_system_consistency>
+        <theme_compatibility>Seamless integration with light/dark theme systems</theme_compatibility>
+        <responsive_behavior>Responsive layout maintaining visual hierarchy across breakpoints</responsive_behavior>
+      </visual_integration>
+
+      <animation_strategy>
+        <performance_optimized>60fps animations with reduced motion preference support</performance_optimized>
+        <scroll_triggered>Scroll-triggered animations for enhanced engagement</scroll_triggered>
+        <staggered_sequence>Staggered animation sequence for hero elements</staggered_sequence>
+      </animation_strategy>
+
+      <testing_requirements>
+        <user_experience_testing>First impression and conversion effectiveness validation</user_experience_testing>
+        <animation_testing>60fps animation performance across different devices</animation_testing>
+        <accessibility_testing>WCAG 2.1 AA compliance in hero section and profile content</accessibility_testing>
+        <cross_browser_testing>Glassmorphism and animation effects compatibility</cross_browser_testing>
+        <responsive_testing>Touch interaction and readability across mobile and desktop</responsive_testing>
+      </testing_requirements>
+    </implementation_guidance>
+  </context>
+
+  <generated_by>BMad Workflow System</generated_by>
+  <workflow_version>v6.0.0-alpha</workflow_version>
+</story_context>

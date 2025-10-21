@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story_context>
+  <story_id>2.3</story_id>
+  <story_title>Articles Management System</story_title>
+  <epic_id>2</epic_id>
+  <epic_title>Content & User Features</epic_title>
+  <created_date>2025-10-21</created_date>
+  <created_by>karpovpw</created_by>
+
+  <context>
+    <source_documents>
+      <document type="epic-breakdown" path="docs/epic-stories.md">
+        <description>Project epic breakdown and story definitions</description>
+        <relevant_content>
+          <epic id="2">
+            <title>Content & User Features</title>
+            <story id="2.3">
+              <title>Articles Management System</title>
+              <description>Create article listing and filtering, Build article detail view with markdown support, Implement publication date sorting, Add reading time estimates</description>
+            </story>
+          </epic>
+        </relevant_content>
+      </document>
+
+      <document type="prd" path="docs/PRD.md">
+        <description>Product Requirements Document with functional and non-functional requirements</description>
+        <relevant_content>
+          <requirement id="FR003">Users can read articles about BMAD methodologies and technical insights</requirement>
+          <requirement id="FR007">Users can filter articles by topic and publication date</requirement>
+          <requirement id="NFR004">WCAG 2.1 AA accessibility compliance for inclusive design</requirement>
+        </relevant_content>
+      </document>
+
+      <document type="solution-architecture" path="docs/solution-architecture.md">
+        <description>Technical solution architecture and implementation guidance</description>
+        <relevant_content>
+          <content_module>
+            <article_system>Markdown processing and glassmorphism content cards</article_system>
+            <article_reader>Progress tracking and smooth scroll navigation</article_reader>
+            <content_filter>Topic-based filtering with animation</content_filter>
+          </content_module>
+          <component_architecture>
+            <article_cards>Title, excerpt, metadata with glassmorphism styling</article_cards>
+            <filter_controls>Topic/category filters with glassmorphism effects</filter_controls>
+            <content_reader>Article content display with progress tracking</content_reader>
+          </component_architecture>
+        </relevant_content>
+      </document>
+
+      <document type="epic2-foundation" path="docs/stories/">
+        <description>Complete Epic 1 and Stories 2.1-2.2 foundation</description>
+        <relevant_content>
+          <epic1_complete>Complete technical foundation with Next.js 15, TypeScript, glassmorphism, themes, responsive design, performance optimization, and accessibility compliance</epic1_complete>
+          <story_2_1_complete>Personal Profile & Hero section completed and validated</story_2_1_complete>
+          <story_2_2_complete>Portfolio Projects Showcase completed and validated</story_2_2_complete>
+          <epic2_ready>Exceptional foundation ready for articles management system</epic2_ready>
+        </relevant_content>
+      </document>
+    </source_documents>
+
+    <implementation_guidance>
+      <content_architecture>
+        <article_discovery>Filterable article showcase for BMAD content and technical insights</article_discovery>
+        <markdown_rendering>High-performance markdown processing with syntax highlighting</markdown_rendering>
+        <reading_experience>Enhanced reading experience with progress tracking and smooth navigation</reading_experience>
+      </content_architecture>
+
+      <bmad_content_strategy>
+        <methodology_articles>Comprehensive BMAD methodology documentation and tutorials</methodology_articles>
+        <technical_insights>Deep-dive technical articles on advanced development topics</technical_insights>
+        <thought_leadership>Professional insights positioning developer as industry expert</thought_leadership>
+      </bmad_content_strategy>
+
+      <user_experience_optimization>
+        <browsing_patterns>Smooth content discovery with intuitive filtering and sorting</browsing_patterns>
+        <reading_flow>Optimized reading experience with progress tracking and navigation</reading_flow>
+        <content_hierarchy>Clear information hierarchy from listing to detail view</content_hierarchy>
+      </user_experience_optimization>
+
+      <technical_integration>
+        <markdown_processing>Efficient markdown rendering with code syntax highlighting</markdown_processing>
+        <reading_time>Accurate reading time calculation based on content complexity</reading_time>
+        <seo_optimization>Automatic metadata generation for content discoverability</seo_optimization>
+      </technical_integration>
+
+      <testing_requirements>
+        <content_rendering_testing>Markdown parsing and syntax highlighting accuracy validation</content_rendering_testing>
+        <filter_functionality_testing>Topic and date filtering effectiveness and state management</filter_functionality_testing>
+        <reading_experience_testing>User journey testing for article discovery and consumption</reading_experience_testing>
+        <performance_testing>Article loading and content rendering speed validation</performance_testing>
+        <accessibility_testing>Article content WCAG 2.1 AA compliance and screen reader compatibility</accessibility_testing>
+      </testing_requirements>
+    </implementation_guidance>
+  </context>
+
+  <generated_by>BMad Workflow System</generated_by>
+  <workflow_version>v6.0.0-alpha</workflow_version>
+</story_context>
