@@ -2,176 +2,78 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Alpha Arena Minimal Parody</title>
+  <title>Liquid Glass Alpha Arena Concept</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
     body {
       margin: 0;
-      background: #fff;
-      color: #111;
-      font-family: 'Inter', Arial, sans-serif;
       min-height: 100vh;
+      background: linear-gradient(135deg, #e3e7ee 0%, #c7cbe4 100%);
+      font-family: 'Inter', Arial, sans-serif;
+      color: #222;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
     }
+    .glass-wrap {
+      backdrop-filter: blur(25px) saturate(160%);
+      -webkit-backdrop-filter: blur(25px) saturate(160%);
+      background: rgba(255,255,255,0.18);
+      border-radius: 1.8rem;
+      border: 1px solid rgba(255,255,255,0.32);
+      box-shadow: 0 8px 40px rgba(60,120,200,0.07), 0 1.5px 8px rgba(30,30,68,0.08);
+      padding: 2.2em 2.6em 2.6em 2.6em;
+      max-width: 450px;
+      width: 92vw;
+    }
     nav {
-      width: 100%;
-      background: #000;
-      color: #fff;
       text-align: center;
-      padding: .8em 0;
-      font-size: 1em;
-      letter-spacing: .12em;
+      margin-bottom: 2em;
+      opacity: .8;
     }
     nav a {
-      color: #fff;
-      opacity: .55;
-      margin: 0 1em;
+      color: #1d2028;
+      font-weight: bold;
       text-decoration: none;
-      transition: opacity 0.2s;
+      margin: 0 1.2em;
+      font-size: 1.07em;
+      letter-spacing: .06em;
+      transition: color 0.2s;
     }
-    nav a:hover { opacity: 1; }
+    nav a:hover { color: #2fb478; }
 
     .prices {
       display: flex;
       justify-content: center;
       gap: 2em;
-      margin: 2em 0 .5em 0;
-      font-size: 1.15em;
-      font-weight: 500;
+      margin-bottom: 1.6em;
+      font-size: 1.16em;
+      opacity: .96;
       flex-wrap: wrap;
     }
-    .prices .green { color: #16C784; }
-    .prices .red { color: #EA3943; }
-
-    .center-content {
-      width: 90%;
-      max-width: 540px;
-      margin: 2em auto;
-      padding: 2em;
-      background: #fff;
-      border: 1px solid #eee;
-      border-radius: 14px;
-      box-shadow: 0 2px 10px #0001;
-      text-align: left;
-    }
-    .leaderboard {
-      display: flex;
-      justify-content: space-between;
-      margin: 2em 0 1em 0;
-      font-size: 1em;
-    }
-    .leaderboard .winner { color: #1e88e5; }
-    .leaderboard .loser { color: #aa2288;}
-    .accounts {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      margin: 1em 0;
-      font-size: 0.95em;
-      opacity: 0.9;
-      justify-content: center;
-    }
-    .account {
-      background: #fafafa;
-      border-radius: 10px;
-      min-width: 110px;
-      padding: .25em 1em .3em 1em;
-      margin: .15em 0;
-      box-shadow: 0 2px 4px #0001;
-    }
-    h1 {
-      font-size: 2.15em;
-      font-weight: 700;
-      margin: 0 0 1em 0;
-      letter-spacing: 1px;
+    .green { color: #2fb478; }
+    .red { color: #f65151;}
+    .title {
       text-align: center;
+      font-size: 2.08em;
+      font-weight: 700;
+      letter-spacing: .9px;
+      margin-bottom: 1.3em;
+      color: #272b34;
+      filter: drop-shadow(0 1px 12px #2fb47822);
+      text-shadow: 0 4px 12px #fff8, 0 1px 0 #40968826;
+    }
+    .glass-graph {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.7em;
+      background: linear-gradient(120deg, #5a93ff13 20%, #ce2bfe11 80%);
+      border-radius: 22px;
+      padding: 1.5em .8em .7em .8em;
+      position: relative;
+      box-shadow: 0 2px 22px #8fd6ff1a, 0 5px 18px #e1b0f81c;
     }
     .desc {
-      font-size: 1.04em;
-      opacity: 0.85;
-      margin: 2em 0;
-    }
-    .rules {
-      font-size: 0.97em;
-      margin: 2em 0 0 0;
-      opacity: 0.8;
-    }
-    .graph {
-      display: flex;
-      justify-content: center;
-      margin: 2em 0 1em 0;
-    }
-  </style>
-</head>
-<body>
-  <nav>
-    <a href="#">Alpha Arena</a>
-    <a href="#">LIVE</a>
-    <a href="#">LEADERBOARD</a>
-    <a href="#">MODELS</a>
-    <a href="#">WAITLIST</a>
-    <a href="#">ABOUT</a>
-  </nav>
-
-  <h1>Alpha Arena (Minimal Parody)</h1>
-
-  <div class="prices">
-    <span class="green">BTC $108,561.50</span>
-    <span class="red">ETH $3,890.20</span>
-    <span class="green">SOL $184.40</span>
-    <span>BNB $1,074.95</span>
-    <span>DOGE $0.1948</span>
-    <span>XRP $2.44</span>
-  </div>
-
-  <div class="center-content">
-    <div class="graph">
-      <!-- Simple SVG multi-line colorful graph -->
-      <svg width="420" height="160" viewBox="0 0 420 160" style="background:#111; border-radius: 9px;">
-        <polyline points="10,110 80,80 150,120 220,80 290,100 360,60 410,85"
-                  fill="none" stroke="#16c784" stroke-width="4"/>
-        <polyline points="10,130 80,120 150,110 220,90 290,140 360,105 410,120"
-                  fill="none" stroke="#e65100" stroke-width="3"/>
-        <polyline points="10,95 80,105 150,120 220,125 290,80 360,90 410,70"
-                  fill="none" stroke="#3f51b5" stroke-width="2.5"/>
-        <!-- Optional grid lines (very minimal) -->
-        <line x1="0" y1="60" x2="420" y2="60" stroke="#6665" stroke-width=".7"/>
-        <line x1="0" y1="100" x2="420" y2="100" stroke="#6662" stroke-width=".5"/>
-      </svg>
-    </div>
-
-    <div class="leaderboard">
-      <span class="winner">DeepSeek Chat V3.1 +15.3%</span>
-      <span class="loser">GPT 5 -37.18%</span>
-    </div>
-
-    <div class="accounts">
-      <span class="account">GPT 5<br><b>$6,282.38</b></span>
-      <span class="account">Claude Sonnet 4.5<br><b>$11,321.87</b></span>
-      <span class="account">Gemini 2.5 Pro<br><b>$6,295.71</b></span>
-      <span class="account">Grok 4<br><b>$10,739.61</b></span>
-      <span class="account">DeepSeek Chat V3.1<br><b>$11,529.90</b></span>
-      <span class="account">Qwen3 Max<br><b>$9,069.34</b></span>
-      <span class="account">BTC Buy&Hold<br><b>$10,160.25</b></span>
-    </div>
-
-    <div class="desc">
-      Alpha Arena is a parody site inspired by AI investing benchmarks. This demo shows a real-market minimal dashboard, just for fun.<br>
-      <i>Markets are the ultimate test of intelligence. Or humor.</i>
-    </div>
-
-    <div class="rules">
-      <b>Rules:</b>
-      <ul>
-        <li>Each model starts with $10,000 of play capital</li>
-        <li>Trading: Crypto perpetuals on Hyperliquid (hypothetical)</li>
-        <li>Goal: Maximize returns. Winner gets bragging rights.</li>
-        <li>Transparency: All data is public and open to mocking.</li>
-        <li>Season 1 ends: Nov 3rd, 2025</li>
-      </ul>
-    </div>
-  </div>
-</body>
-</html>
+      text-align: center;
+      font-size: 1.02em;
