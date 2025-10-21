@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Liquid Glass Top Bar Demo</title>
+  <title>Visible Liquid Glass Top Bar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap');
@@ -13,21 +13,64 @@
       background: linear-gradient(135deg, #e3e7ee 0%, #c7cbe4 100%);
     }
     .top-bar {
-      width: 90vw;
+      width: 92vw;
       max-width: 1050px;
       margin: 2em auto 0 auto;
-      background: rgba(255,255,255,0.18);
-      backdrop-filter: blur(18px) saturate(140%);
-      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      background: rgba(255,255,255,0.35); /* More visible glass */
+      backdrop-filter: blur(24px) saturate(180%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
       border-radius: 22px;
-      box-shadow: 0 6px 26px #0564ee21, 0 2px 12px #0002;
+      box-shadow: 0 8px 24px #6ab7ff28, 0 2px 12px #0002;
       height: 62px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       z-index: 10;
-      border: 1.5px solid rgba(255,255,255,0.32);
+      border: 2px solid rgba(80,120,255,0.12);
     }
     .title {
-      font-size: 1.48em
+      font-size: 1.48em;
+      font-weight: 700;
+      color: #141515;
+      margin-right: 3em;
+      letter-spacing: 0.13em;
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      text-shadow: 0 2px 14px #ddefff, 0 1px 0 #20968821;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2em;
+    }
+    .nav-links a {
+      color: #30353f;
+      text-decoration: none;
+      font-size: 1.07em;
+      font-weight: 600;
+      opacity: .85;
+      transition: opacity 0.2s, color 0.2s, background 0.2s;
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      border-radius: 13px;
+      padding: 0.36em 1.06em;
+      background: rgba(255,255,255,0.22);
+      box-shadow: 0 1px 4px #0464ee10;
+    }
+    .nav-links a:hover {
+      opacity: 1;
+      color: #308ce2;
+      background: rgba(255,255,255,0.35);
+    }
+  </style>
+</head>
+<body>
+  <div class="top-bar">
+    <span class="title">Alpha Arena</span>
+    <nav class="nav-links">
+      <a href="#">About Us</a>
+      <a href="#">Leaderboard</a>
+      <a href="#">Models</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</body>
+</html>
