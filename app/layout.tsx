@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider, ThemeScript } from '@/components/design-system/ThemeProvider'
 import { HeaderThemeToggle } from '@/components/design-system/ThemeToggle'
+import { ResponsiveNavigation } from '@/components/layout/MobileNavigation'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -38,13 +39,7 @@ export default function RootLayout({
                       Karpov Portfolio
                     </span>
                   </a>
-                  <nav className="flex items-center space-x-6 text-sm font-medium">
-                    <a href="/about">About</a>
-                    <a href="/portfolio">Portfolio</a>
-                    <a href="/articles">Articles</a>
-                    <a href="/crypto">Crypto</a>
-                    <a href="/contact">Contact</a>
-                  </nav>
+                  <ResponsiveNavigation />
                 </div>
                 <HeaderThemeToggle />
               </div>
