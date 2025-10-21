@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Minimal Liquid Glass - Demo Top Bar</title>
+  <title>Liquid Glass Top Bar Demo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600;700&display=swap');
@@ -13,52 +13,21 @@
       background: linear-gradient(135deg, #e3e7ee 0%, #c7cbe4 100%);
     }
     .top-bar {
-      width: 100%;
-      background: rgba(255,255,255,0.87);
-      height: 60px;
+      width: 90vw;
+      max-width: 1050px;
+      margin: 2em auto 0 auto;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      border-radius: 22px;
+      box-shadow: 0 6px 26px #0564ee21, 0 2px 12px #0002;
+      height: 62px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 2px 12px #0002;
       position: relative;
       z-index: 10;
+      border: 1.5px solid rgba(255,255,255,0.32);
     }
     .title {
-      font-size: 1.42em;
-      font-weight: 700;
-      color: #111;
-      margin-right: 3em;
-      letter-spacing: 0.12em;
-      font-family: 'Inter', Helvetica, Arial, sans-serif;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2em;
-    }
-    .nav-links a {
-      color: #222;
-      text-decoration: none;
-      font-size: 1.02em;
-      font-weight: 600;
-      opacity: .65;
-      transition: opacity 0.2s, color 0.2s;
-      font-family: 'Inter', Helvetica, Arial, sans-serif;
-    }
-    .nav-links a:hover {
-      opacity: 1;
-      color: #308ce2;
-    }
-  </style>
-</head>
-<body>
-  <div class="top-bar">
-    <span class="title">Alpha Arena</span>
-    <nav class="nav-links">
-      <a href="#">About Us</a>
-      <a href="#">Leaderboard</a>
-      <a href="#">Models</a>
-      <a href="#">Contact</a>
-    </nav>
-  </div>
-</body>
-</html>
+      font-size: 1.48em
