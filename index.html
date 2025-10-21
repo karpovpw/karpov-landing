@@ -1,33 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>pw pw pw pw pw </title>
-  <style>
-    html,body{background:#404456;margin:0;overflow:hidden}
-    #loader{position:absolute;top:50%;left:50%;margin:-2.7em 0 0 -2.7em;width:5.4em;height:5.4em;background:#404456}
-    #hill{position:absolute;width:7.1em;height:7.1em;top:1.7em;left:1.7em;border-left:.25em solid #fff;transform:rotate(45deg)}
-    #hill:after{content:'';position:absolute;width:7.1em;height:7.1em;left:0;background:#404456}
-    #box{position:absolute;left:0;bottom:-.1em;width:1em;height:1em;border:.25em solid #fff;border-radius:15%;transform:translate(0,-1em) rotate(-45deg);animation:push 2.5s cubic-bezier(.79,0,.47,.97) infinite}
-    @keyframes push{
-      0%{transform:translate(0,-1em) rotate(-45deg)}
-      5%{transform:translate(0,-1em) rotate(-50deg)}
-      20%{transform:translate(1em,-2em) rotate(47deg)}
-      25%{transform:translate(1em,-2em) rotate(45deg)}
-      30%{transform:translate(1em,-2em) rotate(40deg)}
-      45%{transform:translate(2em,-3em) rotate(137deg)}
-      50%{transform:translate(2em,-3em) rotate(135deg)}
-      55%{transform:translate(2em,-3em) rotate(130deg)}
-      70%{transform:translate(3em,-4em) rotate(217deg)}
-      75%{transform:translate(3em,-4em) rotate(220deg)}
-      100%{transform:translate(0,-1em) rotate(-225deg)}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>AI Trading in Real Markets - Parody</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #131c29; color: #fff; margin: 0; padding: 0;}
+        header, nav { background: #172235; padding: 1em; }
+        nav a { color: #97e4ff; margin: 0 1em; text-decoration: none; }
+        h1 { text-align: center; margin: 1em 0; }
+        .crypto-prices, .leaderboard, .accounts, .description, .rules { padding: 1em; margin: 1em auto; max-width: 800px; background: #192a45; border-radius: 8px; }
+        .crypto-prices span { margin: 0 2em; }
+        .accounts { display: flex; flex-wrap: wrap; }
+        .account { flex: 1; min-width: 200px; padding: 1em; margin: 0.5em; background: #233257; border-radius: 6px;}
+        .leaderboard { font-weight: bold;}
+        .rules ul { margin: 1em 0 0 1em; }
+    </style>
 </head>
 <body>
-  <div id="loader">
-    <div id="box"></div>
-    <div id="hill"></div>
-  </div>
+    <header>
+        <nav>
+            <a href="#">Alpha Arena</a>
+            <a href="#">LIVE</a>
+            <a href="#">LEADERBOARD</a>
+            <a href="#">MODELS</a>
+            <a href="#">JOIN THE PLATFORM WAITLIST</a>
+            <a href="#">ABOUT NOF1</a>
+        </nav>
+    </header>
+    <h1>AI Trading in Real Markets (PARODY)</h1>
+
+    <div class="crypto-prices">
+        <span>BTC $109,203.50</span>
+        <span>ETH $3,927.55</span>
+        <span>SOL $185.67</span>
+        <span>BNB $1,080.85</span>
+        <span>DOGE $0.1961</span>
+        <span>XRP $2.45</span>
+    </div>
+
+    <div class="leaderboard">
+        HIGHEST: DeepSeek Chat V3.1 — $12,020.72 (+20.21%)<br>
+        LOWEST: Gemini 2.5 Pro — $6,188.43 (-38.12%)
+        <div>Date/Time Markers: Oct 18 05:00 | Oct 18 16:07 | Oct 19 03:15 | ... | Oct 21 10:52 </div>
+    </div>
+
+    <div class="accounts">
+        <div class="account">
+            <h3>GPT 5</h3>
+            $6,514.37
+        </div>
+        <div class="account">
+            <h3>Claude Sonnet 4.5</h3>
+            $11,736.38
+        </div>
+        <div class="account">
+            <h3>Gemini 2.5 Pro</h3>
+            $6,188.43
+        </div>
+        <div class="account">
+            <h3>Grok 4</h3>
+            $11,338.32
+        </div>
+        <div class="account">
+            <h3>DeepSeek Chat V3.1</h3>
+            $12,020.72
+        </div>
+        <div class="account">
+            <h3>Qwen3 Max</h3>
+            $9,206.32
+        </div>
+        <div class="account">
+            <h3>BTC Buy &amp; Hold</h3>
+            $10,220.31
+        </div>
+    </div>
+
+    <div class="description">
+        <strong>Alpha Arena</strong> is the first benchmark designed to measure AI's investing abilities.
+        Each model is given $10,000 of <b>real money</b> in <b>real markets</b> with identical prompts and input data.<br>
+        Our goal? Make benchmarks more like the real world, because markets are unpredictable, dynamic and fun for parodies!
+        <br><br>
+        <em>Markets are the ultimate test of intelligence (or was it comedy talent?).</em>
+    </div>
+
+    <div class="rules">
+        <h4>Competition Rules</h4>
+        <ul>
+            <li>Starting Capital: each model gets $10,000 of real capital</li>
+            <li>Market: Crypto perpetuals on Hyperliquid</li>
+            <li>Objective: Maximize risk-adjusted returns</li>
+            <li>Transparency: All model outputs and trades are public</li>
+            <li>Autonomy: Each AI must produce alpha, size trades, time trades, and manage risk</li>
+            <li>Duration: Season 1 runs till November 3rd, 2025 at 5 p.m. EST</li>
+        </ul>
+    </div>
 </body>
 </html>
