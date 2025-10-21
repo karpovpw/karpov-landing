@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* Liquid Glass Design System - Light Theme */
+    --glass-background: 255 255 255;
+    --glass-background-opacity: 0.1;
+    --glass-border: 255 255 255;
+    --glass-border-opacity: 0.2;
+    --glass-blur: 10px;
+    --glass-shadow: 0 8px 32px 0;
+    --glass-shadow-color: 255 255 255;
+    --glass-shadow-opacity: 0.37;
+
+    /* Theme Colors for Glass Effects */
+    --glass-primary: 147 51 234; /* Purple */
+    --glass-secondary: 255 255 255; /* White */
+    --glass-accent: 34 197 94; /* Green */
+    --glass-accent-secondary: 249 115 22; /* Orange */
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+
+    /* Liquid Glass Design System - Dark Theme (AMOLED Black) */
+    --glass-background: 0 0 0; /* Pure black for AMOLED */
+    --glass-background-opacity: 0.15; /* Slightly higher opacity for dark backgrounds */
+    --glass-border: 255 255 255;
+    --glass-border-opacity: 0.1; /* Subtle border for dark theme */
+    --glass-blur: 12px; /* Slightly more blur for dark theme */
+    --glass-shadow: 0 8px 32px 0;
+    --glass-shadow-color: 0 0 0; /* Black shadow for dark theme */
+    --glass-shadow-opacity: 0.5;
+
+    /* Theme Colors for Glass Effects - Dark */
+    --glass-primary: 147 51 234; /* Purple (same as light) */
+    --glass-secondary: 255 255 255; /* White for contrast */
+    --glass-accent: 34 197 94; /* Green (same as light) */
+    --glass-accent-secondary: 249 115 22; /* Orange (same as light) */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Import Glassmorphism Foundation */
+@import './glassmorphism.css';
+
+/* Liquid Glass Design System - Enhanced with CSS Custom Properties */
+@layer components {
+  .glass {
+    background: rgba(var(--glass-background), var(--glass-background-opacity));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(var(--glass-border), var(--glass-border-opacity));
+    @apply rounded-lg;
+  }
+
+  .glass-card {
+    background: rgba(var(--glass-background), calc(var(--glass-background-opacity) - 0.05));
+    backdrop-filter: blur(calc(var(--glass-blur) + 2px));
+    border: 1px solid rgba(var(--glass-border), calc(var(--glass-border-opacity) - 0.1));
+    box-shadow: var(--glass-shadow) rgba(var(--glass-shadow-color), var(--glass-shadow-opacity));
+    @apply rounded-xl;
+  }
+
+  .glass-panel {
+    background: rgba(var(--glass-background), calc(var(--glass-background-opacity) + 0.05));
+    backdrop-filter: blur(calc(var(--glass-blur) + 4px));
+    border: 1px solid rgba(var(--glass-border), calc(var(--glass-border-opacity) + 0.05));
+    @apply rounded-2xl;
+  }
+
+  .liquid-gradient {
+    background: linear-gradient(135deg,
+      rgba(var(--glass-primary), calc(var(--glass-background-opacity) + 0.05)),
+      rgba(var(--glass-secondary), var(--glass-background-opacity))
+    );
+  }
+
+  .glassmorphism {
+    background: rgba(var(--glass-background), var(--glass-background-opacity));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(var(--glass-border), var(--glass-border-opacity));
+    box-shadow: var(--glass-shadow) rgba(var(--glass-shadow-color), var(--glass-shadow-opacity));
+  }
+
+  .glass-accent {
+    background: rgba(var(--glass-accent), var(--glass-background-opacity));
+    border: 1px solid rgba(var(--glass-accent), calc(var(--glass-border-opacity) + 0.1));
+  }
+
+  .glass-accent-secondary {
+    background: rgba(var(--glass-accent-secondary), var(--glass-background-opacity));
+    border: 1px solid rgba(var(--glass-accent-secondary), calc(var(--glass-border-opacity) + 0.1));
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+}
