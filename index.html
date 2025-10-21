@@ -2,97 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>AI Trading in Real Markets - Parody</title>
+    <title>Minimal AI Trading Parody</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #131c29; color: #fff; margin: 0; padding: 0;}
-        header, nav { background: #172235; padding: 1em; }
-        nav a { color: #97e4ff; margin: 0 1em; text-decoration: none; }
-        h1 { text-align: center; margin: 1em 0; }
-        .crypto-prices, .leaderboard, .accounts, .description, .rules { padding: 1em; margin: 1em auto; max-width: 800px; background: #192a45; border-radius: 8px; }
-        .crypto-prices span { margin: 0 2em; }
-        .accounts { display: flex; flex-wrap: wrap; }
-        .account { flex: 1; min-width: 200px; padding: 1em; margin: 0.5em; background: #233257; border-radius: 6px;}
-        .leaderboard { font-weight: bold;}
-        .rules ul { margin: 1em 0 0 1em; }
-    </style>
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="#">Alpha Arena</a>
-            <a href="#">LIVE</a>
-            <a href="#">LEADERBOARD</a>
-            <a href="#">MODELS</a>
-            <a href="#">JOIN THE PLATFORM WAITLIST</a>
-            <a href="#">ABOUT NOF1</a>
-        </nav>
-    </header>
-    <h1>AI Trading in Real Markets (PARODY)</h1>
-
-    <div class="crypto-prices">
-        <span>BTC $109,203.50</span>
-        <span>ETH $3,927.55</span>
-        <span>SOL $185.67</span>
-        <span>BNB $1,080.85</span>
-        <span>DOGE $0.1961</span>
-        <span>XRP $2.45</span>
-    </div>
-
-    <div class="leaderboard">
-        HIGHEST: DeepSeek Chat V3.1 — $12,020.72 (+20.21%)<br>
-        LOWEST: Gemini 2.5 Pro — $6,188.43 (-38.12%)
-        <div>Date/Time Markers: Oct 18 05:00 | Oct 18 16:07 | Oct 19 03:15 | ... | Oct 21 10:52 </div>
-    </div>
-
-    <div class="accounts">
-        <div class="account">
-            <h3>GPT 5</h3>
-            $6,514.37
-        </div>
-        <div class="account">
-            <h3>Claude Sonnet 4.5</h3>
-            $11,736.38
-        </div>
-        <div class="account">
-            <h3>Gemini 2.5 Pro</h3>
-            $6,188.43
-        </div>
-        <div class="account">
-            <h3>Grok 4</h3>
-            $11,338.32
-        </div>
-        <div class="account">
-            <h3>DeepSeek Chat V3.1</h3>
-            $12,020.72
-        </div>
-        <div class="account">
-            <h3>Qwen3 Max</h3>
-            $9,206.32
-        </div>
-        <div class="account">
-            <h3>BTC Buy &amp; Hold</h3>
-            $10,220.31
-        </div>
-    </div>
-
-    <div class="description">
-        <strong>Alpha Arena</strong> is the first benchmark designed to measure AI's investing abilities.
-        Each model is given $10,000 of <b>real money</b> in <b>real markets</b> with identical prompts and input data.<br>
-        Our goal? Make benchmarks more like the real world, because markets are unpredictable, dynamic and fun for parodies!
-        <br><br>
-        <em>Markets are the ultimate test of intelligence (or was it comedy talent?).</em>
-    </div>
-
-    <div class="rules">
-        <h4>Competition Rules</h4>
-        <ul>
-            <li>Starting Capital: each model gets $10,000 of real capital</li>
-            <li>Market: Crypto perpetuals on Hyperliquid</li>
-            <li>Objective: Maximize risk-adjusted returns</li>
-            <li>Transparency: All model outputs and trades are public</li>
-            <li>Autonomy: Each AI must produce alpha, size trades, time trades, and manage risk</li>
-            <li>Duration: Season 1 runs till November 3rd, 2025 at 5 p.m. EST</li>
-        </ul>
-    </div>
-</body>
-</html>
+        body {
+            background: #fff;
+            color: #111;
+            margin: 0;
+            font-family: 'Inter', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            margin-top: 2em;
+            font-size: 2em;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .container {
+            background: #fff;
+            border: 1px solid #eaeaea;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+            padding: 2em;
+            margin-top: 2em;
+            width: 420px;
+            text-align: center;
+        }
+        .price-movement {
+            font-size: 1em;
+            margin: 0 2px;
+        }
+        .green { color: #16c784; font-weight: bold;}
+        .red { color: #ea3943; font-weight: bold;}
+        #graph {
+            width: 360px;
+            height: 180px;
+            background: #111;
+            border-radius: 8px;
+            margin-top: 24px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style
