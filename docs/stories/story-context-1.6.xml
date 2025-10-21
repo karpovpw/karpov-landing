@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story_context>
+  <story_id>1.6</story_id>
+  <story_title>Accessibility Foundation</story_title>
+  <epic_id>1</epic_id>
+  <epic_title>Core Infrastructure & Design System</epic_title>
+  <created_date>2025-10-21</created_date>
+  <created_by>karpovpw</created_by>
+
+  <context>
+    <source_documents>
+      <document type="epic-breakdown" path="docs/epic-stories.md">
+        <description>Project epic breakdown and story definitions</description>
+        <relevant_content>
+          <epic id="1">
+            <title>Core Infrastructure & Design System</title>
+            <story id="1.6">
+              <title>Accessibility Foundation</title>
+              <description>Implement ARIA labels and semantic HTML, Ensure keyboard navigation support, Set up screen reader compatibility, Validate color contrast ratios</description>
+            </story>
+          </epic>
+        </relevant_content>
+      </document>
+
+      <document type="prd" path="docs/PRD.md">
+        <description>Product Requirements Document with functional and non-functional requirements</description>
+        <relevant_content>
+          <requirement id="NFR004">WCAG 2.1 AA accessibility compliance for inclusive design</requirement>
+          <requirement id="FR004">Users can switch between dark and black theme modes seamlessly</requirement>
+          <requirement id="NFR005">Mobile-first responsive design with touch-friendly interactions</requirement>
+        </relevant_content>
+      </document>
+
+      <document type="solution-architecture" path="docs/solution-architecture.md">
+        <description>Technical solution architecture and implementation guidance</description>
+        <relevant_content>
+          <accessibility_strategy>
+            <wcag_compliance>WCAG 2.1 AA compliance strategy</wcag_compliance>
+            <semantic_html>Semantic HTML and proper heading hierarchy</semantic_html>
+            <aria_labels>ARIA labels and descriptions for all interactive elements</aria_labels>
+          </accessibility_strategy>
+          <inclusive_design>
+            <keyboard_navigation>Full site navigation without mouse dependency</keyboard_navigation>
+            <screen_reader>Screen reader compatibility for assistive technology</screen_reader>
+            <color_contrast>4.5:1 minimum ratio for all text combinations</color_contrast>
+          </inclusive_design>
+        </relevant_content>
+      </document>
+
+      <document type="tech-spec" path="docs/tech-spec-epic-1.md">
+        <description>Technical specification for Epic 1 implementation details</description>
+        <relevant_content>
+          <acceptance_criteria>
+            <ac006>Accessibility Foundation</ac006>
+            <description>ARIA labels implemented for all interactive glassmorphism elements, Keyboard navigation works for all theme switching and navigation, Screen reader compatibility validated for glass morphism content, Color contrast ratios meet WCAG 2.1 AA standards in both themes, Focus indicators visible on all interactive elements</description>
+          </acceptance_criteria>
+          <accessibility_targets>
+            <contrast_ratios>4.5:1 minimum ratio for all text combinations</contrast_ratios>
+            <keyboard_accessibility>Full site usability without mouse dependency</keyboard_accessibility>
+            <screen_reader>Optimized content structure for assistive technology</screen_reader>
+          </accessibility_targets>
+        </relevant_content>
+      </document>
+
+      <document type="complete-foundation" path="docs/stories/">
+        <description>Complete Core Infrastructure & Design System foundation</description>
+        <relevant_content>
+          <story_1_1>Project Structure Setup - Next.js 15, TypeScript, routing foundation</story_1_1>
+          <story_1_2>Liquid Glass Design System - Glassmorphism components and CSS architecture</story_1_2>
+          <story_1_3>Theme System Implementation - React Context and dual theme support</story_1_3>
+          <story_1_4>Responsive Layout Framework - 6-breakpoint responsive grid system</story_1_4>
+          <story_1_5>Performance Optimization - Bundle optimization and Core Web Vitals</story_1_5>
+          <epic_completion>Complete technical foundation ready for accessibility implementation</epic_completion>
+          <no_conflicts>All previous stories completed successfully with accessibility considerations</no_conflicts>
+        </relevant_content>
+      </document>
+    </source_documents>
+
+    <implementation_guidance>
+      <semantic_structure>
+        <html_semantics>Semantic HTML elements with proper heading hierarchy and landmarks</html_semantics>
+        <aria_implementation>Comprehensive ARIA labels for glassmorphism interactive elements</aria_implementation>
+        <content_structure>Screen reader optimized content organization and flow</content_structure>
+      </semantic_structure>
+
+      <keyboard_accessibility>
+        <navigation_support>Full keyboard navigation for all interactive components</navigation_support>
+        <focus_management>Visible focus indicators on all interactive elements</focus_management>
+        <shortcut_support>Keyboard shortcuts for efficient portfolio navigation</shortcut_support>
+      </keyboard_accessibility>
+
+      <theme_accessibility>
+        <contrast_validation>WCAG 2.1 AA contrast ratios in both light and dark themes</contrast_validation>
+        <glassmorphism_contrast>Glassmorphism effects with sufficient contrast for readability</glassmorphism_contrast>
+        <focus_visibility>Enhanced focus indicators for glassmorphism components</focus_visibility>
+      </theme_accessibility>
+
+      <assistive_technology>
+        <screen_reader>Complete screen reader compatibility for all content</screen_reader>
+        <voice_control>Voice control software compatibility validation</voice_control>
+        <magnification>High magnification software compatibility testing</magnification>
+      </assistive_technology>
+
+      <testing_requirements>
+        <wcag_testing>WCAG 2.1 AA compliance validation across all components</wcag_testing>
+        <keyboard_testing>Full keyboard navigation testing without mouse dependency</keyboard_testing>
+        <screen_reader_testing>Screen reader compatibility with NVDA, JAWS, and VoiceOver</screen_reader_testing>
+        <contrast_testing>Automated and manual color contrast ratio validation</contrast_testing>
+        <usability_testing>Accessibility usability testing with disabled users</usability_testing>
+      </testing_requirements>
+    </implementation_guidance>
+  </context>
+
+  <generated_by>BMad Workflow System</generated_by>
+  <workflow_version>v6.0.0-alpha</workflow_version>
+</story_context>

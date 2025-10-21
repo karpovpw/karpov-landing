@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story_context>
+  <story_id>1.3</story_id>
+  <story_title>Theme System Implementation</story_title>
+  <epic_id>1</epic_id>
+  <epic_title>Core Infrastructure & Design System</epic_title>
+  <created_date>2025-10-21</created_date>
+  <created_by>karpovpw</created_by>
+
+  <context>
+    <source_documents>
+      <document type="epic-breakdown" path="docs/epic-stories.md">
+        <description>Project epic breakdown and story definitions</description>
+        <relevant_content>
+          <epic id="1">
+            <title>Core Infrastructure & Design System</title>
+            <story id="1.3">
+              <title>Theme System Implementation</title>
+              <description>Build dark/black theme switching mechanism, Create theme context and provider, Implement smooth theme transitions, Ensure theme persistence across sessions</description>
+            </story>
+          </epic>
+        </relevant_content>
+      </document>
+
+      <document type="prd" path="docs/PRD.md">
+        <description>Product Requirements Document with functional and non-functional requirements</description>
+        <relevant_content>
+          <requirement id="FR004">Users can switch between dark and black theme modes seamlessly</requirement>
+          <requirement id="FR005">Site displays liquid glass design effects throughout the interface</requirement>
+          <requirement id="NFR004">WCAG 2.1 AA accessibility compliance for inclusive design</requirement>
+          <requirement id="NFR005">Mobile-first responsive design with touch-friendly interactions</requirement>
+        </relevant_content>
+      </document>
+
+      <document type="solution-architecture" path="docs/solution-architecture.md">
+        <description>Technical solution architecture and implementation guidance</description>
+        <relevant_content>
+          <theme_system>
+            <context_provider>ThemeProvider context manages global theme state</context_provider>
+            <theme_api>Theme Management API with getCurrentTheme, setTheme, toggleTheme functions</theme_api>
+            <css_integration>CSS custom properties for seamless theme switching</css_integration>
+          </theme_system>
+          <component_integration>
+            <theme_toggle>ThemeButton (theme toggle with glassmorphism)</theme_toggle>
+            <theme_context>React Context for global theme state management</theme_context>
+          </component_integration>
+          <dual_themes>
+            <light_theme>White theme with purple gradient</light_theme>
+            <dark_theme>AMOLED black theme with neon accents</dark_theme>
+          </dual_themes>
+        </relevant_content>
+      </document>
+
+      <document type="tech-spec" path="docs/tech-spec-epic-1.md">
+        <description>Technical specification for Epic 1 implementation details</description>
+        <relevant_content>
+          <acceptance_criteria>
+            <ac003>Theme Switching Functionality</ac003>
+            <description>ThemeProvider context manages global theme state, Light theme (white/purple gradient) renders correctly, Dark theme (AMOLED black) renders correctly, Theme switching transitions smoothly (< 200ms), Theme preference persists across browser sessions, Neon accent colors (green/orange) apply correctly in both themes</description>
+          </acceptance_criteria>
+          <technical_constraints>
+            <transition_performance>Theme switching transitions smoothly (< 200ms)</transition_performance>
+            <theme_persistence>Theme preference persists across browser sessions</theme_persistence>
+            <css_integration>CSS architecture supports theme switching without FOUC</css_integration>
+          </technical_constraints>
+        </relevant_content>
+      </document>
+
+      <document type="previous-stories" path="docs/stories/">
+        <description>Previous stories foundation and glassmorphism system</description>
+        <relevant_content>
+          <story_1_1>Project Structure Setup - Next.js 15, TypeScript, basic routing established</story_1_1>
+          <story_1_2>Liquid Glass Design System - CSS architecture and glassmorphism components implemented</story_1_2>
+          <foundation_ready>Project structure and design system foundation established for theme integration</foundation_ready>
+          <no_deviations>No deviations or issues noted in previous story implementations</no_deviations>
+        </relevant_content>
+      </document>
+    </source_documents>
+
+    <implementation_guidance>
+      <theme_architecture>
+        <context_pattern>React Context API for global theme state management with TypeScript interfaces</context_pattern>
+        <css_integration>CSS custom properties system for runtime theme switching</css_integration>
+        <persistence_strategy>localStorage for theme preference persistence across sessions</persistence_strategy>
+      </theme_architecture>
+
+      <dual_theme_implementation>
+        <light_theme>White background with purple gradient accents and glassmorphism integration</light_theme>
+        <dark_theme>AMOLED black background with neon green/orange accents and optimized glass effects</dark_theme>
+        <smooth_transitions>Sub-200ms transition animations for seamless theme switching</smooth_transitions>
+      </dual_theme_implementation>
+
+      <component_integration>
+        <theme_provider>ThemeProvider context with theme state initialization and management</theme_provider>
+        <theme_toggle>Glassmorphism-styled theme toggle component with smooth transitions</theme_toggle>
+        <global_integration>Theme context integration into app root layout for global availability</global_integration>
+      </component_integration>
+
+      <performance_considerations>
+        <transition_optimization>Smooth theme transitions without blocking UI rendering</transition_optimization>
+        <css_optimization>Hardware-accelerated CSS transitions for glassmorphism effects</css_optimization>
+        <fouc_prevention>Theme loading states to prevent flash of unstyled content</fouc_prevention>
+      </performance_considerations>
+
+      <testing_requirements>
+        <theme_functionality>Unit tests for ThemeProvider context and state management</theme_functionality>
+        <transition_testing>Integration tests for smooth theme switching across components</transition_testing>
+        <visual_testing>Visual regression testing for theme-specific glassmorphism effects</visual_testing>
+        <accessibility_testing>Contrast ratio validation for both light and dark themes</accessibility_testing>
+        <persistence_testing>Cross-session theme preference validation</persistence_testing>
+      </testing_requirements>
+    </implementation_guidance>
+  </context>
+
+  <generated_by>BMad Workflow System</generated_by>
+  <workflow_version>v6.0.0-alpha</workflow_version>
+</story_context>

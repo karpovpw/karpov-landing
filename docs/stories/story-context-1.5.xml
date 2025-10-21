@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<story_context>
+  <story_id>1.5</story_id>
+  <story_title>Performance Optimization</story_title>
+  <epic_id>1</epic_id>
+  <epic_title>Core Infrastructure & Design System</epic_title>
+  <created_date>2025-10-21</created_date>
+  <created_by>karpovpw</created_by>
+
+  <context>
+    <source_documents>
+      <document type="epic-breakdown" path="docs/epic-stories.md">
+        <description>Project epic breakdown and story definitions</description>
+        <relevant_content>
+          <epic id="1">
+            <title>Core Infrastructure & Design System</title>
+            <story id="1.5">
+              <title>Performance Optimization</title>
+              <description>Implement code splitting and lazy loading, Set up image optimization and WebP support, Configure caching strategies, Monitor and optimize loading performance</description>
+            </story>
+          </epic>
+        </relevant_content>
+      </document>
+
+      <document type="prd" path="docs/PRD.md">
+        <description>Product Requirements Document with functional and non-functional requirements</description>
+        <relevant_content>
+          <requirement id="NFR001">Site loads within 2 seconds on standard broadband connections</requirement>
+          <requirement id="NFR002">99.9% uptime reliability for professional accessibility</requirement>
+        </relevant_content>
+      </document>
+
+      <document type="solution-architecture" path="docs/solution-architecture.md">
+        <description>Technical solution architecture and implementation guidance</description>
+        <relevant_content>
+          <performance_optimization>
+            <bundle_optimization>Bundle size < 500KB gzipped JavaScript target</bundle_optimization>
+            <code_splitting>Route-based and component-based bundle splitting</code_splitting>
+            <image_optimization>Next.js Image component with WebP/AVIF conversion</image_optimization>
+          </performance_optimization>
+          <caching_strategy>
+            <static_generation>Portfolio content pre-rendered at build time</static_generation>
+            <isr>Incremental Static Regeneration for dynamic content updates</isr>
+            <cdn_caching>Vercel edge cache with appropriate cache headers</cdn_caching>
+          </caching_strategy>
+        </relevant_content>
+      </document>
+
+      <document type="tech-spec" path="docs/tech-spec-epic-1.md">
+        <description>Technical specification for Epic 1 implementation details</description>
+        <relevant_content>
+          <acceptance_criteria>
+            <ac005>Performance Optimization</ac005>
+            <description>Code splitting implemented at route and component levels, Image optimization configured for WebP/AVIF formats, Bundle analyzer shows < 500KB gzipped target, Lazy loading implemented for below-fold content, Performance budgets enforced in build process</description>
+          </acceptance_criteria>
+          <performance_targets>
+            <load_time>Sub-2-second load time on standard broadband</load_time>
+            <core_web_vitals>LCP, FID, CLS tracking and optimization</core_web_vitals>
+            <animation_performance>60fps for glassmorphism effects</animation_performance>
+          </performance_targets>
+        </relevant_content>
+      </document>
+
+      <document type="previous-stories" path="docs/stories/">
+        <description>Complete infrastructure foundation established</description>
+        <relevant_content>
+          <story_1_1>Project Structure Setup - Next.js 15, TypeScript, routing ready for optimization</story_1_1>
+          <story_1_2>Liquid Glass Design System - Glassmorphism components ready for performance optimization</story_1_2>
+          <story_1_3>Theme System Implementation - React Context and CSS ready for code splitting</story_1_3>
+          <story_1_4>Responsive Layout Framework - 6-breakpoint responsive system ready for optimization</story_1_4>
+          <optimization_ready>Complete technical foundation ready for performance layer implementation</optimization_ready>
+          <no_issues>Previous stories completed successfully without performance conflicts</no_issues>
+        </relevant_content>
+      </document>
+    </source_documents>
+
+    <implementation_guidance>
+      <bundle_optimization>
+        <code_splitting>Route-based and component-based splitting with dynamic imports</code_splitting>
+        <bundle_analysis>Bundle analyzer with < 500KB gzipped JavaScript target</bundle_analysis>
+        <vendor_splitting>Shared dependencies separated from application code</vendor_splitting>
+      </bundle_optimization>
+
+      <image_optimization>
+        <nextjs_images>Next.js Image component with automatic WebP/AVIF conversion</nextjs_images>
+        <responsive_sizing>1200px wide screenshots with 2x retina variants</responsive_sizing>
+        <lazy_loading>Below-fold images with blur placeholder effects</lazy_loading>
+      </image_optimization>
+
+      <caching_strategy>
+        <build_time>Static content generation at build time for optimal performance</build_time>
+        <isr>Incremental Static Regeneration for fresh content updates</isr>
+        <service_worker>Offline capability and asset caching strategies</service_worker>
+      </caching_strategy>
+
+      <performance_monitoring>
+        <core_web_vitals>LCP, FID, CLS tracking and performance analytics</core_web_vitals>
+        <bundle_monitoring>Automated performance testing and bundle analysis</bundle_monitoring>
+        <performance_budgets>Build process enforcement of performance targets</performance_budgets>
+      </performance_monitoring>
+
+      <testing_requirements>
+        <performance_testing>Core Web Vitals compliance and load time validation</performance_testing>
+        <bundle_testing>Bundle size analysis and regression detection</bundle_testing>
+        <image_testing>Image optimization validation across formats and breakpoints</image_testing>
+        <cross_browser_testing>Performance consistency across different browsers</cross_browser_testing>
+        <network_testing>Load time validation under various network conditions</network_testing>
+      </testing_requirements>
+    </implementation_guidance>
+  </context>
+
+  <generated_by>BMad Workflow System</generated_by>
+  <workflow_version>v6.0.0-alpha</workflow_version>
+</story_context>
