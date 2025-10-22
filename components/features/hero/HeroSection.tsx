@@ -1,40 +1,27 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { BaseComponentProps } from '@/types'
 
 export function HeroSection({ className }: BaseComponentProps) {
   return (
     <section className={`relative min-h-screen flex items-center justify-center ${className || ''}`}>
       <div className="container mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+        <div
           className="max-w-4xl mx-auto"
         >
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.8 }}
+          <h1
             className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent"
           >
             Karpov
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.8 }}
+          <p
             className="text-xl md:text-2xl text-muted-foreground mb-8"
           >
             Full Stack Developer & Multi-Agent Systems Architect
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
+          <div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <div className="glass-button px-8 py-4 text-lg font-semibold">
@@ -43,8 +30,8 @@ export function HeroSection({ className }: BaseComponentProps) {
             <div className="glass-button px-8 py-4 text-lg font-semibold">
               Get In Touch
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Animated background elements */}
