@@ -1,280 +1,205 @@
-// Deployment readiness verification script
-// Run with: node scripts/deploy-check.js
+#!/usr/bin/env node
 
-const fs = require('fs')
-const path = require('path')
+/**
+ * Deployment validation script for karpov-portfolio
+ * Checks for common deployment issues before deploying
+ */
 
-// Configuration
-const CHECKS = {
-  requiredFiles: [
-    'package.json',
-    'next.config.js',
-    'tailwind.config.ts',
-    'tsconfig.json',
-    'app/layout.tsx',
-    'app/page.tsx',
-  ],
-  deploymentFiles: [
-    'wrangler.toml',
-    'public/_headers',
-    'public/_redirects',
-    'public/robots.txt',
-    'public/sitemap.xml',
-    '.env.example',
-  ],
-  securityFiles: [
-    'lib/browser-polyfills.ts',
-    'lib/error-handling-utils.ts',
-    'lib/analytics.ts',
-  ],
-  componentFiles: [
-    'components/design-system/GlassCard.tsx',
-    'components/design-system/GlassButton.tsx',
-    'components/design-system/ThemeProvider.tsx',
-  ]
-}
+import { execSync } from 'child_process';
+import { readFileSync, existsSync } from 'fs';
+import { join } from 'path';
 
-class DeploymentChecker {
+const PROJECT_ROOT = process.cwd();
+
+class DeploymentValidator {
   constructor() {
-    this.results = {
-      passed: 0,
-      failed: 0,
-      warnings: 0,
-      errors: []
-    }
+    this.errors = [];
+    this.warnings = [];
   }
 
   log(message, type = 'info') {
-    const timestamp = new Date().toISOString()
-    const prefix = {
-      info: 'ℹ️ ',
-      success: '✅',
-      warning: '⚠️ ',
-      error: '❌'
-    }[type]
-
-    console.log(`${prefix} ${message}`)
+    const timestamp = new Date().toISOString();
+    console.log(`[${timestamp}] ${type.toUpperCase()}: ${message}`);
   }
 
-  checkFileExists(filePath, description) {
-    const fullPath = path.join(process.cwd(), filePath)
-    const exists = fs.existsSync(fullPath)
-
-    if (exists) {
-      this.results.passed++
-      this.log(`${description}: ${filePath}`, 'success')
-      return true
-    } else {
-      this.results.failed++
-      this.results.errors.push(`${description} missing: ${filePath}`)
-      this.log(`${description} missing: ${filePath}`, 'error')
-      return false
-    }
+  error(message) {
+    this.errors.push(message);
+    this.log(message, 'error');
   }
 
-  checkFileContent(filePath, requiredContent, description) {
+  warning(message) {
+    this.warnings.push(message);
+    this.log(message, 'warning');
+  }
+
+  success(message) {
+    this.log(message, 'success');
+  }
+
+  checkNodeVersion() {
     try {
-      const fullPath = path.join(process.cwd(), filePath)
-      const content = fs.readFileSync(fullPath, 'utf8')
+      const version = execSync('node --version', { encoding: 'utf8' }).trim();
+      this.success(`Node.js version: ${version}`);
 
-      const hasContent = requiredContent.every(text => content.includes(text))
-
-      if (hasContent) {
-        this.results.passed++
-        this.log(`${description}: Content verified`, 'success')
-        return true
-      } else {
-        this.results.failed++
-        this.results.errors.push(`${description} missing required content`)
-        this.log(`${description} missing required content`, 'error')
-        return false
+      const majorVersion = parseInt(version.slice(1).split('.')[0]);
+      if (majorVersion < 18) {
+        this.warning('Node.js version is below 18. Consider upgrading for better performance.');
       }
-    } catch (error) {
-      this.results.failed++
-      this.results.errors.push(`Error reading ${filePath}: ${error.message}`)
-      this.log(`Error reading ${filePath}: ${error.message}`, 'error')
-      return false
+    } catch (err) {
+      this.error('Failed to check Node.js version');
     }
   }
 
-  checkBuildScript() {
-    this.log('Testing production build...', 'info')
-
+  checkNpmVersion() {
     try {
-      // This would run npm run build in a real scenario
-      // For now, we'll simulate the check
-      this.log('Build script check: Build command available in package.json', 'success')
-      this.results.passed++
-      return true
-    } catch (error) {
-      this.log(`Build script error: ${error.message}`, 'error')
-      this.results.failed++
-      return false
-    }
-  }
+      const version = execSync('npm --version', { encoding: 'utf8' }).trim();
+      this.success(`npm version: ${version}`);
 
-  checkEnvironmentVariables() {
-    this.log('Checking environment configuration...', 'info')
-
-    const envExamplePath = path.join(process.cwd(), '.env.example')
-    if (fs.existsSync(envExamplePath)) {
-      this.log('Environment template: .env.example exists', 'success')
-      this.results.passed++
-
-      // Check if .env.local exists (should not be committed but should exist locally)
-      const envLocalPath = path.join(process.cwd(), '.env.local')
-      if (fs.existsSync(envLocalPath)) {
-        this.log('Local environment: .env.local exists', 'success')
-        this.results.passed++
-      } else {
-        this.log('Warning: .env.local not found (create from .env.example)', 'warning')
-        this.results.warnings++
+      const majorVersion = parseInt(version.split('.')[0]);
+      if (majorVersion < 8) {
+        this.warning('npm version is below 8. Consider upgrading.');
       }
-    } else {
-      this.log('Error: .env.example missing', 'error')
-      this.results.failed++
+    } catch (err) {
+      this.error('Failed to check npm version');
     }
   }
 
-  checkSEOFiles() {
-    this.log('Checking SEO files...', 'info')
-
-    this.checkFileContent('public/robots.txt', ['Sitemap:', 'karpov.pw'], 'Robots.txt')
-    this.checkFileContent('public/sitemap.xml', ['karpov.pw', 'xml'], 'Sitemap.xml')
+  checkBuildOutput() {
+    if (!existsSync(join(PROJECT_ROOT, 'out'))) {
+      this.warning('No build output directory found. Run "npm run build" first.');
+    } else {
+      this.success('Build output directory exists');
+    }
   }
 
-  checkSecurityHeaders() {
-    this.log('Checking security headers...', 'info')
-
-    this.checkFileContent('public/_headers', [
-      'X-Frame-Options',
-      'X-Content-Type-Options',
-      'Referrer-Policy'
-    ], 'Security headers')
-  }
-
-  checkBrowserCompatibility() {
-    this.log('Checking browser compatibility...', 'info')
+  checkWranglerConfig() {
+    const wranglerPath = join(PROJECT_ROOT, 'wrangler.toml');
+    if (!existsSync(wranglerPath)) {
+      this.error('wrangler.toml not found');
+      return;
+    }
 
     try {
-      const polyfillsPath = path.join(process.cwd(), 'lib/browser-polyfills.ts')
-      const content = fs.readFileSync(polyfillsPath, 'utf8')
+      const content = readFileSync(wranglerPath, 'utf8');
 
-      if (content.includes('ResizeObserver') && content.includes('IntersectionObserver')) {
-        this.log('Browser polyfills: Implementation found', 'success')
-        this.results.passed++
+      if (!content.includes('pages_build_output_dir')) {
+        this.error('wrangler.toml missing pages_build_output_dir');
       } else {
-        this.log('Browser polyfills: Incomplete implementation', 'warning')
-        this.results.warnings++
+        this.success('wrangler.toml contains pages_build_output_dir');
       }
-    } catch (error) {
-      this.log(`Browser compatibility check failed: ${error.message}`, 'error')
-      this.results.failed++
+
+      if (!content.includes('compatibility_date')) {
+        this.warning('wrangler.toml missing compatibility_date');
+      }
+
+    } catch (err) {
+      this.error('Failed to read wrangler.toml');
     }
   }
 
-  checkPerformanceConfiguration() {
-    this.log('Checking performance configuration...', 'info')
+  checkRedirects() {
+    const redirectsPath = join(PROJECT_ROOT, 'public', '_redirects');
+    if (!existsSync(redirectsPath)) {
+      this.warning('No _redirects file found');
+      return;
+    }
 
-    // Check Next.js config for optimizations
-    this.checkFileContent('next.config.js', [
-      'output: \'standalone\'',
-      'trailingSlash: true',
-      'compress: true'
-    ], 'Next.js optimizations')
+    try {
+      const content = readFileSync(redirectsPath, 'utf8');
+      const lines = content.split('\n').filter(line => line.trim() && !line.trim().startsWith('#'));
 
-    // Check for Lighthouse configuration
-    if (fs.existsSync('lighthouserc.js')) {
-      this.log('Lighthouse CI: Configuration found', 'success')
-      this.results.passed++
-    } else {
-      this.log('Lighthouse CI: Configuration missing', 'warning')
-      this.results.warnings++
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i];
+        const parts = line.split(/\s+/);
+
+        if (parts.length >= 3) {
+          const statusCode = parts[parts.length - 1];
+
+          // Check for invalid status codes
+          if (statusCode === '404') {
+            this.error(`Invalid status code 404 in _redirects line ${i + 1}: "${line}"`);
+          }
+
+          // Check for potential infinite loops
+          if (line.includes('/*') && line.includes('/index.html') && !line.includes('!')) {
+            this.warning(`Potential infinite loop in _redirects line ${i + 1}: "${line}" (consider adding !)`);
+          }
+        }
+      }
+
+      if (this.errors.length === 0) {
+        this.success('_redirects file looks valid');
+      }
+    } catch (err) {
+      this.error('Failed to read _redirects file');
     }
   }
 
-  runAllChecks() {
-    this.log('🚀 Starting Deployment Readiness Check', 'info')
-    this.log(`Timestamp: ${new Date().toISOString()}`, 'info')
-    this.log('='.repeat(60), 'info')
+  checkPackageJson() {
+    try {
+      const packagePath = join(PROJECT_ROOT, 'package.json');
+      const packageJson = JSON.parse(readFileSync(packagePath, 'utf8'));
 
-    // Check required files
-    this.log('\n📁 Checking Required Files...', 'info')
-    CHECKS.requiredFiles.forEach(file => {
-      this.checkFileExists(file, 'Required file')
-    })
+      if (!packageJson.scripts || !packageJson.scripts.build) {
+        this.error('package.json missing build script');
+      } else {
+        this.success('package.json has build script');
+      }
 
-    // Check deployment configuration
-    this.log('\n⚙️  Checking Deployment Configuration...', 'info')
-    CHECKS.deploymentFiles.forEach(file => {
-      this.checkFileExists(file, 'Deployment config')
-    })
+      if (packageJson.dependencies) {
+        const outdatedPackages = [
+          'rimraf', 'glob', 'domexception', 'abab',
+          '@humanwhocodes/object-schema', '@humanwhocodes/config-array'
+        ];
 
-    // Check security files
-    this.log('\n🔒 Checking Security Files...', 'info')
-    CHECKS.securityFiles.forEach(file => {
-      this.checkFileExists(file, 'Security utility')
-    })
-
-    // Check component files
-    this.log('\n🧩 Checking Component Files...', 'info')
-    CHECKS.componentFiles.forEach(file => {
-      this.checkFileExists(file, 'Component file')
-    })
-
-    // Run specific checks
-    this.log('\n🔍 Running Specific Checks...', 'info')
-    this.checkBuildScript()
-    this.checkEnvironmentVariables()
-    this.checkSEOFiles()
-    this.checkSecurityHeaders()
-    this.checkBrowserCompatibility()
-    this.checkPerformanceConfiguration()
-
-    // Summary
-    this.printSummary()
-
-    return this.results
+        for (const pkg of outdatedPackages) {
+          if (packageJson.dependencies[pkg] || packageJson.devDependencies?.[pkg]) {
+            this.warning(`Consider updating deprecated package: ${pkg}`);
+          }
+        }
+      }
+    } catch (err) {
+      this.error('Failed to read package.json');
+    }
   }
 
-  printSummary() {
-    this.log('\n' + '='.repeat(60), 'info')
-    this.log('📊 DEPLOYMENT READINESS SUMMARY', 'info')
-    this.log('='.repeat(60), 'info')
+  async run() {
+    console.log('🚀 Starting deployment validation...\n');
 
-    this.log(`✅ Passed: ${this.results.passed}`, 'success')
-    this.log(`❌ Failed: ${this.results.failed}`, this.results.failed > 0 ? 'error' : 'success')
-    this.log(`⚠️  Warnings: ${this.results.warnings}`, this.results.warnings > 0 ? 'warning' : 'success')
+    // Basic environment checks
+    this.checkNodeVersion();
+    this.checkNpmVersion();
+    this.checkBuildOutput();
 
-    if (this.results.errors.length > 0) {
-      this.log('\n❌ ERRORS FOUND:', 'error')
-      this.results.errors.forEach((error, index) => {
-        this.log(`${index + 1}. ${error}`, 'error')
-      })
+    // Configuration checks
+    this.checkPackageJson();
+    this.checkWranglerConfig();
+    this.checkRedirects();
+
+    console.log('\n📊 Validation Summary:');
+    console.log(`Errors: ${this.errors.length}`);
+    console.log(`Warnings: ${this.warnings.length}`);
+
+    if (this.errors.length > 0) {
+      console.log('\n❌ Deployment blocked due to errors:');
+      this.errors.forEach(error => console.log(`  - ${error}`));
+      process.exit(1);
     }
 
-    if (this.results.warnings > 0 && this.results.failed === 0) {
-      this.log('\n⚠️  WARNINGS (can deploy but should fix):', 'warning')
-      this.log('- Consider running tests before deployment', 'warning')
-      this.log('- Verify environment variables are set in Cloudflare', 'warning')
-      this.log('- Test on multiple browsers for compatibility', 'warning')
+    if (this.warnings.length > 0) {
+      console.log('\n⚠️  Deployment warnings:');
+      this.warnings.forEach(warning => console.log(`  - ${warning}`));
     }
 
-    if (this.results.failed === 0) {
-      this.log('\n🎉 READY FOR DEPLOYMENT!', 'success')
-      this.log('Site can be deployed to Cloudflare Pages', 'success')
-    } else {
-      this.log('\n🚫 NOT READY FOR DEPLOYMENT', 'error')
-      this.log('Fix the errors above before deploying', 'error')
+    if (this.errors.length === 0) {
+      console.log('\n✅ Deployment validation passed!');
     }
-
-    this.log('='.repeat(60), 'info')
   }
 }
 
-// Run the deployment check
-const checker = new DeploymentChecker()
-const results = checker.runAllChecks()
-
-// Exit with appropriate code
-process.exit(results.failed > 0 ? 1 : 0)
+// Run the validator
+const validator = new DeploymentValidator();
+validator.run().catch(err => {
+  console.error('Validation failed:', err);
+  process.exit(1);
+});

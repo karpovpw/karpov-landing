@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { BaseComponentProps } from '@/types'
 import { getGridGap, getContainerPadding, BREAKPOINTS } from '@/lib/responsive-utils'
 
@@ -19,7 +20,7 @@ interface GridProps extends BaseComponentProps {
   autoFit?: boolean
   autoFill?: boolean
   responsive?: Partial<Record<keyof typeof BREAKPOINTS, number>>
-  as?: keyof JSX.IntrinsicElements
+  as?: React.ElementType
 }
 
 // Responsive column configurations

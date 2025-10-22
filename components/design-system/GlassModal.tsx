@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, Variants } from 'framer-motion'
 import { BaseComponentProps } from '@/types'
 import { getGlassBackground, getGlassBorder, getGlassShadow } from '@/lib/design-tokens'
 import { useTheme } from './ThemeProvider'
@@ -76,7 +76,7 @@ export function GlassModal({
     open: { opacity: 1 },
   }
 
-  const modalVariants = {
+  const modalVariants: Variants = {
     closed: {
       opacity: 0,
       scale: 0.8,
@@ -87,7 +87,7 @@ export function GlassModal({
       scale: 1,
       y: 0,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 300,
         damping: 30,
       },

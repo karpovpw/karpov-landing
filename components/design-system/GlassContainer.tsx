@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { motion, HTMLMotionProps } from 'framer-motion'
 import { BaseComponentProps } from '@/types'
 import { GlassCard } from './GlassCard'
@@ -9,7 +10,7 @@ interface GlassContainerProps extends BaseComponentProps {
   centered?: boolean
   variant?: 'default' | 'elevated' | 'subtle'
   animate?: boolean
-  as?: keyof JSX.IntrinsicElements
+  as?: keyof React.JSX.IntrinsicElements
 }
 
 const maxWidthClasses = {

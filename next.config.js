@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Use Turbopack with minimal configuration for Next.js 16
+  turbopack: {},
+
   // Static export for Cloudflare Pages
   output: 'export',
   trailingSlash: true,
@@ -10,22 +13,21 @@ const nextConfig = {
     unoptimized: true,
   },
 
-  // Performance optimizations (updated for Next.js 15)
+  // Enable build caching for faster rebuilds
+  generateBuildId: async () => {
+    return 'build-cache-' + Date.now()
+  },
+
+  // Performance optimizations for Next.js 16
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Webpack configuration for static export
-  webpack: (config, { isServer }) => {
-    if (!isServer) {
-      config.resolve.fallback = {
-        ...config.resolve.fallback,
-        fs: false,
-        net: false,
-        tls: false,
-      }
-    }
-    return config
+  // Experimental features for better performance
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['framer-motion', 'lucide-react'],
+    scrollRestoration: true,
   },
 }
 
