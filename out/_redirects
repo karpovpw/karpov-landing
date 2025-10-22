@@ -1,0 +1,13 @@
+# Next.js static export SPA fallback
+/*    /index.html   200
+
+# Ensure Next.js static files take precedence
+/_next/static/*    /_next/static/:splat  200
+/api/*    /404.html   404
+
+# Legacy redirects (update as needed)
+# /old-path    /new-path    301
+
+# Force HTTPS and non-www
+# https://www.karpov.pw/* https://karpov.pw/:splat 301
+# http://karpov.pw/* https://karpov.pw/:splat 301
