@@ -27,6 +27,7 @@
     "deps:update": "npx npm-check-updates -u && npm install"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.15",
     "@tailwindcss/typography": "^0.5.19",
     "@types/node": "^24",
     "@types/react": "^19",

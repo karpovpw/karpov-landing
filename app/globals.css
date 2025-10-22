@@ -1,6 +1,19 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-border: hsl(var(--border));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-secondary: hsl(var(--secondary));
+  --color-muted: hsl(var(--muted));
+  --color-accent: hsl(var(--accent));
+  --color-destructive: hsl(var(--destructive));
+  --color-card: hsl(var(--card));
+  --color-popover: hsl(var(--popover));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+}
 
 @layer base {
   :root {
@@ -93,22 +106,79 @@
   }
 
   .glass-button {
-    @apply glass-card px-6 py-3 rounded-lg font-medium transition-all duration-300;
-    @apply hover:scale-105 active:scale-95;
+    background: rgba(var(--glass-background), var(--glass-opacity));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(var(--glass-border), 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(var(--glass-border), 0.2);
+    padding: 1.5rem 1.5rem 0.75rem 0.75rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .glass-button:hover {
+    transform: scale(1.05);
+  }
+
+  .glass-button:active {
+    transform: scale(0.95);
+  }
+
+  .dark .glass-button {
+    background: rgba(var(--glass-background), var(--glass-opacity));
+    border: 1px solid rgba(var(--glass-border), 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(var(--glass-border), 0.1);
   }
 
   .glass-nav {
-    @apply glass-card px-4 py-2 rounded-full;
-    @apply backdrop-blur-md;
+    background: rgba(var(--glass-background), var(--glass-opacity));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(var(--glass-border), 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(var(--glass-border), 0.2);
+    padding: 1rem 1rem 0.5rem 0.5rem;
+    border-radius: 9999px;
+    backdrop-filter: blur(12px);
+  }
+
+  .dark .glass-nav {
+    background: rgba(var(--glass-background), var(--glass-opacity));
+    border: 1px solid rgba(var(--glass-border), 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(var(--glass-border), 0.1);
   }
 
   .glass-container {
-    @apply glass-card p-8 rounded-2xl;
+    background: rgba(var(--glass-background), var(--glass-opacity));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(var(--glass-border), 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(var(--glass-border), 0.2);
+    padding: 2rem;
+    border-radius: 1rem;
+  }
+
+  .dark .glass-container {
+    background: rgba(var(--glass-background), var(--glass-opacity));
+    border: 1px solid rgba(var(--glass-border), 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(var(--glass-border), 0.1);
   }
 
   .glass-input {
-    @apply glass-card px-4 py-2 rounded-lg;
-    @apply focus:outline-none focus:ring-2 focus:ring-primary/20;
+    background: rgba(var(--glass-background), var(--glass-opacity));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(var(--glass-border), 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(var(--glass-border), 0.2);
+    padding: 1rem 1rem 0.5rem 0.5rem;
+    border-radius: 0.5rem;
+  }
+
+  .glass-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--primary), 0.2);
+  }
+
+  .dark .glass-input {
+    background: rgba(var(--glass-background), var(--glass-opacity));
+    border: 1px solid rgba(var(--glass-border), 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(var(--glass-border), 0.1);
   }
 
   /* Animation utilities */
@@ -166,11 +236,18 @@
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    @apply glass-card;
+    background: rgba(var(--glass-background), var(--glass-opacity));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(var(--glass-border), 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(var(--glass-border), 0.2);
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply glass-card rounded-full;
+    background: rgba(var(--glass-background), var(--glass-opacity));
+    backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(var(--glass-border), 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(var(--glass-border), 0.2);
+    border-radius: 9999px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
