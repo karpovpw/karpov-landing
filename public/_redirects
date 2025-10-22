@@ -1,0 +1,30 @@
+# SPA fallback for client-side routing
+/* /index.html 200
+
+# Legacy URL redirects (if any)
+/old-about /about 301
+/old-portfolio /portfolio 301
+/old-contact /contact 301
+
+# API routes (ensure these don't get redirected)
+/api/* 200
+
+# Sitemap and robots.txt should not be redirected
+/sitemap.xml 200
+/robots.txt 200
+
+# Redirect www to non-www (or vice versa based on your domain)
+/http://www.karpov.pw/* https://karpov.pw/:splat 301
+
+# Redirect non-www to www (alternative)
+/http://karpov.pw/* https://www.karpov.pw/:splat 301
+
+# Force HTTPS
+/http://karpov.pw/* https://karpov.pw/:splat 301
+/http://www.karpov.pw/* https://www.karpov.pw/:splat 301
+
+# Redirect old article paths to new format
+/articles/* /articles 301
+
+# Portfolio redirects (if project URLs change)
+/portfolio/project/* /portfolio 301
