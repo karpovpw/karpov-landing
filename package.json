@@ -9,7 +9,13 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:e2e": "playwright test"
+    "test:coverage": "jest --coverage",
+    "test:accessibility": "jest --testPathPattern=accessibility",
+    "test:performance": "lhci autorun",
+    "test:bundle": "node scripts/bundle-analysis.js",
+    "analyze": "ANALYZE=true npm run build",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
   },
   "dependencies": {
     "next": "15.0.0",
@@ -37,6 +43,15 @@
     "prettier": "^3.0.0",
     "eslint-config-next": "15.0.0",
     "eslint-config-prettier": "^9.0.0",
-    "autoprefixer": "^10.4.16"
+    "autoprefixer": "^10.4.16",
+    "@types/jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "jest-axe": "^8.0.0",
+    "axe-core": "^4.7.0",
+    "@axe-core/react": "^4.7.0",
+    "lighthouse": "^11.0.0",
+    "lhci": "^0.13.0",
+    "@lhci/cli": "^0.13.0",
+    "webpack-bundle-analyzer": "^4.9.0"
   }
 }

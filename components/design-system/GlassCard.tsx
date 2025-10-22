@@ -6,7 +6,7 @@ import { getGlassBackground, getGlassBorder, getGlassShadow, getGlassBlur, getRa
 import { useTheme } from './ThemeProvider'
 
 interface GlassCardProps extends BaseComponentProps, Omit<HTMLMotionProps<"div">, keyof BaseComponentProps> {
-  variant?: 'default' | 'elevated' | 'subtle'
+  variant?: 'default' | 'elevated' | 'subtle' | 'outline'
   blur?: 'sm' | 'md' | 'lg' | 'xl'
   rounded?: 'none' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'full'
   padding?: 'none' | 'sm' | 'md' | 'lg' | 'xl'
