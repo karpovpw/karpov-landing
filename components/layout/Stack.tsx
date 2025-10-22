@@ -12,12 +12,12 @@ interface StackProps extends BaseComponentProps {
   divider?: boolean
   as?: 'div' | 'ul' | 'ol' | 'nav' | 'section'
   responsive?: {
-    xs?: { spacing?: string; direction?: 'vertical' | 'horizontal' }
-    sm?: { spacing?: string; direction?: 'vertical' | 'horizontal' }
-    md?: { spacing?: string; direction?: 'vertical' | 'horizontal' }
-    lg?: { spacing?: string; direction?: 'vertical' | 'horizontal' }
-    xl?: { spacing?: string; direction?: 'vertical' | 'horizontal' }
-    '2xl'?: { spacing?: string; direction?: 'vertical' | 'horizontal' }
+    xs?: { spacing?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'; direction?: 'vertical' | 'horizontal' }
+    sm?: { spacing?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'; direction?: 'vertical' | 'horizontal' }
+    md?: { spacing?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'; direction?: 'vertical' | 'horizontal' }
+    lg?: { spacing?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'; direction?: 'vertical' | 'horizontal' }
+    xl?: { spacing?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'; direction?: 'vertical' | 'horizontal' }
+    '2xl'?: { spacing?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'; direction?: 'vertical' | 'horizontal' }
   }
 }
 

@@ -3,6 +3,14 @@
 import { BaseComponentProps } from '@/types'
 import { getGridGap, getContainerPadding, BREAKPOINTS } from '@/lib/responsive-utils'
 
+type ColSpan = 1 | 2 | 3 | 4 | 5 | 6 | 12 | 'full'
+
+type GridItemResponsiveConfig = {
+  colSpan?: ColSpan
+  colStart?: number
+  colEnd?: number
+}
+
 interface GridProps extends BaseComponentProps {
   cols?: 1 | 2 | 3 | 4 | 5 | 6 | 12
   gap?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
@@ -82,20 +90,13 @@ export function Grid({
 
 // Grid item component for more explicit grid control
 interface GridItemProps extends BaseComponentProps {
-  colSpan?: 1 | 2 | 3 | 4 | 5 | 6 | 12 | 'full'
+  colSpan?: ColSpan
   rowSpan?: number
   colStart?: number
   colEnd?: number
   rowStart?: number
   rowEnd?: number
-  responsive?: {
-    xs?: { colSpan?: number; colStart?: number; colEnd?: number }
-    sm?: { colSpan?: number; colStart?: number; colEnd?: number }
-    md?: { colSpan?: number; colStart?: number; colEnd?: number }
-    lg?: { colSpan?: number; colStart?: number; colEnd?: number }
-    xl?: { colSpan?: number; colStart?: number; colEnd?: number }
-    '2xl'?: { colSpan?: number; colStart?: number; colEnd?: number }
-  }
+  responsive?: Partial<Record<keyof typeof BREAKPOINTS, GridItemResponsiveConfig>>
 }
 
 export function GridItem({

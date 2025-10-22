@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { Geist } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/design-system/ThemeProvider'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { initializeAccessibility } from '@/lib/accessibility-utils'
 import { preloadCriticalResources } from '@/lib/optimization-utils'
 
-const geist = Geist({
+const geist = Inter({
   subsets: ['latin'],
   display: 'swap',
 })

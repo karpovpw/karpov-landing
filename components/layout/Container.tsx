@@ -33,7 +33,7 @@ export function Container({
     if (responsive?.[bp]?.padding) return responsive[bp].padding!
 
     if (padding === false) return ''
-    if (padding === true) return getResponsiveSpacing('container', bp as any)
+    if (padding === true) return 'px-4'
 
     const paddingMap = {
       xs: 'px-2',

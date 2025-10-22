@@ -2,7 +2,7 @@
 
 'use client'
 
-import { Component, ReactNode } from 'react'
+import { Component, ReactNode, useState, useCallback } from 'react'
 import { reportError, ErrorContext } from '@/lib/error-handling-utils'
 
 interface Props {

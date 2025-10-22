@@ -29,14 +29,14 @@ export function initializeBrowserPolyfills(): void {
 
     // requestAnimationFrame polyfill
     if (!window.requestAnimationFrame) {
-      let lastTime = 0
-      window.requestAnimationFrame = function(callback: any) {
-        const currentTime = Date.now()
-        const timeToCall = Math.max(0, 16 - (currentTime - lastTime))
-        const id = setTimeout(() => callback(currentTime), timeToCall)
-        lastTime = currentTime
-        return id
-      }
+       let lastTime = 0
+       window.requestAnimationFrame = function(callback: FrameRequestCallback): number {
+         const currentTime = Date.now()
+         const timeToCall = Math.max(0, 16 - (currentTime - lastTime))
+         const id = setTimeout(() => callback(currentTime), timeToCall) as unknown as number
+         lastTime = currentTime
+         return id
+       }
 
       window.cancelAnimationFrame = function(id: number) {
         clearTimeout(id)

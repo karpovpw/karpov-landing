@@ -7,7 +7,7 @@ import { getGlassBackground, getGlassBorder, getGlassShadow } from '@/lib/design
 import { useTheme } from './ThemeProvider'
 import { applyFocusRing } from '@/lib/accessibility-utils'
 
-interface GlassInputProps extends BaseComponentProps, Omit<HTMLMotionProps<"input">, keyof BaseComponentProps> {
+interface GlassInputProps extends BaseComponentProps, Omit<HTMLMotionProps<"input">, keyof BaseComponentProps | 'size'> {
   label?: string
   placeholder?: string
   type?: 'text' | 'email' | 'password' | 'search' | 'tel' | 'url' | 'number'
