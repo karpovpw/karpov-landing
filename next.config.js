@@ -4,19 +4,20 @@ const nextConfig = {
     appDir: true,
   },
 
-  // Optimize for static generation and Cloudflare Pages
-  output: 'standalone',
+  // Critical: Ensure proper static export for Cloudflare Pages
+  output: 'export',
   trailingSlash: true,
+  skipTrailingSlashRedirect: true,
 
-  // Image optimization for Cloudflare Pages
+  // Image optimization - disable for static export
   images: {
-    domains: ['localhost'],
-    formats: ['image/webp', 'image/avif'],
-    // Use Cloudflare Images or optimize locally
-    unoptimized: process.env.NODE_ENV === 'production',
+    unoptimized: true,
   },
 
-  // Security headers (additional to _headers file)
+  // Disable server-side features for static deployment
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/' : '',
+
+  // Security headers
   async headers() {
     return [
       {
@@ -34,10 +35,6 @@ const nextConfig = {
             key: 'Referrer-Policy',
             value: 'strict-origin-when-cross-origin',
           },
-          {
-            key: 'Permissions-Policy',
-            value: 'camera=(), microphone=(), geolocation=()',
-          },
         ],
       },
     ]
@@ -45,16 +42,11 @@ const nextConfig = {
 
   // Performance optimizations
   swcMinify: true,
+  compress: true,
 
-  // Bundle analyzer
-  ...(process.env.ANALYZE === 'true' && {
-    analyze: true,
-  }),
-
-  // Webpack optimizations for production
-  webpack: (config, { dev, isServer }) => {
-    // Optimize bundle size
-    if (!dev && !isServer) {
+  // Webpack configuration for static export
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
         fs: false,
@@ -62,40 +54,16 @@ const nextConfig = {
         tls: false,
       }
     }
-
-    // Bundle analyzer
-    if (process.env.ANALYZE === 'true') {
-      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-      config.plugins.push(
-        new BundleAnalyzerPlugin({
-          analyzerMode: 'server',
-          openAnalyzer: true,
-        })
-      )
-    }
-
     return config
   },
-
-  // Redirects and rewrites
-  async redirects() {
-    return [
-      // Legacy URL redirects (if any)
-      {
-        source: '/old-about',
-        destination: '/about',
-        permanent: true,
-      },
-    ]
-  },
-
-  // Enable compression
-  compress: true,
 
   // Generate build ID
   generateBuildId: async () => {
     return `build-${Date.now()}`
   },
+
+  // Disable static optimization that breaks static export
+  generateEtags: false,
 }
 
 module.exports = nextConfig

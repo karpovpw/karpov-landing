@@ -16,26 +16,13 @@ globs = ["**/*.js"]
 [build.environment_variables]
 NODE_VERSION = "20"
 
-# Cloudflare Pages specific settings
-pages_build_output_dir = ".next"
+# Cloudflare Pages specific settings for static export
+pages_build_output_dir = "out"
 
 # Enable modern JS features
 [build.modern]
 enabled = true
 
-# KV namespace for form submissions or analytics
-# [[kv_namespaces]]
-# binding = "KV"
-# id = "your-kv-namespace-id"
-# preview_id = "your-preview-kv-namespace-id"
-
-# D1 Database (if needed for future features)
-# [[d1_databases]]
-# binding = "DB"
-# database_name = "karpov-portfolio-db"
-# database_id = "your-database-id"
-
-# Environment variables for different environments
 [vars]
 NODE_ENV = "production"
 
@@ -44,6 +31,3 @@ NODE_ENV = "production"
 
 [env.preview.vars]
 NODE_ENV = "preview"
-
-[env.staging.vars]
-NODE_ENV = "staging"
