@@ -1,8 +1,10 @@
 'use client'
 
 import { BaseComponentProps } from '@/types'
+import { useRouter } from 'next/navigation'
 
 export function HeroSection({ className }: BaseComponentProps) {
+  const router = useRouter()
   return (
     <section className={`relative min-h-screen flex items-center justify-center ${className || ''}`}>
       <div className="container mx-auto px-4 text-center">
@@ -24,12 +26,12 @@ export function HeroSection({ className }: BaseComponentProps) {
           <div
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <div className="glass-button px-8 py-4 text-lg font-semibold">
+            <button className="glass-button px-8 py-4 text-lg font-semibold" onClick={() => router.push('/portfolio')}>
               View Portfolio
-            </div>
-            <div className="glass-button px-8 py-4 text-lg font-semibold">
+            </button>
+            <button className="glass-button px-8 py-4 text-lg font-semibold" onClick={() => router.push('/contact')}>
               Get In Touch
-            </div>
+            </button>
           </div>
         </div>
       </div>
