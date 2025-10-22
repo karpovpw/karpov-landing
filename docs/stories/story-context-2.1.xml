@@ -1,0 +1,100 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>1</storyId>
+    <title>Personal Profile & Hero</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-22T04:07:00.000Z</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-2.1.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>As a portfolio visitor</asA>
+    <iWant>I want to view a compelling hero section with professional introduction, personal bio, and skills showcase</iWant>
+    <soThat>so that I can quickly understand the developer's expertise, background, and unique value proposition while being engaged by smooth animations and liquid glass design elements</soThat>
+    <tasks>Create hero section with professional photo, Build personal description and bio section, Implement skills and expertise showcase, Add animated introduction elements</tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criteria id="AC001">Hero section displays professional photo with liquid glass frame effects</criteria>
+    <criteria id="AC002">Personal description and bio section presents background and expertise clearly</criteria>
+    <criteria id="AC003">Skills and expertise showcase highlights technical competencies with visual indicators</criteria>
+    <criteria id="AC004">Animated introduction elements load smoothly without performance impact</criteria>
+    <criteria id="AC005">Hero content adapts responsively across all device sizes with touch-friendly interactions</criteria>
+    <criteria id="AC006">Professional call-to-action encourages portfolio exploration and contact</criteria>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="Page Structure">App Router page architecture for hero implementation</section>
+        <snippet>App Router Structure with Glassmorphism Navigation - Hero section (introduction with animated background)</snippet>
+      </doc>
+      <doc path="docs/PRD.md" title="Product Requirements Document">
+        <section name="FR001">Users can view personal profile with professional photo, bio, and contact information</section>
+        <snippet>Users can view personal profile with professional photo, bio, and contact information</snippet>
+      </doc>
+    </docs>
+
+    <code>
+      <file path="components/hero/HeroSection.tsx" kind="component" symbol="HeroSection" reason="Main hero section component with animated introduction and glassmorphism styling">
+        <lines>1-120</lines>
+      </file>
+      <file path="components/hero/AnimatedText.tsx" kind="component" symbol="AnimatedText" reason="Typing animation component for hero introduction text">
+        <lines>1-80</lines>
+      </file>
+      <file path="components/profile/SkillsShowcase.tsx" kind="component" symbol="SkillsShowcase" reason="Interactive skills grid with glassmorphism cards and expertise indicators">
+        <lines>1-100</lines>
+      </file>
+      <file path="components/profile/ProfileBio.tsx" kind="component" symbol="ProfileBio" reason="Bio section component with professional background and expertise highlights">
+        <lines>1-60</lines>
+      </file>
+      <file path="lib/animations/hero-animations.ts" kind="utility" symbol="HeroAnimations" reason="Hero-specific animations and staggered reveal effects">
+        <lines>1-80</lines>
+      </file>
+    </code>
+
+    <dependencies>
+      <ecosystem name="Node.js">
+        <dependency name="framer-motion" version="11.5.x" type="runtime">Advanced animation library for hero section animations and typing effects</dependency>
+        <dependency name="react-intersection-observer" version="9.x" type="runtime">Scroll-triggered animations for hero content reveal</dependency>
+        <dependency name="react-type-animation" version="3.x" type="runtime">Smooth typing animations for introduction text</dependency>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="animation">Smooth hero animations with 60fps performance and reduced motion support</constraint>
+    <constraint type="responsive">Hero content adapts responsively across all device sizes with touch interactions</constraint>
+    <constraint type="image">Professional photo loading with WebP optimization and glassmorphism frame effects</constraint>
+    <constraint type="content">Compelling personal introduction with clear value proposition messaging</constraint>
+    <constraint type="performance">Hero animations optimized for initial page load performance</constraint>
+    <constraint type="accessibility">Hero section fully accessible with proper ARIA labels and keyboard navigation</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface name="HeroSection" kind="React Component" path="components/hero/HeroSection.tsx">
+      <signature>interface HeroSectionProps { professionalPhoto: string; name: string; title: string; animated?: boolean; }</signature>
+    </interface>
+    <interface name="AnimatedText" kind="React Component" path="components/hero/AnimatedText.tsx">
+      <signature>interface AnimatedTextProps { text: string; delay?: number; speed?: number; repeat?: boolean; }</signature>
+    </interface>
+    <interface name="SkillsShowcase" kind="React Component" path="components/profile/SkillsShowcase.tsx">
+      <signature>interface SkillsShowcaseProps { skills: Skill[]; layout?: 'grid' | 'list'; animated?: boolean; }</signature>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>Hero section rendering and animation performance testing, Responsive layout testing across 6 breakpoints, Accessibility testing for professional photo alt text and ARIA labels, Animation performance testing ensuring 60fps across devices</standards>
+    <locations>components/hero/__tests__/, components/profile/__tests__/, .test.tsx, .spec.tsx, .animation.test.tsx</locations>
+    <ideas>
+      <idea ac="AC001">Test hero section displays professional photo with liquid glass frame effects</idea>
+      <idea ac="AC002">Test personal description and bio section presents background clearly</idea>
+      <idea ac="AC003">Test skills showcase highlights competencies with visual indicators</idea>
+      <idea ac="AC004">Test animated elements load smoothly without performance impact</idea>
+      <idea ac="AC005">Test hero content adapts responsively across device sizes</idea>
+      <idea ac="AC006">Test call-to-action encourages portfolio exploration</idea>
+    </ideas>
+  </tests>
+</story-context>

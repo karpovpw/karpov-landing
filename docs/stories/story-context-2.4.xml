@@ -1,0 +1,102 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>4</storyId>
+    <title>Contact & Networking Integration</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-22T04:12:00.000Z</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-2.4.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>As a potential client or collaborator</asA>
+    <iWant>I want to easily contact the portfolio owner and view their professional network presence</iWant>
+    <soThat>so that I can initiate discussions about potential opportunities and understand their professional credibility through visible social proof</soThat>
+    <tasks>Build contact form with validation, Integrate LinkedIn profile display, Implement form submission handling, Add social sharing capabilities</tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criteria id="AC001">Contact form displays with proper validation and user feedback</criteria>
+    <criteria id="AC002">LinkedIn profile integration shows professional network and endorsements</criteria>
+    <criteria id="AC003">Form submission handles success and error states with appropriate messaging</criteria>
+    <criteria id="AC004">Social sharing capabilities allow content sharing across platforms</criteria>
+    <criteria id="AC005">Contact information displays clearly with multiple communication channels</criteria>
+    <criteria id="AC006">Form includes anti-spam protection and rate limiting</criteria>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="Contact Module">Contact forms, social integration, networking features</section>
+        <snippet>Contact Module: Form handling and validation, LinkedIn integration, Social sharing capabilities</snippet>
+      </doc>
+      <doc path="docs/PRD.md" title="Product Requirements Document">
+        <section name="FR004">Contact and networking integration for professional connections</section>
+        <snippet>Contact and networking integration for professional connections, Social sharing and content distribution capabilities</snippet>
+      </doc>
+    </docs>
+
+    <code>
+      <file path="components/contact/ContactForm.tsx" kind="component" symbol="ContactForm" reason="Contact form component with validation and submission handling">
+        <lines>1-120</lines>
+      </file>
+      <file path="components/contact/LinkedInProfile.tsx" kind="component" symbol="LinkedInProfile" reason="LinkedIn profile integration with professional information display">
+        <lines>1-100</lines>
+      </file>
+      <file path="components/social/SocialShare.tsx" kind="component" symbol="SocialShare" reason="Social sharing component with multiple platform integration">
+        <lines>1-90</lines>
+      </file>
+      <file path="lib/contact-utils.ts" kind="utility" symbol="ContactUtils" reason="Contact form validation and submission utilities">
+        <lines>1-100</lines>
+      </file>
+      <file path="lib/linkedin-api.ts" kind="utility" symbol="LinkedInAPI" reason="LinkedIn API integration for profile data retrieval">
+        <lines>1-80</lines>
+      </file>
+    </code>
+
+    <dependencies>
+      <ecosystem name="Node.js">
+        <dependency name="react-hook-form" version="7.x" type="runtime">Form handling and validation with minimal re-renders</dependency>
+        <dependency name="zod" version="3.x" type="runtime">Schema validation for form data and API responses</dependency>
+        <dependency name="axios" version="1.x" type="runtime">HTTP client for form submission and LinkedIn API calls</dependency>
+        <dependency name="react-linkedin-login-oauth2" version="2.x" type="runtime">LinkedIn OAuth integration for profile access</dependency>
+        <dependency name="nodemailer" version="6.x" type="runtime">Email sending for form submission notifications</dependency>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="form">Contact form validation with real-time feedback and error handling</constraint>
+    <constraint type="social">LinkedIn integration with privacy considerations and professional networking</constraint>
+    <constraint type="sharing">Social media sharing with proper content attribution and branding</constraint>
+    <constraint type="security">Anti-spam protection and rate limiting for form submissions</constraint>
+    <constraint type="communication">Multiple communication channels with clear contact information display</constraint>
+    <constraint type="feedback">Success and error state handling with appropriate user messaging</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface name="ContactForm" kind="React Component" path="components/contact/ContactForm.tsx">
+      <signature>interface ContactFormProps { onSubmit: (data: ContactData) => void; loading?: boolean; error?: string; }</signature>
+    </interface>
+    <interface name="LinkedInProfile" kind="React Component" path="components/contact/LinkedInProfile.tsx">
+      <signature>interface LinkedInProfileProps { profileId: string; showEndorsements?: boolean; compact?: boolean; }</signature>
+    </interface>
+    <interface name="SocialShare" kind="React Component" path="components/social/SocialShare.tsx">
+      <signature>interface SocialShareProps { url: string; title: string; description?: string; platforms?: string[]; }</signature>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>Contact form validation and submission testing across different scenarios, LinkedIn API integration and error handling testing, Social sharing functionality testing across platforms, Accessibility testing for form navigation and screen readers</standards>
+    <locations>components/contact/__tests__/, components/social/__tests__/, lib/__tests__/, .test.tsx, .spec.tsx, .contact.test.tsx</locations>
+    <ideas>
+      <idea ac="AC001">Test contact form displays with proper validation and user feedback</idea>
+      <idea ac="AC002">Test LinkedIn profile integration shows professional network data</idea>
+      <idea ac="AC003">Test form submission handles success and error states properly</idea>
+      <idea ac="AC004">Test social sharing capabilities work across different platforms</idea>
+      <idea ac="AC005">Test contact information displays clearly with multiple channels</idea>
+      <idea ac="AC006">Test anti-spam protection and rate limiting functionality</idea>
+    </ideas>
+  </tests>
+</story-context>

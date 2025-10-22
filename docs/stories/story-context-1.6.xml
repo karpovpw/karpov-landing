@@ -1,0 +1,99 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>6</storyId>
+    <title>Accessibility Foundation</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-22T04:05:00.000Z</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-1.6.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>As an accessibility specialist</asA>
+    <iWant>I want to implement comprehensive accessibility features including ARIA labels, semantic HTML, keyboard navigation support, and screen reader compatibility</iWant>
+    <soThat>so that I can ensure the portfolio website meets WCAG 2.1 AA compliance standards and provides an inclusive experience for all users regardless of their abilities or assistive technologies</soThat>
+    <tasks>Implement ARIA labels and semantic HTML, Ensure keyboard navigation support, Set up screen reader compatibility, Validate color contrast ratios</tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criteria id="AC001">ARIA labels implemented for all interactive glassmorphism elements and complex UI components</criteria>
+    <criteria id="AC002">Keyboard navigation works for all theme switching, navigation, and interactive elements</criteria>
+    <criteria id="AC003">Screen reader compatibility validated for glassmorphism content and dynamic elements</criteria>
+    <criteria id="AC004">Color contrast ratios meet WCAG 2.1 AA standards in both light and dark themes</criteria>
+    <criteria id="AC005">Focus indicators visible on all interactive elements with proper focus management</criteria>
+    <criteria id="AC006">Semantic HTML structure implemented throughout the application with proper heading hierarchy</criteria>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="Accessibility">WCAG 2.1 AA compliance strategy and implementation approach</section>
+        <snippet>WCAG 2.1 AA Compliance Strategy with semantic HTML, ARIA implementation, and keyboard navigation</snippet>
+      </doc>
+      <doc path="docs/tech-spec-epic-1.md" title="Technical Specification: Core Infrastructure & Design System">
+        <section name="AC006 Accessibility">Accessibility foundation requirements and ARIA implementation</section>
+        <snippet>ARIA labels implemented for all interactive glassmorphism elements, Keyboard navigation works for all theme switching and navigation</snippet>
+      </doc>
+      <doc path="docs/PRD.md" title="Product Requirements Document">
+        <section name="NFR004">WCAG 2.1 AA accessibility compliance requirement</section>
+        <snippet>WCAG 2.1 AA accessibility compliance for inclusive design</snippet>
+      </doc>
+    </docs>
+
+    <code>
+      <file path="lib/accessibility-utils.ts" kind="utility" symbol="AccessibilityUtils" reason="Focus management and ARIA utilities for screen reader support">
+        <lines>1-80</lines>
+      </file>
+      <file path="components/design-system/AccessibleGlassCard.tsx" kind="component" symbol="AccessibleGlassCard" reason="Glassmorphism component with comprehensive ARIA support and focus management">
+        <lines>1-100</lines>
+      </file>
+      <file path="components/navigation/KeyboardNavigation.tsx" kind="component" symbol="KeyboardNavigation" reason="Keyboard navigation system with focus indicators and skip links">
+        <lines>1-60</lines>
+      </file>
+      <file path="styles/accessibility.css" kind="stylesheet" symbol="AccessibilityStyles" reason="Focus indicators, high contrast support, and reduced motion preferences">
+        <lines>1-80</lines>
+      </file>
+    </code>
+
+    <dependencies>
+      <ecosystem name="Node.js">
+        <dependency name="axe-core" version="4.x" type="devDependency">Automated accessibility testing and WCAG 2.1 compliance validation</dependency>
+        <dependency name="react-axe" version="3.x" type="devDependency">React component accessibility testing utilities</dependency>
+        <dependency name="focus-trap-react" version="10.x" type="runtime">Focus management for modal dialogs and trapped content</dependency>
+        <dependency name="react-announce" version="3.x" type="runtime">Screen reader announcements for dynamic content updates</dependency>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="compliance">WCAG 2.1 AA standards with 4.5:1 contrast ratio for normal text</constraint>
+    <constraint type="aria">Comprehensive ARIA implementation for all interactive glassmorphism elements</constraint>
+    <constraint type="keyboard">Full keyboard navigation support with proper focus management and tab order</constraint>
+    <constraint type="semantic">Semantic HTML5 structure with proper heading hierarchy and landmark roles</constraint>
+    <constraint type="screenreader">Screen reader compatibility with descriptive labels and live regions</constraint>
+    <constraint type="focus">Visible focus indicators with keyboard-only navigation support</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface name="AccessibilityUtils" kind="Utility Module" path="lib/accessibility-utils.ts">
+      <signature>interface AccessibilityAPI { manageFocus(element: HTMLElement): void; announceToScreenReader(message: string): void; checkContrastRatio(foreground: string, background: string): number; }</signature>
+    </interface>
+    <interface name="AccessibleGlassCard" kind="React Component" path="components/design-system/AccessibleGlassCard.tsx">
+      <signature>interface AccessibleGlassCardProps { children: React.ReactNode; ariaLabel?: string; role?: string; tabIndex?: number; }</signature>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>Automated accessibility testing with axe-core (100% coverage target), Keyboard navigation testing across all interactive elements, Screen reader compatibility testing with multiple assistive technologies, Color contrast validation with automated reporting</standards>
+    <locations>components/**/__tests__/*.a11y.test.tsx, lib/__tests__/*.accessibility.test.ts, axe-core automated scans</locations>
+    <ideas>
+      <idea ac="AC001">Test ARIA labels implemented correctly on all glassmorphism elements</idea>
+      <idea ac="AC002">Test keyboard navigation works for all interactive elements</idea>
+      <idea ac="AC003">Test screen reader compatibility with glassmorphism content</idea>
+      <idea ac="AC004">Test color contrast ratios meet WCAG 2.1 AA standards</idea>
+      <idea ac="AC005">Test focus indicators visible and properly managed</idea>
+      <idea ac="AC006">Test semantic HTML structure with proper heading hierarchy</idea>
+    </ideas>
+  </tests>
+</story-context>

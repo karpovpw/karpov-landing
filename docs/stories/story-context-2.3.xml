@@ -1,0 +1,102 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>3</storyId>
+    <title>Articles Management System</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-22T04:09:00.000Z</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-2.3.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>As a knowledge seeker or developer</asA>
+    <iWant>I want to access a well-organized articles management system with filtering, search, and reading time estimates</iWant>
+    <soThat>so that I can easily discover and consume high-quality technical content about BMAD methodologies, blockchain technology, and software architecture best practices</soThat>
+    <tasks>Create article listing and filtering, Build article detail view with markdown support, Implement publication date sorting, Add reading time estimates</tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criteria id="AC001">Article listing displays with glassmorphism cards and consistent metadata presentation</criteria>
+    <criteria id="AC002">Topic-based filtering allows browsing articles by BMAD, blockchain, architecture, tutorials</criteria>
+    <criteria id="AC003">Publication date sorting works with newest/oldest options and featured article highlighting</criteria>
+    <criteria id="AC004">Reading time estimates calculated accurately based on content length and complexity</criteria>
+    <criteria id="AC005">Article detail view renders markdown content with proper formatting and navigation</criteria>
+    <criteria id="AC006">Article cards include social sharing capabilities and reading progress indicators</criteria>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="Content Module">Article system, markdown processing, glassmorphism content cards</section>
+        <snippet>Article System: Markdown processing and glassmorphism content cards, Article Reader: Progress tracking and smooth scroll navigation</snippet>
+      </doc>
+      <doc path="docs/PRD.md" title="Product Requirements Document">
+        <section name="FR003">Users can read articles about BMAD methodologies and technical insights</section>
+        <snippet>Users can read articles about BMAD methodologies and technical insights, Users can filter articles by topic and publication date</snippet>
+      </doc>
+    </docs>
+
+    <code>
+      <file path="components/content/ArticleList.tsx" kind="component" symbol="ArticleList" reason="Article showcase component with glassmorphism styling and filtering">
+        <lines>1-100</lines>
+      </file>
+      <file path="components/content/ArticleReader.tsx" kind="component" symbol="ArticleReader" reason="Article content display with progress tracking and markdown rendering">
+        <lines>1-120</lines>
+      </file>
+      <file path="components/content/ArticleCard.tsx" kind="component" symbol="ArticleCard" reason="Individual article preview component with metadata and reading time">
+        <lines>1-80</lines>
+      </file>
+      <file path="lib/content-utils.ts" kind="utility" symbol="ContentUtils" reason="Markdown processing and reading time calculation utilities">
+        <lines>1-100</lines>
+      </file>
+      <file path="lib/reading-time.ts" kind="utility" symbol="ReadingTime" reason="Reading time calculation algorithm for article content">
+        <lines>1-60</lines>
+      </file>
+    </code>
+
+    <dependencies>
+      <ecosystem name="Node.js">
+        <dependency name="react-markdown" version="8.x" type="runtime">Markdown content rendering with custom components</dependency>
+        <dependency name="remark-gfm" version="3.x" type="runtime">GitHub Flavored Markdown support for tables and strikethrough</dependency>
+        <dependency name="rehype-highlight" version="6.x" type="runtime">Code syntax highlighting for markdown code blocks</dependency>
+        <dependency name="reading-time" version="1.x" type="runtime">Reading time estimation library with customizable words per minute</dependency>
+        <dependency name="gray-matter" version="4.x" type="runtime">Frontmatter parsing for article metadata extraction</dependency>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="content">Markdown-based content management with glassmorphism presentation</constraint>
+    <constraint type="filtering">Topic-based filtering with real-time search across BMAD, blockchain, architecture, tutorials</constraint>
+    <constraint type="sorting">Publication date sorting with featured article highlighting and pinning</constraint>
+    <constraint type="reading">Accurate reading time calculation with visual indicators and progress tracking</constraint>
+    <constraint type="markdown">Proper markdown rendering with syntax highlighting and table of contents</constraint>
+    <constraint type="performance">Optimized content loading with lazy loading for article lists</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface name="ArticleList" kind="React Component" path="components/content/ArticleList.tsx">
+      <signature>interface ArticleListProps { articles: Article[]; filterable?: boolean; sortable?: boolean; layout?: 'grid' | 'list'; }</signature>
+    </interface>
+    <interface name="ArticleReader" kind="React Component" path="components/content/ArticleReader.tsx">
+      <signature>interface ArticleReaderProps { article: Article; showProgress?: boolean; showTOC?: boolean; }</signature>
+    </interface>
+    <interface name="ArticleCard" kind="React Component" path="components/content/ArticleCard.tsx">
+      <signature>interface ArticleCardProps { article: Article; featured?: boolean; onClick?: (article: Article) => void; }</signature>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>Article rendering and markdown processing testing, Filtering and sorting functionality testing across content categories, Reading time calculation accuracy testing, Accessibility testing for article content and navigation</standards>
+    <locations>components/content/__tests__/, lib/__tests__/, .test.tsx, .spec.tsx, .content.test.tsx</locations>
+    <ideas>
+      <idea ac="AC001">Test article listing displays with glassmorphism cards and metadata</idea>
+      <idea ac="AC002">Test topic-based filtering works with BMAD, blockchain, architecture categories</idea>
+      <idea ac="AC003">Test publication date sorting with newest/oldest options</idea>
+      <idea ac="AC004">Test reading time estimates calculated accurately</idea>
+      <idea ac="AC005">Test article detail view renders markdown content properly</idea>
+      <idea ac="AC006">Test social sharing capabilities and reading progress indicators</idea>
+    </ideas>
+  </tests>
+</story-context>

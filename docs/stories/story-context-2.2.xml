@@ -1,0 +1,101 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>2</storyId>
+    <title>Portfolio Projects Showcase</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-22T04:08:00.000Z</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-2.2.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>As a potential employer or client</asA>
+    <iWant>I want to browse a visually appealing portfolio projects showcase with detailed project information, technology filtering, and interactive project cards</iWant>
+    <soThat>so that I can effectively evaluate the developer's technical skills, project quality, and relevant experience for potential collaboration or hiring opportunities</soThat>
+    <tasks>Build project card components, Implement project filtering by technology, Create detailed project view with screenshots, Add project interaction features</tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criteria id="AC001">Project cards display with liquid glass effects and consistent visual hierarchy</criteria>
+    <criteria id="AC002">Technology filtering system allows browsing projects by specific tech stacks</criteria>
+    <criteria id="AC003">Detailed project view shows comprehensive information with screenshots and descriptions</criteria>
+    <criteria id="AC004">Project cards include interactive hover effects and smooth animations</criteria>
+    <criteria id="AC005">Projects sorted by relevance with featured projects highlighted prominently</criteria>
+    <criteria id="AC006">Project information includes links to live demos and source code repositories</criteria>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="Portfolio Module">Project grid, filterable showcase with liquid glass project cards</section>
+        <snippet>Project Grid: Filterable showcase with liquid glass project cards, Project Detail: Full-page modal with screenshot gallery</snippet>
+      </doc>
+      <doc path="docs/PRD.md" title="Product Requirements Document">
+        <section name="FR002">Users can browse portfolio projects with detailed descriptions and screenshots</section>
+        <snippet>Users can browse portfolio projects with detailed descriptions and screenshots, Users can filter projects by technology stack and category</snippet>
+      </doc>
+    </docs>
+
+    <code>
+      <file path="components/portfolio/ProjectGrid.tsx" kind="component" symbol="ProjectGrid" reason="Main portfolio grid component with filtering and responsive layout">
+        <lines>1-100</lines>
+      </file>
+      <file path="components/portfolio/ProjectCard.tsx" kind="component" symbol="ProjectCard" reason="Individual project card with glassmorphism styling and hover effects">
+        <lines>1-120</lines>
+      </file>
+      <file path="components/portfolio/ProjectDetail.tsx" kind="component" symbol="ProjectDetail" reason="Detailed project modal with image gallery and comprehensive information">
+        <lines>1-150</lines>
+      </file>
+      <file path="components/filtering/FilterBar.tsx" kind="component" symbol="FilterBar" reason="Technology filtering component with search and active filter state">
+        <lines>1-80</lines>
+      </file>
+      <file path="lib/project-utils.ts" kind="utility" symbol="ProjectUtils" reason="Project data management and filtering logic utilities">
+        <lines>1-80</lines>
+      </file>
+    </code>
+
+    <dependencies>
+      <ecosystem name="Node.js">
+        <dependency name="react-use" version="17.x" type="runtime">Collection of essential React hooks for filtering and state management</dependency>
+        <dependency name="react-image-gallery" version="1.x" type="runtime">Image gallery component for project screenshots</dependency>
+        <dependency name="react-markdown" version="8.x" type="runtime">Markdown rendering for project descriptions</dependency>
+        <dependency name="gray-matter" version="4.x" type="runtime">Frontmatter parsing for project metadata</dependency>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="visual">Liquid glass effects and consistent visual hierarchy across all project cards</constraint>
+    <constraint type="filtering">Technology filtering system with real-time search and multi-select capabilities</constraint>
+    <constraint type="interaction">Interactive hover effects and smooth animations with 60fps performance</constraint>
+    <constraint type="responsive">Project grid adapts responsively across all device sizes with touch interactions</constraint>
+    <constraint type="content">Comprehensive project information with links to demos and repositories</constraint>
+    <constraint type="performance">Optimized image loading and gallery navigation for project screenshots</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface name="ProjectGrid" kind="React Component" path="components/portfolio/ProjectGrid.tsx">
+      <signature>interface ProjectGridProps { projects: Project[]; filterable?: boolean; sortable?: boolean; layout?: 'grid' | 'list'; }</signature>
+    </interface>
+    <interface name="ProjectCard" kind="React Component" path="components/portfolio/ProjectCard.tsx">
+      <signature>interface ProjectCardProps { project: Project; featured?: boolean; onClick?: (project: Project) => void; }</signature>
+    </interface>
+    <interface name="ProjectDetail" kind="React Component" path="components/portfolio/ProjectDetail.tsx">
+      <signature>interface ProjectDetailProps { project: Project; isOpen: boolean; onClose: () => void; }</signature>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>Project card rendering and interaction testing across devices, Filtering functionality testing with various technology combinations, Image loading and gallery navigation performance testing, Accessibility testing for screen readers and keyboard navigation</standards>
+    <locations>components/portfolio/__tests__/, components/filtering/__tests__/, .test.tsx, .spec.tsx, .portfolio.test.tsx</locations>
+    <ideas>
+      <idea ac="AC001">Test project cards display with liquid glass effects and visual hierarchy</idea>
+      <idea ac="AC002">Test technology filtering system works with multiple selections</idea>
+      <idea ac="AC003">Test detailed project view shows comprehensive information</idea>
+      <idea ac="AC004">Test project cards include interactive hover effects</idea>
+      <idea ac="AC005">Test projects sorted by relevance with featured highlighting</idea>
+      <idea ac="AC006">Test project information includes demo and repository links</idea>
+    </ideas>
+  </tests>
+</story-context>

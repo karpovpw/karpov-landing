@@ -1,0 +1,103 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>2</epicId>
+    <storyId>6</storyId>
+    <title>Search & Social Features</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-22T04:13:00.000Z</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-2.6.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>As a visitor exploring the portfolio</asA>
+    <iWant>I want to use powerful search functionality and social features to discover relevant content and share interesting findings</iWant>
+    <soThat>so that I can efficiently navigate the portfolio and engage with the content while building a connection with the creator's work</soThat>
+    <tasks>Implement global search functionality, Add social media sharing buttons, Build newsletter signup component, Create content discovery features</tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criteria id="AC001">Global search functionality works across all content types</criteria>
+    <criteria id="AC002">Social media sharing buttons function correctly on all platforms</criteria>
+    <criteria id="AC003">Newsletter signup component captures and validates email addresses</criteria>
+    <criteria id="AC004">Content discovery features suggest related articles and projects</criteria>
+    <criteria id="AC005">Search results display with relevance ranking and filtering</criteria>
+    <criteria id="AC006">Social sharing includes proper content attribution and branding</criteria>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="Search Module">Global search, content discovery, social integration</section>
+        <snippet>Search Module: Content indexing and search algorithms, Social sharing and newsletter integration</snippet>
+      </doc>
+      <doc path="docs/PRD.md" title="Product Requirements Document">
+        <section name="FR006">Search and social features for content discovery and engagement</section>
+        <snippet>Search and social features for content discovery and engagement, Newsletter signup and content sharing capabilities</snippet>
+      </doc>
+    </docs>
+
+    <code>
+      <file path="components/search/SearchProvider.tsx" kind="component" symbol="SearchProvider" reason="Global search provider with content indexing and search state management">
+        <lines>1-130</lines>
+      </file>
+      <file path="components/search/SearchBar.tsx" kind="component" symbol="SearchBar" reason="Search interface with autocomplete suggestions and filtering">
+        <lines>1-100</lines>
+      </file>
+      <file path="components/social/SocialShare.tsx" kind="component" symbol="SocialShare" reason="Social media sharing with platform-specific integrations">
+        <lines>1-110</lines>
+      </file>
+      <file path="lib/search-utils.ts" kind="utility" symbol="SearchUtils" reason="Content indexing, search algorithms, and relevance ranking">
+        <lines>1-140</lines>
+      </file>
+      <file path="lib/newsletter-service.ts" kind="utility" symbol="NewsletterService" reason="Newsletter signup, validation, and service integration">
+        <lines>1-90</lines>
+      </file>
+    </code>
+
+    <dependencies>
+      <ecosystem name="Node.js">
+        <dependency name="fuse.js" version="7.x" type="runtime">Fuzzy search library for content indexing and matching</dependency>
+        <dependency name="react-use" version="17.x" type="runtime">React hooks for search state and local storage management</dependency>
+        <dependency name="axios" version="1.x" type="runtime">HTTP client for newsletter service and social API integration</dependency>
+        <dependency name="react-share" version="4.x" type="runtime">Social media sharing components with platform integrations</dependency>
+        <dependency name="react-helmet-async" version="1.x" type="runtime">Meta tag management for social sharing optimization</dependency>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="search">Full-text search implementation with content indexing and relevance ranking</constraint>
+    <constraint type="social">Social media integration with proper meta tag management and attribution</constraint>
+    <constraint type="newsletter">Email service integration with privacy compliance and validation</constraint>
+    <constraint type="discovery">Content recommendation algorithms and caching strategies</constraint>
+    <constraint type="filtering">Search filtering and result ranking across content types</constraint>
+    <constraint type="performance">Search performance optimization with large content sets</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface name="SearchProvider" kind="React Component" path="components/search/SearchProvider.tsx">
+      <signature>interface SearchProviderProps { children: React.ReactNode; contentTypes?: string[]; enableCache?: boolean; }</signature>
+    </interface>
+    <interface name="SearchBar" kind="React Component" path="components/search/SearchBar.tsx">
+      <signature>interface SearchBarProps { onSearch: (query: string, filters: SearchFilters) => void; placeholder?: string; showFilters?: boolean; }</signature>
+    </interface>
+    <interface name="SocialShare" kind="React Component" path="components/social/SocialShare.tsx">
+      <signature>interface SocialShareProps { url: string; title: string; description?: string; hashtags?: string[]; }</signature>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>Search functionality testing across content types and queries, Social sharing testing with different platforms and content, Newsletter signup and email validation testing, Content discovery algorithm accuracy and performance testing</standards>
+    <locations>components/search/__tests__/, components/social/__tests__/, lib/__tests__/, .test.tsx, .spec.tsx, .search.test.tsx</locations>
+    <ideas>
+      <idea ac="AC001">Test global search functionality works across all content types</idea>
+      <idea ac="AC002">Test social media sharing buttons function correctly on all platforms</idea>
+      <idea ac="AC003">Test newsletter signup component captures and validates email addresses</idea>
+      <idea ac="AC004">Test content discovery features suggest related articles and projects</idea>
+      <idea ac="AC005">Test search results display with relevance ranking and filtering</idea>
+      <idea ac="AC006">Test social sharing includes proper content attribution and branding</idea>
+    </ideas>
+  </tests>
+</story-context>
+</story-context>
