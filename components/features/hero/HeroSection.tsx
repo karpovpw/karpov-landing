@@ -10,7 +10,7 @@ export function HeroSection({ className }: BaseComponentProps) {
           className="max-w-4xl mx-auto"
         >
           <h1
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-primary to-accent bg-clip-text text-transparent"
+            className="text-5xl md:text-7xl font-bold mb-6 text-primary"
           >
             Karpov
           </h1>
