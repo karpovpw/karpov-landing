@@ -1,83 +1,85 @@
 # Karpov Portfolio
 
-A modern portfolio website built with Next.js 15, TypeScript, and Tailwind CSS featuring liquid glass design effects.
+A modern, responsive portfolio website built with Next.js 15, TypeScript, and featuring a sophisticated liquid glass design system with glassmorphism effects.
 
 ## 🚀 Features
 
-- **Next.js 15** with App Router for optimal performance
+- **Next.js 15** with App Router for optimal performance and SEO
 - **TypeScript** for type safety and enhanced developer experience
-- **Tailwind CSS** for utility-first styling
-- **Liquid Glass Design** with glassmorphism effects
+- **Liquid Glass Design System** with custom glassmorphism components
+- **Dual Theme Support** (Light/Dark) with seamless switching
 - **Responsive Design** optimized for all devices
-- **Framer Motion** for smooth animations
-- **SEO Optimized** with metadata and structured data
+- **Modern Animations** powered by Framer Motion
+- **File-based Content** using markdown for easy content management
+
+## 🛠️ Technology Stack
+
+- **Framework:** Next.js 15 with App Router
+- **Language:** TypeScript 5.6.x
+- **Styling:** Tailwind CSS 3.4.x with custom design system
+- **Animations:** Framer Motion 11.5.x
+- **Icons:** Lucide React 0.427.x
+- **Typography:** Geist font family
+
+## 🏗️ Architecture
+
+This portfolio implements a modular monolith pattern with:
+
+- **Atomic Design** component organization (Atoms, Molecules, Organisms, Templates)
+- **CSS Modules + Tailwind** hybrid styling approach
+- **React Context** for state management
+- **File-based routing** with Next.js App Router
+- **Responsive-first** design with 6 breakpoints
 
 ## 📁 Project Structure
 
 ```
-├── app/                 # Next.js App Router pages
-│   ├── about/          # About page
-│   ├── articles/       # Articles page
-│   ├── contact/        # Contact page
-│   ├── crypto/         # Crypto projects page
-│   ├── portfolio/      # Portfolio page
-│   ├── globals.css     # Global styles and liquid glass effects
-│   ├── layout.tsx      # Root layout with navigation
-│   └── page.tsx        # Homepage
-├── components/         # Reusable UI components
-├── lib/               # Utility functions and configurations
-├── types/             # TypeScript type definitions
-├── styles/            # Additional styles
-├── public/            # Static assets
-├── package.json       # Project dependencies
-├── tsconfig.json      # TypeScript configuration
-├── tailwind.config.ts # Tailwind CSS configuration
-└── next.config.mjs    # Next.js configuration
+karpov/
+├── app/                          # Next.js App Router
+│   ├── layout.tsx               # Root layout with navigation
+│   ├── page.tsx                 # Home page (hero + featured)
+│   ├── about/page.tsx           # About/profile page
+│   ├── portfolio/page.tsx       # Portfolio showcase
+│   ├── articles/page.tsx        # BMAD articles
+│   ├── crypto/page.tsx          # Crypto project showcase
+│   ├── contact/page.tsx         # Contact form
+│   └── globals.css              # Global styles and glassmorphism
+├── components/                  # Shared component library
+│   ├── design-system/           # Foundational glassmorphism components
+│   ├── layout/                  # Layout and navigation components
+│   └── features/                # Feature-specific component groups
+├── content/                     # Portfolio content (markdown)
+├── lib/                         # Utilities and configurations
+├── types/                       # TypeScript definitions
+└── styles/                      # Global styles and themes
 ```
 
-## 🛠️ Getting Started
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js 18+
+- Node.js 20.17.x
 - npm or yarn
 
 ### Installation
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd karpov-portfolio
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open [http://localhost:3000](http://localhost:3000) in your browser**
-
-### Build for Production
-
+1. Clone the repository:
 ```bash
-npm run build
-npm start
+git clone <repository-url>
+cd karpov-portfolio
 ```
 
-## 🎨 Design System
+2. Install dependencies:
+```bash
+npm install
+```
 
-The project features a liquid glass design system with:
+3. Run the development server:
+```bash
+npm run dev
+```
 
-- **Glassmorphism Effects**: Translucent elements with backdrop blur
-- **Smooth Animations**: Powered by Framer Motion
-- **Responsive Layout**: Mobile-first design approach
-- **Modern Typography**: Clean and readable font hierarchy
-- **Consistent Spacing**: Systematic spacing scale
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📝 Available Scripts
 
@@ -85,38 +87,85 @@ The project features a liquid glass design system with:
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
-- `npm run type-check` - Run TypeScript type checking
+- `npm run test` - Run tests
 
-## 🌟 Key Technologies
+## 🎨 Design System
 
-- **Framework**: Next.js 15.0.0
-- **Language**: TypeScript 5.6.x
-- **Styling**: Tailwind CSS 3.4.x
-- **Animation**: Framer Motion 11.5.x
-- **Linting**: ESLint 8.x
-- **Code Formatting**: Prettier 3.x
+The liquid glass design system features:
 
-## 📱 Responsive Design
+- **Glassmorphism Effects** with backdrop-filter blur
+- **Dynamic Theme Variables** for seamless light/dark switching
+- **CSS Custom Properties** for consistent glass effects
+- **Hardware-Accelerated Animations** for 60fps performance
+- **Reduced Motion Support** for accessibility
 
-The website is fully responsive and optimized for:
-- Mobile devices (320px+)
-- Tablets (768px+)
-- Desktop (1024px+)
-- Large screens (1440px+)
+## 🧩 Component Library
 
-## 🚀 Performance
+Built using Atomic Design principles:
 
-- **Bundle Optimization**: Code splitting and lazy loading
-- **Image Optimization**: Next.js Image component
-- **SEO Ready**: Meta tags and structured data
-- **Accessibility**: WCAG 2.1 AA compliance ready
+- **Atoms:** Basic building blocks (GlassCard, ThemeButton, Typography)
+- **Molecules:** Component combinations (Navigation items, Project cards)
+- **Organisms:** Complex UI sections (Hero section, Project grid)
+- **Templates:** Page-level layouts with consistent structure
+
+## 🌟 Key Features in Detail
+
+### Liquid Glass Effects
+- Custom backdrop-filter implementation
+- Hardware-accelerated CSS transforms
+- Theme-aware glassmorphism tokens
+- Smooth hover and focus animations
+
+### Performance Optimized
+- Next.js Image optimization with WebP/AVIF
+- Route-based code splitting
+- Static generation for portfolio content
+- Edge deployment ready
+
+### Accessibility First
+- WCAG 2.1 AA compliance
+- Keyboard navigation support
+- Screen reader optimization
+- Reduced motion preferences
+
+## 📖 Content Management
+
+Portfolio content is managed through:
+
+- **Markdown files** for project descriptions and articles
+- **Structured TypeScript objects** for metadata
+- **File-based organization** in `/content` directory
+- **Build-time processing** for optimal performance
+
+## 🔧 Development
+
+### Component Development
+Components follow the established design system patterns and include:
+
+- TypeScript interfaces for all props
+- Responsive design utilities
+- Accessibility attributes
+- Performance optimizations
+
+### Styling Guidelines
+- CSS Modules for component-scoped styles
+- Tailwind utilities for layout and responsive design
+- CSS custom properties for theme consistency
+- Glassmorphism design tokens
+
+## 🚀 Deployment
+
+Ready for deployment on:
+
+- **Vercel** (recommended for Next.js)
+- **Netlify**
+- **Docker** container
+- **Static hosting** platforms
 
 ## 📄 License
 
 This project is licensed under the MIT License.
 
-## 👨‍💻 Author
+---
 
-**karpovpw**
-
-Built with ❤️ using modern web technologies.
+Built with ❤️ using Next.js 15 and modern web technologies.
