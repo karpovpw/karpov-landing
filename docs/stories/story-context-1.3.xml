@@ -1,0 +1,104 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>3</storyId>
+    <title>Theme System Implementation</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-22T03:56:00.000Z</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-1.3.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>As a user interface developer</asA>
+    <iWant>I want to implement a comprehensive theme switching system supporting dark/black themes with liquid glass effects</iWant>
+    <soThat>so that I can provide users with an optimal viewing experience across different lighting conditions and preferences while maintaining the portfolio's visual identity</soThat>
+    <tasks>Build theme context and provider, Create dark/black theme switching mechanism, Implement smooth theme transitions, Ensure theme persistence across sessions, Testing framework for theme system</tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criteria id="AC001">ThemeProvider context manages global theme state with light and dark mode support</criteria>
+    <criteria id="AC002">Light theme (white/purple gradient) renders correctly with glassmorphism effects</criteria>
+    <criteria id="AC003">Dark theme (AMOLED black) renders correctly with enhanced glassmorphism visibility</criteria>
+    <criteria id="AC004">Theme switching transitions smoothly (< 200ms) without visual artifacts</criteria>
+    <criteria id="AC005">Theme preference persists across browser sessions using localStorage</criteria>
+    <criteria id="AC006">Neon accent colors (green/orange) apply correctly in both theme modes</criteria>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="Technology Stack">CSS custom properties for dynamic theme variables</section>
+        <snippet>Theme Management API with context provider for global theme state</snippet>
+      </doc>
+      <doc path="docs/tech-spec-epic-1.md" title="Technical Specification: Core Infrastructure & Design System">
+        <section name="AC003 Theme System">Theme switching functionality and smooth transition requirements</section>
+        <snippet>ThemeProvider context manages global theme state, Theme switching transitions smoothly (< 200ms)</snippet>
+      </doc>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="UI/UX Architecture - Styling Approach">CSS custom properties for theme variables</section>
+        <snippet>Theme-aware CSS custom properties for seamless theme switching without FOUC</snippet>
+      </doc>
+    </docs>
+
+    <code>
+      <file path="components/design-system/ThemeProvider.tsx" kind="context" symbol="ThemeProvider" reason="React context provider for global theme state management">
+        <lines>1-80</lines>
+      </file>
+      <file path="components/design-system/ThemeToggle.tsx" kind="component" symbol="ThemeToggle" reason="Theme switching component with glassmorphism styling">
+        <lines>1-60</lines>
+      </file>
+      <file path="styles/themes.css" kind="stylesheet" symbol="ThemeStyles" reason="Theme-specific CSS custom properties and glassmorphism definitions">
+        <lines>1-100</lines>
+      </file>
+      <file path="lib/theme-utils.ts" kind="utility" symbol="ThemeUtils" reason="Theme management utilities for persistence and system preference detection">
+        <lines>1-80</lines>
+      </file>
+      <file path="lib/hooks/useTheme.ts" kind="hook" symbol="useTheme" reason="Custom hook for theme consumption in components">
+        <lines>1-40</lines>
+      </file>
+    </code>
+
+    <dependencies>
+      <ecosystem name="Node.js">
+        <dependency name="clsx" version="2.x" type="runtime">Conditional CSS class utility for theme-aware styling</dependency>
+        <dependency name="tailwindcss" version="3.4.x" type="devDependency">CSS framework with theme switching support</dependency>
+        <dependency name="postcss" version="8.x" type="devDependency">CSS post-processor for theme custom properties</dependency>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="theme">Theme switching without FOUC using CSS custom properties and loading states</constraint>
+    <constraint type="transition">Smooth theme transitions under 200ms with reduced motion support</constraint>
+    <constraint type="persistence">localStorage-based theme preference storage with fallback strategies</constraint>
+    <constraint type="context">React Context pattern for global theme state management</constraint>
+    <constraint type="accessibility">Theme contrast ratios meet WCAG 2.1 AA standards in both modes</constraint>
+    <constraint type="performance">Theme switching performance optimized for mobile devices</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface name="ThemeProvider" kind="React Context" path="components/design-system/ThemeProvider.tsx">
+      <signature>interface ThemeContextType { theme: 'light' | 'dark'; toggleTheme: () => void; setTheme: (theme: 'light' | 'dark') => void; }</signature>
+    </interface>
+    <interface name="useTheme" kind="React Hook" path="lib/hooks/useTheme.ts">
+      <signature>interface UseThemeReturn { theme: 'light' | 'dark'; toggleTheme: () => void; systemPreference: 'light' | 'dark' | 'no-preference'; }</signature>
+    </interface>
+    <interface name="ThemeUtils" kind="Utility Module" path="lib/theme-utils.ts">
+      <signature>interface ThemeUtilsAPI { getStoredTheme(): 'light' | 'dark' | null; setStoredTheme(theme: 'light' | 'dark'): void; getSystemTheme(): 'light' | 'dark'; }</signature>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>Unit tests for ThemeProvider context and theme utilities, Integration tests for theme switching transitions and persistence, Visual regression tests for theme consistency across glassmorphism components, Accessibility tests for WCAG 2.1 AA contrast compliance</standards>
+    <locations>components/design-system/__tests__/, lib/__tests__/, .test.tsx, .spec.tsx files for theme-related components</locations>
+    <ideas>
+      <idea ac="AC001">Test ThemeProvider context manages global theme state correctly</idea>
+      <idea ac="AC002">Test light theme renders glassmorphism effects with white/purple gradient</idea>
+      <idea ac="AC003">Test AMOLED black theme enhances glassmorphism visibility</idea>
+      <idea ac="AC004">Test theme switching completes within 200ms without artifacts</idea>
+      <idea ac="AC005">Test theme preference persists across browser sessions</idea>
+      <idea ac="AC006">Test neon accent colors apply correctly in both themes</idea>
+    </ideas>
+  </tests>
+</story-context>

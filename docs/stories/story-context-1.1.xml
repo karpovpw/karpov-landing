@@ -1,0 +1,101 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>1</storyId>
+    <title>Project Structure Setup with Next.js 15 and TypeScript</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-22T03:48:00.000Z</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-1.1.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>As a developer</asA>
+    <iWant>I want to set up a modern Next.js 15 project with TypeScript and liquid glass design system foundation</iWant>
+    <soThat>so that I can establish a solid technical foundation for the portfolio website with optimal performance and developer experience</soThat>
+    <tasks>Set up Next.js 15 project with TypeScript and App Router configuration, Configure development environment and tooling, Implement liquid glass design system foundation, Set up state management solution, Testing framework setup</tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criteria id="AC001">Next.js 15 project initializes without errors</criteria>
+    <criteria id="AC002">TypeScript strict mode enabled and passing</criteria>
+    <criteria id="AC003">ESLint and Prettier configured with project standards</criteria>
+    <criteria id="AC004">Development server starts and hot reload functions</criteria>
+    <criteria id="AC005">Basic routing structure implemented for all planned pages</criteria>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="Technology Stack">Next.js 15.0.0, TypeScript 5.6.x, Tailwind CSS 3.4.x, Framer Motion 11.5.x</section>
+        <snippet>Framework Selection - Next.js 15 App Router provides optimal balance of performance, SEO, and developer experience</snippet>
+      </doc>
+      <doc path="docs/tech-spec-epic-1.md" title="Technical Specification: Core Infrastructure & Design System">
+        <section name="AC001 Project Setup">Project initialization and configuration requirements</section>
+        <snippet>TypeScript strict mode enabled and passing, ESLint and Prettier configured with project standards</snippet>
+      </doc>
+      <doc path="docs/PRD.md" title="Product Requirements Document">
+        <section name="FR005">Site displays liquid glass design effects throughout the interface</section>
+        <snippet>Modern web development and liquid glass design priority confirmed</snippet>
+      </doc>
+    </docs>
+
+    <code>
+      <file path="app/page.tsx" kind="page" symbol="HomePage" reason="Main landing page component that needs liquid glass styling">
+        <lines>1-50</lines>
+      </file>
+      <file path="tailwind.config.ts" kind="config" symbol="TailwindConfig" reason="Styling configuration for glassmorphism effects">
+        <lines>1-30</lines>
+      </file>
+      <file path="lib/utils.ts" kind="utility" symbol="UtilityFunctions" reason="Shared utility functions for component development">
+        <lines>1-20</lines>
+      </file>
+      <file path="types/index.ts" kind="types" symbol="TypeDefinitions" reason="TypeScript type definitions for project structure">
+        <lines>1-15</lines>
+      </file>
+    </code>
+
+    <dependencies>
+      <ecosystem name="Node.js">
+        <dependency name="Next.js" version="15.0.0" type="runtime">Framework with App Router for server-side rendering</dependency>
+        <dependency name="React" version="19.0.0-rc" type="runtime">UI library for component development</dependency>
+        <dependency name="TypeScript" version="5.6.x" type="devDependency">Type safety for component library</dependency>
+        <dependency name="Tailwind CSS" version="3.4.x" type="devDependency">Utility-first CSS framework</dependency>
+        <dependency name="Framer Motion" version="11.5.x" type="runtime">Animation library for liquid glass effects</dependency>
+        <dependency name="Lucide React" version="0.427.x" type="runtime">Icon system with tree-shaking</dependency>
+        <dependency name="ESLint" version="9.x" type="devDependency">Code quality and consistency</dependency>
+        <dependency name="Prettier" version="3.x" type="devDependency">Code formatting</dependency>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="architecture">Modular monolith with Next.js App Router for optimal SEO and performance</constraint>
+    <constraint type="styling">CSS Modules + Tailwind hybrid for glassmorphism effects</constraint>
+    <constraint type="state">React Context for lightweight state management</constraint>
+    <constraint type="content">File-based content architecture using markdown files</constraint>
+    <constraint type="performance">Bundle size target < 500KB gzipped JavaScript</constraint>
+    <constraint type="testing">90% coverage for custom component library</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface name="ThemeProvider" kind="React Context" path="components/design-system/ThemeProvider.tsx">
+      <signature>interface ThemeContextType { theme: 'light' | 'dark'; setTheme: (theme: 'light' | 'dark') => void; }</signature>
+    </interface>
+    <interface name="GlassCard" kind="React Component" path="components/design-system/GlassCard.tsx">
+      <signature>interface GlassCardProps { children: React.ReactNode; theme?: 'light' | 'dark'; }</signature>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>Component testing with React Testing Library (90% coverage target), Integration tests for theme switching and navigation, E2E tests for critical user paths using Playwright, Accessibility testing with WCAG 2.1 AA compliance</standards>
+    <locations>__tests__/, .test.tsx, .spec.tsx files co-located with components</locations>
+    <ideas>
+      <idea ac="AC001">Test Next.js project initialization without errors</idea>
+      <idea ac="AC002">Test TypeScript strict mode compilation</idea>
+      <idea ac="AC003">Test ESLint and Prettier configuration</idea>
+      <idea ac="AC004">Test development server startup and hot reload</idea>
+      <idea ac="AC005">Test routing structure for all planned pages</idea>
+    </ideas>
+  </tests>
+</story-context>

@@ -1,0 +1,105 @@
+<story-context id="bmad/bmm/workflows/4-implementation/story-context/template" v="1.0">
+  <metadata>
+    <epicId>1</epicId>
+    <storyId>4</storyId>
+    <title>Responsive Layout Framework</title>
+    <status>Draft</status>
+    <generatedAt>2025-10-22T03:57:00.000Z</generatedAt>
+    <generator>BMAD Story Context Workflow</generator>
+    <sourceStoryPath>docs/stories/story-1.4.md</sourceStoryPath>
+  </metadata>
+
+  <story>
+    <asA>As a frontend architect</asA>
+    <iWant>I want to create a mobile-first responsive layout framework with flexible grid system and breakpoint management</iWant>
+    <soThat>so that I can ensure consistent, accessible, and performant user experiences across all device sizes while maintaining the portfolio's liquid glass design aesthetic</soThat>
+    <tasks>Create mobile-first responsive grid system, Implement breakpoint management, Build flexible container and layout components, Ensure cross-device consistency, Performance optimization for responsive design</tasks>
+  </story>
+
+  <acceptanceCriteria>
+    <criteria id="AC001">CSS Grid system implements 6-breakpoint responsive design (320px, 768px, 1024px, 1440px, 1920px)</criteria>
+    <criteria id="AC002">Mobile-first approach validated across all breakpoints with touch-friendly interactions</criteria>
+    <criteria id="AC003">Layout containers use liquid glass effects appropriately with adaptive glassmorphism</criteria>
+    <criteria id="AC004">Grid system supports planned component layouts for portfolio, articles, and projects</criteria>
+    <criteria id="AC005">Responsive images scale appropriately across devices with optimized loading</criteria>
+    <criteria id="AC006">Touch interactions work seamlessly with 44px minimum tap targets</criteria>
+  </acceptanceCriteria>
+
+  <artifacts>
+    <docs>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="UI/UX Architecture - Responsive Design">Mobile-first responsive strategy and 6-breakpoint system</section>
+        <snippet>CSS Grid system implements 6-breakpoint responsive design, Mobile-first approach validated across all breakpoints</snippet>
+      </doc>
+      <doc path="docs/tech-spec-epic-1.md" title="Technical Specification: Core Infrastructure & Design System">
+        <section name="AC004 Layout Framework">Responsive layout framework requirements and breakpoint system</section>
+        <snippet>Responsive layout framework with mobile-first 6-breakpoint system, Grid system supports planned component layouts</snippet>
+      </doc>
+      <doc path="docs/solution-architecture.md" title="Solution Architecture Document">
+        <section name="UI/UX Architecture - Responsive Design">Breakpoint System: 320px, 768px, 1024px, 1440px, 1920px</section>
+        <snippet>Container Queries: Fluid layouts that adapt to content size, Touch Optimization: 44px minimum tap targets</snippet>
+      </doc>
+    </docs>
+
+    <code>
+      <file path="components/layout/Grid.tsx" kind="component" symbol="Grid" reason="Main responsive grid system component with glassmorphism styling">
+        <lines>1-80</lines>
+      </file>
+      <file path="components/layout/Container.tsx" kind="component" symbol="Container" reason="Responsive container component with adaptive glassmorphism effects">
+        <lines>1-60</lines>
+      </file>
+      <file path="lib/responsive-utils.ts" kind="utility" symbol="ResponsiveUtils" reason="Breakpoint management and responsive behavior utilities">
+        <lines>1-100</lines>
+      </file>
+      <file path="lib/hooks/useBreakpoint.ts" kind="hook" symbol="useBreakpoint" reason="Custom hook for responsive breakpoint detection and management">
+        <lines>1-50</lines>
+      </file>
+      <file path="styles/responsive.css" kind="stylesheet" symbol="ResponsiveStyles" reason="Breakpoint-specific styling and responsive glassmorphism definitions">
+        <lines>1-120</lines>
+      </file>
+    </code>
+
+    <dependencies>
+      <ecosystem name="Node.js">
+        <dependency name="clsx" version="2.x" type="runtime">Conditional CSS class utility for responsive breakpoint styling</dependency>
+        <dependency name="tailwindcss" version="3.4.x" type="devDependency">CSS framework with responsive design utilities and breakpoint management</dependency>
+        <dependency name="postcss" version="8.x" type="devDependency">CSS post-processor for responsive design and container query support</dependency>
+        <dependency name="@tailwindcss/container-queries" version="0.1.x" type="devDependency">Container query plugin for fluid responsive design</dependency>
+      </ecosystem>
+    </dependencies>
+  </artifacts>
+
+  <constraints>
+    <constraint type="responsive">Mobile-first responsive design with 6-breakpoint system (320px, 768px, 1024px, 1440px, 1920px)</constraint>
+    <constraint type="layout">CSS Grid and Flexbox for modern layout systems with glassmorphism integration</constraint>
+    <constraint type="touch">44px minimum tap targets with touch-friendly interaction patterns</constraint>
+    <constraint type="container">Container queries for fluid component-level responsive design</constraint>
+    <constraint type="image">Responsive image loading with appropriate sizes and optimization</constraint>
+    <constraint type="performance">Layout shift optimization and lazy loading for mobile performance</constraint>
+  </constraints>
+
+  <interfaces>
+    <interface name="Grid" kind="React Component" path="components/layout/Grid.tsx">
+      <signature>interface GridProps { children: React.ReactNode; cols?: 1 | 2 | 3 | 4 | 6 | 12; gap?: 'sm' | 'md' | 'lg'; responsive?: boolean; }</signature>
+    </interface>
+    <interface name="Container" kind="React Component" path="components/layout/Container.tsx">
+      <signature>interface ContainerProps { children: React.ReactNode; size?: 'sm' | 'md' | 'lg' | 'xl' | 'fluid'; padded?: boolean; }</signature>
+    </interface>
+    <interface name="useBreakpoint" kind="React Hook" path="lib/hooks/useBreakpoint.ts">
+      <signature>interface UseBreakpointReturn { current: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'; up: (breakpoint: string) => boolean; down: (breakpoint: string) => boolean; }</signature>
+    </interface>
+  </interfaces>
+
+  <tests>
+    <standards>Cross-device testing across 6 breakpoints with visual regression, Touch interaction testing for mobile and tablet devices, Layout consistency testing with Cumulative Layout Shift (CLS) monitoring, Container query functionality testing for fluid responsive design</standards>
+    <locations>components/layout/__tests__/, lib/__tests__/, .test.tsx, .spec.tsx, .responsive.test.tsx for layout components</locations>
+    <ideas>
+      <idea ac="AC001">Test CSS Grid system implements all 6 breakpoints correctly</idea>
+      <idea ac="AC002">Test mobile-first approach with touch-friendly interactions</idea>
+      <idea ac="AC003">Test layout containers adapt glassmorphism effects appropriately</idea>
+      <idea ac="AC004">Test grid system supports portfolio, articles, and project layouts</idea>
+      <idea ac="AC005">Test responsive images scale and load appropriately across devices</idea>
+      <idea ac="AC006">Test touch interactions meet 44px minimum tap target requirements</idea>
+    </ideas>
+  </tests>
+</story-context>
