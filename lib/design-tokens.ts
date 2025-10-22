@@ -167,8 +167,8 @@ export function getColorToken(color: keyof typeof DESIGN_TOKENS.colors) {
   return DESIGN_TOKENS.colors[color]
 }
 
-export function getSpacingToken(size: keyof typeof DESIGN_TOKENS.spacing) {
-  return DESIGN_TOKENS.spacing[size]
+export function getSpacingToken(size: keyof typeof DESIGN_TOKENS.spacing | string) {
+  return DESIGN_TOKENS.spacing[size as keyof typeof DESIGN_TOKENS.spacing] || '1rem'
 }
 
 export function getRadiusToken(size: keyof typeof DESIGN_TOKENS.radius) {

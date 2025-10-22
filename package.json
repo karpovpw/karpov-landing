@@ -15,7 +15,10 @@
     "test:bundle": "node scripts/bundle-analysis.js",
     "analyze": "ANALYZE=true npm run build",
     "test:e2e": "playwright test",
-    "test:e2e:ui": "playwright test --ui"
+    "test:e2e:ui": "playwright test --ui",
+    "predeploy": "node scripts/deploy-check.js",
+    "deploy": "npm run build",
+    "postdeploy": "echo '🚀 Deployment completed! Site is live at https://karpov.pw'"
   },
   "dependencies": {
     "next": "15.0.0",
