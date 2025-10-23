@@ -47,7 +47,7 @@ export default function Contact() {
   if (success) {
     return (
       <main className="relative">
-        <Container size="full" className="py-16">
+        <Container size="2xl" className="py-16">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4 text-primary">
               Thank You!
