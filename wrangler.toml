@@ -5,13 +5,11 @@ compatibility_date = "2024-01-01"
 command = "npm run build"
 cwd = "."
 watch_dir = "app"
+pages_build_output_dir = "out"
 
 [build.environment_variables]
 NODE_VERSION = "22.16.0"
 NPM_FLAGS = "--production=false"
-
-# Cloudflare Pages specific settings for static export
-pages_build_output_dir = "out"
 
 [vars]
 NODE_ENV = "production"
