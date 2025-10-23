@@ -95,7 +95,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                 variants={itemVariants}
               >
                 <motion.button
-                  className="glass-button px-8 py-4 text-lg font-semibold"
+                  className="px-8 py-4 text-lg font-semibold bg-accent text-accent-foreground rounded-lg border-2 border-accent hover:bg-accent/80 transition-colors"
                   onClick={() => router.push('/portfolio')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -103,7 +103,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                   View Portfolio
                 </motion.button>
                 <motion.button
-                  className="glass-button px-8 py-4 text-lg font-semibold"
+                  className="px-8 py-4 text-lg font-semibold bg-accent text-accent-foreground rounded-lg border-2 border-accent hover:bg-accent/80 transition-colors"
                   onClick={() => router.push('/articles')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -111,7 +111,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                   Read Articles
                 </motion.button>
                 <motion.button
-                  className="glass-button px-8 py-4 text-lg font-semibold"
+                  className="px-8 py-4 text-lg font-semibold bg-accent text-accent-foreground rounded-lg border-2 border-accent hover:bg-accent/80 transition-colors"
                   onClick={() => router.push('/contact')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
