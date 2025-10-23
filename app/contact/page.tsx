@@ -82,7 +82,8 @@ export default function Contact() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
-          <div>
+          <div className="glass-card p-8 rounded-2xl">
+            <h2 className="text-2xl font-bold text-primary mb-6">Send a Message</h2>
             <ContactForm
               onSubmit={handleSubmit}
               loading={loading}
@@ -92,17 +93,23 @@ export default function Contact() {
 
           {/* LinkedIn Profile */}
           <div className="space-y-8">
-            <LinkedInProfile
-              profileId="karpovpw"
-              showEndorsements
-            />
+            <div className="glass-card p-8 rounded-2xl">
+              <h2 className="text-2xl font-bold text-primary mb-6">Connect on LinkedIn</h2>
+              <LinkedInProfile
+                profileId="karpovpw"
+                showEndorsements
+              />
+            </div>
 
-            <SocialShare
-              url={typeof window !== 'undefined' ? window.location.href : ''}
-              title="Contact Karpov - Full Stack Developer"
-              description="Get in touch for projects, collaborations, or just to chat about technology."
-              hashtags={['webdev', 'blockchain', 'AI', 'portfolio']}
-            />
+            <div className="glass-card p-8 rounded-2xl">
+              <h2 className="text-2xl font-bold text-primary mb-6">Share This Page</h2>
+              <SocialShare
+                url={typeof window !== 'undefined' ? window.location.href : ''}
+                title="Contact Karpov - Context Engineer"
+                description="Get in touch for projects, collaborations, or just to chat about technology."
+                hashtags={['webdev', 'blockchain', 'AI', 'portfolio']}
+              />
+            </div>
           </div>
         </div>
       </Container>
