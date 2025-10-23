@@ -3,7 +3,7 @@
 export const PROFILE_DATA = {
   personal: {
     name: 'Karpov',
-    title: 'Full Stack Developer & Multi-Agent Systems Architect',
+    title: 'Context Engineer & Multi-Agent Systems Architect',
     location: 'Bangkok, Thailand',
     email: 'hello@karpov.dev',
     bio: 'Passionate about creating innovative solutions through modern web technologies, blockchain systems, and AI-powered applications.',
