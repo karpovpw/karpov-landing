@@ -199,6 +199,16 @@
     animation: float 3s ease-in-out infinite;
   }
 
+  .liquid-background {
+    background: linear-gradient(-45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+    background-size: 400% 400%;
+    animation: liquid 15s ease infinite;
+  }
+
+  .dark .liquid-background {
+    background: linear-gradient(-45deg, rgba(0,0,0,0.1), rgba(0,0,0,0.05), rgba(0,0,0,0.1));
+  }
+
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -218,6 +228,11 @@
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
     50% { transform: translateY(-10px); }
+  }
+
+  @keyframes liquid {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
 
   /* Reduced motion support */

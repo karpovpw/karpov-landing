@@ -68,8 +68,9 @@ export default function Contact() {
   }
 
   return (
-    <main className="relative">
-      <Container size="lg" className="py-16">
+    <main className="relative overflow-hidden">
+      <div className="liquid-background absolute inset-0"></div>
+      <Container size="lg" className="py-16 relative z-10">
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
             Let's Work Together
@@ -80,9 +81,9 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-full mx-auto">
+        <div className="flex flex-col lg:flex-row gap-8 max-w-full mx-auto">
           {/* Contact Form */}
-          <div className="glass-card p-8 rounded-2xl">
+          <div className="glass-card p-8 rounded-2xl animate-float flex-1">
             <h2 className="text-2xl font-bold text-primary mb-6">Send a Message</h2>
             <ContactForm
               onSubmit={handleSubmit}
@@ -92,8 +93,8 @@ export default function Contact() {
           </div>
 
           {/* LinkedIn Profile */}
-          <div className="space-y-8">
-            <div className="glass-card p-8 rounded-2xl">
+          <div className="space-y-8 lg:w-1/2">
+            <div className="glass-card p-8 rounded-2xl animate-float">
               <h2 className="text-2xl font-bold text-primary mb-6">Connect on LinkedIn</h2>
               <LinkedInProfile
                 profileId="karpovpw"
@@ -101,7 +102,7 @@ export default function Contact() {
               />
             </div>
 
-            <div className="glass-card p-8 rounded-2xl">
+            <div className="glass-card p-8 rounded-2xl animate-float">
               <h2 className="text-2xl font-bold text-primary mb-6">Share This Page</h2>
               <SocialShare
                 url={typeof window !== 'undefined' ? window.location.href : ''}
