@@ -13,7 +13,7 @@ export const PROFILE_DATA = {
 
   profileImage: {
     src: '/myPhoto.jpeg',
-    alt: 'Professional headshot of Karpov - Full Stack Developer and Multi-Agent Systems Architect',
+    alt: 'Professional headshot of Karpov - Context Engineer and Multi-Agent Systems Architect',
     width: 400,
     height: 400,
   },
