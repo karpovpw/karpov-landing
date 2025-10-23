@@ -5,11 +5,7 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { BaseComponentProps } from '@/types'
 import { PROFILE_DATA } from '@/content/profile'
-import { AnimatedText } from '../../hero/AnimatedText'
-import { ProfileBio } from '@/components/profile/ProfileBio'
-import { SkillsShowcase } from '@/components/profile/SkillsShowcase'
-import { SearchBar } from '@/components/search/SearchBar'
-import { NewsletterSignup } from '@/components/newsletter/NewsletterSignup'
+import { AnimatedText } from '@/components/hero/AnimatedText'
 import { GlassCard } from '@/components/design-system/GlassCard'
 import { ThemeToggle } from '@/components/design-system/ThemeToggle'
 
@@ -126,118 +122,11 @@ export function HeroSection({ className }: BaseComponentProps) {
             </div>
           </motion.div>
 
-          {/* Bio Section */}
-          <motion.div variants={itemVariants} className="mb-16">
-            <ProfileBio compact showStats />
-          </motion.div>
 
-          {/* Skills Showcase */}
-          <motion.div variants={itemVariants}>
-            <div className="text-center mb-8">
-              <h2 className="text-3xl font-bold text-primary mb-4">
-                Top Skills
-              </h2>
-              <p className="text-muted-foreground">
-                Technologies and tools I work with
-              </p>
-            </div>
-            <SkillsShowcase maxSkills={8} layout="grid" />
-          </motion.div>
 
-          {/* Search and Newsletter */}
-          <motion.div variants={itemVariants} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div>
-              <h2 className="text-2xl font-bold text-primary mb-4">
-                Search My Content
-              </h2>
-              <p className="text-muted-foreground mb-4">
-                Find projects, articles, and insights across my portfolio.
-              </p>
-              <SearchBar />
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-primary mb-4">
-                Stay Connected
-              </h2>
-              <p className="text-muted-foreground mb-4">
-                Subscribe to get updates on new projects and articles.
-              </p>
-              <NewsletterSignup compact />
-            </div>
-          </motion.div>
         </motion.div>
       </div>
 
-      {/* Enhanced Animated Background */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-64 h-64 glass-card rounded-full opacity-20"
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-48 h-48 glass-card rounded-full opacity-30"
-          animate={{
-            y: [0, 20, 0],
-            rotate: [0, -180, -360],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 1,
-          }}
-        />
-        <motion.div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 glass-card rounded-full opacity-40"
-          animate={{
-            scale: [1, 1.2, 1],
-            rotate: [0, 360],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 2,
-          }}
-        />
-
-        {/* Additional floating elements */}
-        <motion.div
-          className="absolute top-1/3 right-1/3 w-16 h-16 glass-card rounded-lg opacity-25"
-          animate={{
-            x: [0, 30, 0],
-            y: [0, -30, 0],
-          }}
-          transition={{
-            duration: 12,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 3,
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 left-1/3 w-20 h-20 glass-card rounded-lg opacity-25"
-          animate={{
-            x: [0, -40, 0],
-            y: [0, 40, 0],
-          }}
-          transition={{
-            duration: 14,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: 4,
-          }}
-        />
-      </div>
     </section>
   )
 }

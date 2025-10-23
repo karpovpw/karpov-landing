@@ -6,7 +6,7 @@ export const PROFILE_DATA = {
     title: 'Full Stack Developer & Multi-Agent Systems Architect',
     location: 'Bangkok, Thailand',
     email: 'hello@karpov.dev',
-    bio: 'Passionate about creating innovative solutions through modern web technologies, blockchain systems, and AI-powered applications. Experienced in building scalable applications with cutting-edge technologies and best practices.',
+    bio: 'Passionate about creating innovative solutions through modern web technologies, blockchain systems, and AI-powered applications.',
     tagline: 'Building the future with code • One pixel at a time',
     availability: 'Available for opportunities',
   },
