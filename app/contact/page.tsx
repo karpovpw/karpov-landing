@@ -47,7 +47,7 @@ export default function Contact() {
   if (success) {
     return (
       <main className="relative">
-        <Container size="lg" className="py-16">
+        <Container size="full" className="py-16">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4 text-primary">
               Thank You!
@@ -80,7 +80,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-full mx-auto">
           {/* Contact Form */}
           <div className="glass-card p-8 rounded-2xl">
             <h2 className="text-2xl font-bold text-primary mb-6">Send a Message</h2>
