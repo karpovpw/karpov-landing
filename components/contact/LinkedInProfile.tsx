@@ -96,7 +96,7 @@ export function LinkedInProfile({
           </motion.a>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <div className="text-center">
             <div className="flex items-center justify-center mb-1">
               <Users className="w-4 h-4 text-primary mr-1" />

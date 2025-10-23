@@ -15,10 +15,6 @@ const LinkedInProfile = dynamic(() => import('@/components/contact/LinkedInProfi
   loading: () => <div>Loading LinkedIn profile...</div>
 })
 
-const SocialShare = dynamic(() => import('@/components/social/SocialShare').then(mod => mod.SocialShare), {
-  ssr: false,
-  loading: () => <div>Loading social share...</div>
-})
 
 export default function Contact() {
   const [loading, setLoading] = useState(false)
@@ -93,24 +89,12 @@ export default function Contact() {
           </div>
 
           {/* LinkedIn Profile */}
-          <div className="space-y-8 lg:w-1/2">
-            <div className="glass-card p-8 rounded-2xl animate-float">
-              <h2 className="text-2xl font-bold text-primary mb-6">Connect on LinkedIn</h2>
-              <LinkedInProfile
-                profileId="karpovpw"
-                showEndorsements
-              />
-            </div>
-
-            <div className="glass-card p-8 rounded-2xl animate-float">
-              <h2 className="text-2xl font-bold text-primary mb-6">Share This Page</h2>
-              <SocialShare
-                url={typeof window !== 'undefined' ? window.location.href : ''}
-                title="Contact Karpov - Context Engineer"
-                description="Get in touch for projects, collaborations, or just to chat about technology."
-                hashtags={['webdev', 'blockchain', 'AI', 'portfolio']}
-              />
-            </div>
+          <div className="glass-card p-8 rounded-2xl animate-float flex-1">
+            <h2 className="text-2xl font-bold text-primary mb-6">Connect on LinkedIn</h2>
+            <LinkedInProfile
+              profileId="karpovpw"
+              showEndorsements
+            />
           </div>
         </div>
       </Container>
