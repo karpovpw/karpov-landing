@@ -47,7 +47,7 @@ export default function Contact() {
   if (success) {
     return (
       <main className="relative">
-        <Container className="py-16 max-w-full">
+        <Container className="py-16 max-w-full sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full 2xl:max-w-full">
           <div className="text-center">
             <h1 className="text-4xl font-bold mb-4 text-primary">
               Thank You!
