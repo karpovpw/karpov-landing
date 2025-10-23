@@ -139,7 +139,7 @@ export function ProjectGrid({
           initial="hidden"
           animate="visible"
         >
-          <Grid cols={3} gap="lg" className="md:grid-cols-2 lg:grid-cols-3">
+          <Grid cols={3} gap="lg" className="md:grid-cols-2 xl:grid-cols-3">
             {filteredProjects.map((project) => (
               <motion.div key={project.id} variants={itemVariants}>
                 <ProjectCard

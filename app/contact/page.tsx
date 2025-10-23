@@ -80,7 +80,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Contact Form */}
           <div className="glass-card p-8 rounded-2xl">
             <h2 className="text-2xl font-bold text-primary mb-6">Send a Message</h2>
