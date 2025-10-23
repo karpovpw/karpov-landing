@@ -1,5 +1,12 @@
-import { ProjectGrid } from '@/components/portfolio/ProjectGrid'
+'use client'
+
+import dynamic from 'next/dynamic'
 import { Container } from '@/components/layout/Container'
+
+const ProjectGrid = dynamic(() => import('@/components/portfolio/ProjectGrid').then(mod => mod.ProjectGrid), {
+  ssr: false,
+  loading: () => <div>Loading projects...</div>
+})
 
 export default function Portfolio() {
   return (

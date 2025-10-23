@@ -1,5 +1,12 @@
-import { ArticleList } from '@/components/content/ArticleList'
+'use client'
+
+import dynamic from 'next/dynamic'
 import { Container } from '@/components/layout/Container'
+
+const ArticleList = dynamic(() => import('@/components/content/ArticleList').then(mod => mod.ArticleList), {
+  ssr: false,
+  loading: () => <div>Loading articles...</div>
+})
 
 export default function Articles() {
   return (

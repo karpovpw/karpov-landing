@@ -1,11 +1,24 @@
 'use client'
 
 import { useState } from 'react'
+import dynamic from 'next/dynamic'
 import { Container } from '@/components/layout/Container'
-import { ContactForm } from '@/components/contact/ContactForm'
-import { LinkedInProfile } from '@/components/contact/LinkedInProfile'
-import { SocialShare } from '@/components/social/SocialShare'
 import { ContactFormData } from '@/types'
+
+const ContactForm = dynamic(() => import('@/components/contact/ContactForm').then(mod => mod.ContactForm), {
+  ssr: false,
+  loading: () => <div>Loading contact form...</div>
+})
+
+const LinkedInProfile = dynamic(() => import('@/components/contact/LinkedInProfile').then(mod => mod.LinkedInProfile), {
+  ssr: false,
+  loading: () => <div>Loading LinkedIn profile...</div>
+})
+
+const SocialShare = dynamic(() => import('@/components/social/SocialShare').then(mod => mod.SocialShare), {
+  ssr: false,
+  loading: () => <div>Loading social share...</div>
+})
 
 export default function Contact() {
   const [loading, setLoading] = useState(false)
