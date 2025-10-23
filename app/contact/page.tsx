@@ -1,12 +1,98 @@
+'use client'
+
+import { useState } from 'react'
+import { Container } from '@/components/layout/Container'
+import { ContactForm } from '@/components/contact/ContactForm'
+import { LinkedInProfile } from '@/components/contact/LinkedInProfile'
+import { SocialShare } from '@/components/social/SocialShare'
+import { ContactFormData } from '@/types'
+
 export default function Contact() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
+
+  const handleSubmit = async (data: ContactFormData) => {
+    setLoading(true)
+    setError('')
+
+    try {
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000))
+
+      // In a real app, you'd send this to your backend
+      console.log('Contact form submitted:', data)
+
+      setSuccess(true)
+      setLoading(false)
+    } catch (err) {
+      setError('Failed to send message. Please try again.')
+      setLoading(false)
+    }
+  }
+
+  if (success) {
+    return (
+      <main className="relative">
+        <Container size="lg" className="py-16">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold mb-4 text-primary">
+              Thank You!
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8">
+              Your message has been sent successfully. I'll get back to you soon.
+            </p>
+            <button
+              onClick={() => setSuccess(false)}
+              className="glass-button px-6 py-3 text-lg font-semibold"
+            >
+              Send Another Message
+            </button>
+          </div>
+        </Container>
+      </main>
+    )
+  }
+
   return (
     <main className="relative">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8">Contact</h1>
-        <p className="text-lg text-muted-foreground">
-          Contact form and professional networking information.
-        </p>
-      </div>
+      <Container size="lg" className="py-16">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
+            Let's Work Together
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Ready to bring your ideas to life? Whether it's a new project,
+            collaboration, or just a chat about technology, I'd love to hear from you.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Form */}
+          <div>
+            <ContactForm
+              onSubmit={handleSubmit}
+              loading={loading}
+              error={error}
+            />
+          </div>
+
+          {/* LinkedIn Profile */}
+          <div className="space-y-8">
+            <LinkedInProfile
+              profileId="karpovpw"
+              showEndorsements
+            />
+
+            <SocialShare
+              url={typeof window !== 'undefined' ? window.location.href : ''}
+              title="Contact Karpov - Full Stack Developer"
+              description="Get in touch for projects, collaborations, or just to chat about technology."
+              hashtags={['webdev', 'blockchain', 'AI', 'portfolio']}
+            />
+          </div>
+        </div>
+      </Container>
     </main>
   )
 }

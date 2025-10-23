@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/design-system/ThemeProvider'
+import { SearchProvider } from '@/components/search/SearchProvider'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { initializeAccessibility } from '@/lib/accessibility-utils'
 import { preloadCriticalResources } from '@/lib/optimization-utils'
@@ -26,9 +27,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${geist.className} antialiased`}>
         <ThemeProvider>
-          <div className="relative min-h-screen bg-background">
-            {children}
-          </div>
+          <SearchProvider>
+            <div className="relative min-h-screen bg-background">
+              {children}
+            </div>
+          </SearchProvider>
         </ThemeProvider>
       </body>
     </html>

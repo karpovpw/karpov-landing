@@ -19,6 +19,20 @@ export interface Project {
   category: 'web' | 'crypto' | 'mobile' | 'other'
 }
 
+// Crypto-specific project type
+export interface CryptoProject extends Project {
+  category: 'crypto'
+  blockchain: string[]
+  smartContractAddress?: string
+  auditReport?: string
+  tokenMetrics?: {
+    symbol: string
+    totalSupply: string
+    marketCap: string
+    liquidity: string
+  }
+}
+
 // Article types
 export interface Article {
   id: string

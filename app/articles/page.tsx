@@ -1,12 +1,22 @@
+import { ArticleList } from '@/components/content/ArticleList'
+import { Container } from '@/components/layout/Container'
+
 export default function Articles() {
   return (
     <main className="relative">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8">Articles</h1>
-        <p className="text-lg text-muted-foreground">
-          BMAD content and technical articles showcase.
-        </p>
-      </div>
+      <Container size="xl" className="py-16">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
+            Articles
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Insights and tutorials on BMAD methodologies, blockchain technology,
+            software architecture, and modern development practices.
+          </p>
+        </div>
+
+        <ArticleList />
+      </Container>
     </main>
   )
 }
