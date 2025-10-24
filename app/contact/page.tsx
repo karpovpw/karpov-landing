@@ -1,103 +1,147 @@
 'use client'
 
-import { useState } from 'react'
-import dynamic from 'next/dynamic'
-import { Container } from '@/components/layout/Container'
-import { ContactFormData } from '@/types'
+import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 
-const ContactForm = dynamic(() => import('@/components/contact/ContactForm').then(mod => mod.ContactForm), {
-  ssr: false,
-  loading: () => <div>Loading contact form...</div>
-})
-
-const LinkedInProfile = dynamic(() => import('@/components/contact/LinkedInProfile').then(mod => mod.LinkedInProfile), {
-  ssr: false,
-  loading: () => <div>Loading LinkedIn profile...</div>
-})
-
+const waveKeyframes = `
+@keyframes wave {
+  0% { border-radius: 50%; }
+  25% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  75% { border-radius: 40% 70% 60% 30% / 40% 70% 60% 50%; }
+  100% { border-radius: 50%; }
+}
+`
 
 export default function Contact() {
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState('')
-  const [success, setSuccess] = useState(false)
+  const router = useRouter()
 
-  const handleSubmit = async (data: ContactFormData) => {
-    setLoading(true)
-    setError('')
-
-    try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000))
-
-      // In a real app, you'd send this to your backend
-      console.log('Contact form submitted:', data)
-
-      setSuccess(true)
-      setLoading(false)
-    } catch (err) {
-      setError('Failed to send message. Please try again.')
-      setLoading(false)
-    }
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3,
+        delayChildren: 0.2,
+      },
+    },
   }
 
-  if (success) {
-    return (
-      <main className="relative">
-        <Container className="py-16 max-w-full sm:max-w-full md:max-w-full lg:max-w-full xl:max-w-full 2xl:max-w-full">
-          <div className="text-center">
-            <h1 className="text-4xl font-bold mb-4 text-primary">
-              Thank You!
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Your message has been sent successfully. I'll get back to you soon.
-            </p>
-            <button
-              onClick={() => setSuccess(false)}
-              className="glass-button px-6 py-3 text-lg font-semibold"
-            >
-              Send Another Message
-            </button>
-          </div>
-        </Container>
-      </main>
-    )
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
   }
+
+  const photos = [
+    '/myPhoto.jpeg',
+    '/Generated Image October 23, 2025 - 10_49PM.jpeg',
+    '/Generated Image October 23, 2025 - 11_07PM.jpeg',
+    '/Generated Image October 23, 2025 - 11_08PM.jpeg',
+    '/Generated Image October 23, 2025 - 11_18PM (1).jpeg',
+    '/Generated Image October 23, 2025 - 11_19PM.jpeg',
+    '/Generated Image October 23, 2025 - 11_33PM.jpeg',
+    '/Generated Image October 23, 2025 - 11_47PM.jpeg',
+    '/generated-image (2).jpeg',
+    '/generated-image (3).jpeg',
+    '/generated-image.jpeg'
+  ]
 
   return (
-    <main className="relative overflow-hidden">
-      <div className="liquid-background absolute inset-0"></div>
-      <Container size="lg" className="py-16 relative z-10">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
-            Let's Work Together
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            That was a lot of buzzwords on a landing page! I am a veteran developer with more that 10 years of experience. Whether it's a new project,
-            collaboration, or just a chat about technology, I'd love to hear from you.
-          </p>
+    <>
+      <style>{waveKeyframes}</style>
+      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/20 via-background to-secondary/20 dark:from-primary/10 dark:via-background dark:to-secondary/10">
+        {/* Liquid Background */}
+        <div className="liquid-background absolute inset-0 z-0"></div>
+
+        {/* Background Photo Collage */}
+        <div className="absolute inset-0 overflow-hidden z-0">
+          {photos.map((photo, index) => (
+            <motion.div
+              key={index}
+              className="absolute"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: `${100 + Math.random() * 200}px`,
+                height: `${100 + Math.random() * 200}px`,
+              }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scale: [0.8, 1.1, 0.8],
+                rotate: [0, 5, -5, 0]
+              }}
+              transition={{
+                duration: 10 + Math.random() * 10,
+                repeat: Infinity,
+                ease: 'easeInOut'
+              }}
+            >
+              <Image
+                src={photo}
+                alt={`Background photo ${index + 1}`}
+                fill
+                className="object-cover rounded-lg"
+              />
+            </motion.div>
+          ))}
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 max-w-full mx-auto">
-          {/* Contact Form */}
-          <div className="glass-card p-8 rounded-2xl animate-float flex-1">
-            <h2 className="text-2xl font-bold text-primary mb-6">Send a Message</h2>
-            <ContactForm
-              onSubmit={handleSubmit}
-              loading={loading}
-              error={error}
-            />
-          </div>
+        <div className="container mx-auto px-4 py-16">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            className="max-w-7xl mx-auto"
+          >
+            {/* Hero Header */}
+            <motion.div variants={itemVariants} className="text-center mb-16">
+              <div className="flex flex-col items-center space-y-6">
 
-          {/* LinkedIn Profile */}
-          <div className="glass-card p-8 rounded-2xl animate-float flex-1">
-            <h2 className="text-2xl font-bold text-primary mb-6">Connect on LinkedIn</h2>
-            <LinkedInProfile
-              profileId="karpovpw"
-              showEndorsements
-            />
-          </div>
+                {/* Name and Title */}
+                <div className="space-y-4 z-10 relative">
+                  <motion.h1
+                    className="text-5xl md:text-7xl font-bold text-primary bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 shadow-2xl"
+                    variants={itemVariants}
+                  >
+                    Let's Connect
+                  </motion.h1>
+
+                  <motion.div variants={itemVariants}>
+                    <div className="text-xl md:text-2xl text-primary bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 shadow-2xl block max-w-3xl mx-auto">
+                      That was a lot of buzzwords on a landing page! I am a veteran developer with more than 10 years of experience. Whether it's a new project, collaboration, or just a chat about technology, I'd love to hear from you.
+                    </div>
+                  </motion.div>
+                </div>
+
+                {/* Action Buttons */}
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-4"
+                  variants={itemVariants}
+                >
+                  <motion.button
+                    className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
+                    onClick={() => window.open('mailto:ask@karpov.pw', '_blank')}
+                    whileHover={{ scale: 1.05, rotate: 2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Send a Message
+                  </motion.button>
+                  <motion.button
+                    className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
+                    onClick={() => window.open('https://www.linkedin.com/in/karpovpw/', '_blank')}
+                    whileHover={{ scale: 1.05, rotate: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Connect on LinkedIn
+                  </motion.button>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
-      </Container>
-    </main>
+      </section>
+    </>
   )
 }
