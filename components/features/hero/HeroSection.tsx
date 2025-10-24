@@ -106,25 +106,6 @@ export function HeroSection({ className }: BaseComponentProps) {
           {/* Hero Header */}
           <motion.div variants={itemVariants} className="text-center mb-16">
             <div className="flex flex-col items-center space-y-6">
-              {/* Profile Image */}
-              <motion.div
-                className="relative"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              >
-                <GlassCard className="p-2 rounded-lg border border-white/20 backdrop-blur-lg shadow-xl">
-                  <div className="relative w-32 h-auto md:w-40 md:h-auto rounded-lg overflow-hidden" style={{ clipPath: 'polygon(50% 0%, 60% 20%, 80% 0%, 100% 20%, 80% 40%, 100% 60%, 80% 80%, 100% 100%, 80% 80%, 60% 100%, 40% 80%, 20% 100%, 0% 80%, 20% 60%, 0% 40%, 20% 20%, 0% 0%, 20% 20%, 40% 0%, 50% 0%)' }}>
-                    <Image
-                      src={PROFILE_DATA.profileImage.src}
-                      alt={PROFILE_DATA.profileImage.alt}
-                      width={PROFILE_DATA.profileImage.width}
-                      height={PROFILE_DATA.profileImage.height}
-                      className="object-contain"
-                      priority
-                    />
-                  </div>
-                </GlassCard>
-              </motion.div>
 
               {/* Name and Title */}
               <div className="space-y-4 z-10 relative">
