@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import dynamicImport from 'next/dynamic'
 import { Container } from '@/components/layout/Container'
+import { GlassCard } from '@/components/design-system/GlassCard'
 
 const ArticleList = dynamicImport(() => import('@/components/content/ArticleList').then(mod => mod.ArticleList), {
   ssr: false,
@@ -62,17 +63,19 @@ export default function Articles() {
       </div>
 
       <Container size="xl" className="py-16 relative z-10">
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
-            Articles
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Insights and tutorials on BMAD methodologies, blockchain technology,
-            software architecture, and modern development practices.
-          </p>
-        </div>
+        <GlassCard className="p-8 md:p-12">
+          <div className="text-center mb-12">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">
+              Articles
+            </h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Insights and tutorials on BMAD methodologies, blockchain technology,
+              software architecture, and modern development practices.
+            </p>
+          </div>
 
-        <ArticleList />
+          <ArticleList />
+        </GlassCard>
       </Container>
     </main>
   )
