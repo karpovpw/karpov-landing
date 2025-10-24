@@ -131,7 +131,7 @@ export function ArticleList({
           initial="hidden"
           animate="visible"
         >
-          <Grid cols={3} gap="lg" className="md:grid-cols-2 xl:grid-cols-3">
+          <Grid cols={1} gap="lg" className="md:grid-cols-2 xl:grid-cols-3">
             {filteredArticles.map((article) => (
               <motion.div key={article.id} variants={itemVariants}>
                 <ArticleCard

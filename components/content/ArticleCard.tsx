@@ -30,23 +30,23 @@ export function ArticleCard({
       whileHover={{ scale: 1.02, y: -4 }}
       whileTap={{ scale: 0.98 }}
       transition={{ duration: 0.2 }}
-      className={className}
+      className={`cursor-pointer ${className}`}
+      onClick={handleClick}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          handleClick()
+        }
+      }}
+      aria-label={`Read article: ${article.title}`}
       {...props}
     >
       <GlassCard
-        className={`p-6 cursor-pointer hover:shadow-xl transition-all duration-300 ${
+        className={`p-6 hover:shadow-xl transition-all duration-300 ${
           featured ? 'ring-2 ring-primary/20' : ''
         }`}
-        onClick={handleClick}
-        role="button"
-        tabIndex={0}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault()
-            handleClick()
-          }
-        }}
-        aria-label={`Read article: ${article.title}`}
       >
         {/* Article Header */}
         <div className="mb-4">

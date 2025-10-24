@@ -111,26 +111,28 @@ export function FilterBar({
             </div>
 
             {/* Technology Filter */}
-            <div>
-              <h3 className="text-sm font-medium mb-3 text-primary">Technologies</h3>
-              <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto">
-                {technologies.map((technology) => (
-                  <button
-                    key={technology}
-                    onClick={() => handleTechnologyChange(
-                      selectedTechnology === technology ? '' : technology
-                    )}
-                    className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                      selectedTechnology === technology
-                        ? 'bg-primary text-primary-foreground'
-                        : 'bg-muted text-muted-foreground hover:bg-muted/80'
-                    }`}
-                  >
-                    {technology}
-                  </button>
-                ))}
+            {technologies.length > 0 && (
+              <div>
+                <h3 className="text-sm font-medium mb-3 text-primary">Technologies</h3>
+                <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto">
+                  {technologies.map((technology) => (
+                    <button
+                      key={technology}
+                      onClick={() => handleTechnologyChange(
+                        selectedTechnology === technology ? '' : technology
+                      )}
+                      className={`px-3 py-1 rounded-full text-sm transition-colors ${
+                        selectedTechnology === technology
+                          ? 'bg-primary text-primary-foreground'
+                          : 'bg-muted text-muted-foreground hover:bg-muted/80'
+                      }`}
+                    >
+                      {technology}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </GlassCard>
       )}
