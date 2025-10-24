@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 import { ThemeProvider } from '@/components/design-system/ThemeProvider'
 import { SearchProvider } from '@/components/search/SearchProvider'
@@ -26,6 +27,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <Script id="theme-script" strategy="beforeInteractive">
+        {`
+          (function() {
+            const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            document.documentElement.classList.add(theme);
+          })();
+        `}
+      </Script>
       <body className={`${geist.className} antialiased`}>
         <ThemeProvider>
           <SearchProvider>

@@ -103,7 +103,7 @@ export function HeroSection({ className }: BaseComponentProps) {
               {/* Name and Title */}
               <div className="space-y-4 z-10 relative">
                 <motion.h1
-                  className="text-5xl md:text-7xl font-bold text-primary bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 shadow-2xl"
+                  className="text-5xl md:text-7xl font-bold text-primary bg-card/10 backdrop-blur-xl border border-card/20 rounded-2xl px-6 py-4 shadow-2xl"
                   variants={itemVariants}
                 >
                   {PROFILE_DATA.personal.name}
@@ -113,12 +113,12 @@ export function HeroSection({ className }: BaseComponentProps) {
                   <AnimatedText
                     text={PROFILE_DATA.personal.title}
                     speed={100}
-                    className="text-xl md:text-2xl text-primary bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 shadow-2xl block"
+                    className="text-xl md:text-2xl text-primary bg-card/10 backdrop-blur-xl border border-card/20 rounded-2xl px-6 py-4 shadow-2xl block"
                   />
                 </motion.div>
 
                 <motion.p
-                  className="text-lg text-primary bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 shadow-2xl max-w-2xl mx-auto"
+                  className="text-lg text-primary bg-card/10 backdrop-blur-xl border border-card/20 rounded-2xl px-6 py-4 shadow-2xl max-w-2xl mx-auto"
                   variants={itemVariants}
                 >
                   {PROFILE_DATA.personal.tagline}
@@ -131,7 +131,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                 variants={itemVariants}
               >
                 <motion.button
-                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
+                  className="px-8 py-4 text-lg font-semibold bg-card/5 backdrop-blur-2xl text-primary border-2 border-card/30 rounded-2xl shadow-2xl hover:bg-card/15 hover:border-card/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
                   onClick={() => router.push('/portfolio')}
                   whileHover={{ scale: 1.05, rotate: 2 }}
                   whileTap={{ scale: 0.95 }}
@@ -139,7 +139,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                   View Portfolio
                 </motion.button>
                 <motion.button
-                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
+                  className="px-8 py-4 text-lg font-semibold bg-card/5 backdrop-blur-2xl text-primary border-2 border-card/30 rounded-2xl shadow-2xl hover:bg-card/15 hover:border-card/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
                   onClick={() => router.push('/articles')}
                   whileHover={{ scale: 1.05, rotate: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -147,7 +147,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                   Read Articles
                 </motion.button>
                 <motion.button
-                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
+                  className="px-8 py-4 text-lg font-semibold bg-card/5 backdrop-blur-2xl text-primary border-2 border-card/30 rounded-2xl shadow-2xl hover:bg-card/15 hover:border-card/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
                   onClick={() => router.push('/contact')}
                   whileHover={{ scale: 1.05, rotate: 1 }}
                   whileTap={{ scale: 0.95 }}

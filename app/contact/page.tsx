@@ -100,14 +100,14 @@ export default function Contact() {
                 {/* Name and Title */}
                 <div className="space-y-4 z-10 relative">
                   <motion.h1
-                    className="text-5xl md:text-7xl font-bold text-primary bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 shadow-2xl"
+                    className="text-5xl md:text-7xl font-bold text-primary bg-card/10 backdrop-blur-xl border border-card/20 rounded-2xl px-6 py-4 shadow-2xl"
                     variants={itemVariants}
                   >
                     Let's Connect
                   </motion.h1>
 
                   <motion.div variants={itemVariants}>
-                    <div className="text-xl md:text-2xl text-primary bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 shadow-2xl block max-w-3xl mx-auto">
+                    <div className="text-xl md:text-2xl text-primary bg-card/10 backdrop-blur-xl border border-card/20 rounded-2xl px-6 py-4 shadow-2xl block max-w-3xl mx-auto">
                       That was a lot of buzzwords on a landing page! I am a veteran developer with more than 10 years of experience. Whether it's a new project, collaboration, or just a chat about technology, I'd love to hear from you.
                     </div>
                   </motion.div>
@@ -119,7 +119,7 @@ export default function Contact() {
                   variants={itemVariants}
                 >
                   <motion.button
-                    className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
+                    className="px-8 py-4 text-lg font-semibold bg-card/5 backdrop-blur-2xl text-primary border-2 border-card/30 rounded-2xl shadow-2xl hover:bg-card/15 hover:border-card/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
                     onClick={() => window.open('mailto:ask@karpov.pw', '_blank')}
                     whileHover={{ scale: 1.05, rotate: 2 }}
                     whileTap={{ scale: 0.95 }}
@@ -127,7 +127,7 @@ export default function Contact() {
                     Send a Message
                   </motion.button>
                   <motion.button
-                    className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
+                    className="px-8 py-4 text-lg font-semibold bg-card/5 backdrop-blur-2xl text-primary border-2 border-card/30 rounded-2xl shadow-2xl hover:bg-card/15 hover:border-card/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
                     onClick={() => window.open('https://www.linkedin.com/in/karpovpw/', '_blank')}
                     whileHover={{ scale: 1.05, rotate: -2 }}
                     whileTap={{ scale: 0.95 }}
