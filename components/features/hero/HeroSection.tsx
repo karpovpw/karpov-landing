@@ -18,20 +18,6 @@ const waveKeyframes = `
 }
 `
 
-const generateXPolygon = () => {
-  // Generate dynamic proportions for X-shape
-  const topWidth = 30 + Math.random() * 40; // 30-70
-  const bottomWidth = 30 + Math.random() * 40;
-  const leftHeight = 30 + Math.random() * 40;
-  const rightHeight = 30 + Math.random() * 40;
-  const midX = 40 + Math.random() * 20; // 40-60
-  const midY = 40 + Math.random() * 20;
-
-  const variant1 = `polygon(${midX}% 0%, ${midX + topWidth/2}% ${leftHeight}%, 100% ${leftHeight}%, ${midX + midY/2}% 50%, ${midX + bottomWidth/2}% 100%, ${midX}% ${100 - rightHeight}%, ${midX - bottomWidth/2}% 100%, ${midX - midY/2}% 50%, 0% ${leftHeight}%, ${midX - topWidth/2}% ${leftHeight}%)`;
-  const variant2 = `polygon(${midX}% 0%, ${midX + topWidth/3}% ${leftHeight + 10}%, 100% ${leftHeight + 10}%, ${midX + midY/3}% 50%, ${midX + bottomWidth/3}% 100%, ${midX}% ${100 - rightHeight - 10}%, ${midX - bottomWidth/3}% 100%, ${midX - midY/3}% 50%, 0% ${leftHeight + 10}%, ${midX - topWidth/3}% ${leftHeight + 10}%)`;
-
-  return [variant1, variant2];
-}
 
 export function HeroSection({ className }: BaseComponentProps) {
   const router = useRouter()
@@ -72,41 +58,36 @@ export function HeroSection({ className }: BaseComponentProps) {
       <section className={`relative min-h-screen flex items-center justify-center ${className || ''}`}>
         {/* Background Photo Collage */}
         <div className="absolute inset-0 overflow-hidden z-0">
-          {photos.map((photo, index) => {
-            const clipPaths = generateXPolygon();
-            return (
-              <motion.div
-                key={index}
-                className="absolute"
-                style={{
-                  left: `${Math.random() * 80 + 10}%`,
-                  top: `${Math.random() * 80 + 10}%`,
-                  width: `${50 + Math.random() * 100}px`,
-                  height: `${50 + Math.random() * 100}px`,
-                }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{
-                  opacity: [0.3, 0.6, 0.3],
-                  scale: [0.8, 1.1, 0.8],
-                  rotate: [0, 5, -5, 0],
-                  clipPath: [clipPaths[0], clipPaths[1], clipPaths[0]]
-                }}
-                transition={{
-                  duration: 10 + Math.random() * 10,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  clipPath: { duration: 10 + Math.random() * 10, repeat: Infinity, ease: 'linear' }
-                }}
-              >
-                <Image
-                  src={photo}
-                  alt={`Background photo ${index + 1}`}
-                  fill
-                  className="object-cover"
-                />
-              </motion.div>
-            );
-          })}
+          {photos.map((photo, index) => (
+            <motion.div
+              key={index}
+              className="absolute"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: `${100 + Math.random() * 200}px`,
+                height: `${100 + Math.random() * 200}px`,
+              }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scale: [0.8, 1.1, 0.8],
+                rotate: [0, 5, -5, 0]
+              }}
+              transition={{
+                duration: 10 + Math.random() * 10,
+                repeat: Infinity,
+                ease: 'easeInOut'
+              }}
+            >
+              <Image
+                src={photo}
+                alt={`Background photo ${index + 1}`}
+                fill
+                className="object-cover rounded-lg"
+              />
+            </motion.div>
+          ))}
         </div>
 
       <div className="container mx-auto px-4 py-16">
