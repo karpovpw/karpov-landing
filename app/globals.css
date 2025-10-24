@@ -18,7 +18,7 @@
 @layer base {
   :root {
     /* Light theme colors */
-    --background: 0 0% 100%;
+    --background: 0 0% 98%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
@@ -89,13 +89,7 @@
     @apply text-foreground;
     height: 100vh;
     min-height: 100vh;
-    background: linear-gradient(-45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0.1));
-    background-size: 400% 400%;
-    animation: liquid 15s ease infinite;
-  }
-
-  .dark body {
-    background: linear-gradient(-45deg, rgba(0,0,0,0.1), rgba(0,0,0,0.05), rgba(0,0,0,0.1));
+    background: hsl(var(--background));
   }
 
   p, span, h1, h2, h3, h4, h5, h6 {
@@ -212,15 +206,6 @@
     animation: float 3s ease-in-out infinite;
   }
 
-  .liquid-background {
-    background: linear-gradient(-45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05), rgba(255,255,255,0.1));
-    background-size: 400% 400%;
-    animation: liquid 15s ease infinite;
-  }
-
-  .dark .liquid-background {
-    background: linear-gradient(-45deg, rgba(0,0,0,0.1), rgba(0,0,0,0.05), rgba(0,0,0,0.1));
-  }
 
   @keyframes fadeIn {
     from { opacity: 0; }
@@ -243,10 +228,6 @@
     50% { transform: translateY(-10px); }
   }
 
-  @keyframes liquid {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-  }
 
   @keyframes wiggle {
     0%, 7% { transform: rotateZ(0); }
