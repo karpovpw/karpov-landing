@@ -4,7 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/design-system/ThemeProvider'
 import { SearchProvider } from '@/components/search/SearchProvider'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
-import { ThemeToggle, BackButton } from '@/components/design-system/ThemeToggle'
+import { NavigationBar } from '@/components/design-system/NavigationBar'
 import { initializeAccessibility } from '@/lib/accessibility-utils'
 import { preloadCriticalResources } from '@/lib/optimization-utils'
 
@@ -29,14 +29,9 @@ export default function RootLayout({
       <body className={`${geist.className} antialiased`}>
         <ThemeProvider>
           <SearchProvider>
-            <div className="relative min-h-screen bg-background pt-20">
+            <NavigationBar />
+            <div className="relative min-h-screen bg-background pt-24">
               {children}
-            </div>
-            <div className="fixed top-6 left-6 z-50">
-              <BackButton />
-            </div>
-            <div className="fixed top-6 right-6 z-50">
-              <ThemeToggle />
             </div>
           </SearchProvider>
         </ThemeProvider>
