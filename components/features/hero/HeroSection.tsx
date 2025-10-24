@@ -9,6 +9,16 @@ import { AnimatedText } from '@/components/hero/AnimatedText'
 import { GlassCard } from '@/components/design-system/GlassCard'
 import { ThemeToggle } from '@/components/design-system/ThemeToggle'
 
+const waveKeyframes = `
+@keyframes wave {
+  0% { border-radius: 50%; }
+  25% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  75% { border-radius: 40% 70% 60% 30% / 40% 70% 60% 50%; }
+  100% { border-radius: 50%; }
+}
+`
+
 export function HeroSection({ className }: BaseComponentProps) {
   const router = useRouter()
 
@@ -29,7 +39,9 @@ export function HeroSection({ className }: BaseComponentProps) {
   }
 
   return (
-    <section className={`relative min-h-screen flex items-center justify-center ${className || ''}`}>
+    <>
+      <style>{waveKeyframes}</style>
+      <section className={`relative min-h-screen flex items-center justify-center ${className || ''}`}>
       {/* Theme Toggle */}
       <div className="absolute top-6 right-6 z-50">
         <ThemeToggle />
@@ -51,8 +63,8 @@ export function HeroSection({ className }: BaseComponentProps) {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <GlassCard className="p-2 rounded-full shadow-2xl border-2 border-dashed border-primary/50 animate-pulse">
-                  <div className="relative w-32 h-auto md:w-40 md:h-auto rounded-full overflow-hidden">
+                <GlassCard className="p-2 rounded-lg" style={{ borderStyle: 'wavy', borderWidth: '4px', borderColor: 'var(--primary)', animation: 'wave 2s infinite' }}>
+                  <div className="relative w-32 h-auto md:w-40 md:h-auto rounded-lg overflow-hidden">
                     <Image
                       src={PROFILE_DATA.profileImage.src}
                       alt={PROFILE_DATA.profileImage.alt}
@@ -129,5 +141,5 @@ export function HeroSection({ className }: BaseComponentProps) {
       </div>
 
     </section>
-  )
+    </>)
 }
