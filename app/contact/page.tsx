@@ -72,7 +72,7 @@ export default function Contact() {
             Let's Work Together
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Ready to bring your ideas to life? Whether it's a new project,
+            That was a lot of buzzwords on a landing page! I am a veteran developer with more that 10 years of experience. Whether it's a new project,
             collaboration, or just a chat about technology, I'd love to hear from you.
           </p>
         </div>
