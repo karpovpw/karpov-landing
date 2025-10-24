@@ -71,8 +71,7 @@ export function HeroSection({ className }: BaseComponentProps) {
               animate={{
                 opacity: [0.3, 0.6, 0.3],
                 scale: [0.8, 1.1, 0.8],
-                rotate: [0, 5, -5, 0],
-                clipPath: 'polygon(50% 0%, 60% 20%, 80% 0%, 100% 20%, 80% 40%, 100% 60%, 80% 80%, 100% 100%, 80% 80%, 60% 100%, 40% 80%, 20% 100%, 0% 80%, 20% 60%, 0% 40%, 20% 20%, 0% 0%, 20% 20%, 40% 0%, 50% 0%)'
+                rotate: [0, 5, -5, 0]
               }}
               transition={{
                 duration: 10 + Math.random() * 10,
@@ -85,7 +84,6 @@ export function HeroSection({ className }: BaseComponentProps) {
                 alt={`Background photo ${index + 1}`}
                 fill
                 className="object-cover rounded-lg"
-                style={{ clipPath: 'polygon(50% 0%, 60% 20%, 80% 0%, 100% 20%, 80% 40%, 100% 60%, 80% 80%, 100% 100%, 80% 80%, 60% 100%, 40% 80%, 20% 100%, 0% 80%, 20% 60%, 0% 40%, 20% 20%, 0% 0%, 20% 20%, 40% 0%, 50% 0%)' }}
               />
             </motion.div>
           ))}

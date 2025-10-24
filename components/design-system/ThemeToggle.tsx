@@ -1,32 +1,13 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Moon, Sun } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { Moon, Sun, ArrowLeft } from 'lucide-react'
+import { useRouter, usePathname } from 'next/navigation'
+import { useTheme } from './ThemeProvider'
 import { GlassCard } from './GlassCard'
 
 export function ThemeToggle() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('light')
-
-  useEffect(() => {
-    const updateTheme = () => {
-      const isDark = document.documentElement.classList.contains('dark')
-      setTheme(isDark ? 'dark' : 'light')
-    }
-
-    updateTheme()
-
-    const observer = new MutationObserver(updateTheme)
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
-
-    return () => observer.disconnect()
-  }, [])
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light'
-    document.documentElement.classList.toggle('dark', newTheme === 'dark')
-    setTheme(newTheme)
-  }
+  const { theme, toggleTheme } = useTheme()
 
   return (
     <motion.button
@@ -50,6 +31,27 @@ export function ThemeToggle() {
             <Sun className="w-5 h-5 text-primary" />
           )}
         </motion.div>
+      </GlassCard>
+    </motion.button>
+  )
+}
+
+export function BackButton() {
+  const router = useRouter()
+  const pathname = usePathname()
+
+  if (pathname === '/') return null
+
+  return (
+    <motion.button
+      onClick={() => router.back()}
+      className="relative p-2 rounded-full transition-colors animate-wiggle"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      aria-label="Go back"
+    >
+      <GlassCard className="p-3 rounded-full">
+        <ArrowLeft className="w-5 h-5 text-primary" />
       </GlassCard>
     </motion.button>
   )

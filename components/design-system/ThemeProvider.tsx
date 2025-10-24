@@ -1,6 +1,7 @@
 'use client'
 
 import { createContext, useContext, useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import { ThemeConfig } from '@/types'
 import { getSystemTheme, applyTheme, loadThemePreference } from '@/lib/utils'
 
@@ -27,22 +28,21 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<'light' | 'dark'>('light')
-  const [mounted, setMounted] = useState(false)
+  const [theme, setThemeState] = useState<'light' | 'dark'>(loadThemePreference())
   const [config, setConfig] = useState<ThemeConfig>({
-    mode: 'light',
+    mode: loadThemePreference(),
     neonAccent: 'green',
     reducedMotion: false,
     highContrast: false,
   })
+  const pathname = usePathname()
 
   useEffect(() => {
-    setMounted(true)
     const savedTheme = loadThemePreference()
     setThemeState(savedTheme)
     applyTheme(savedTheme)
 
-    setConfig(prev => ({
+    setConfig((prev: ThemeConfig) => ({
       ...prev,
       mode: savedTheme,
       reducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
@@ -60,28 +60,23 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
 
     mediaQuery.addEventListener('change', handleChange)
     return () => mediaQuery.removeEventListener('change', handleChange)
-  }, [])
+  }, [pathname])
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light'
     setThemeState(newTheme)
     applyTheme(newTheme)
-    setConfig(prev => ({ ...prev, mode: newTheme }))
+    setConfig((prev: ThemeConfig) => ({ ...prev, mode: newTheme }))
   }
 
   const setTheme = (newTheme: 'light' | 'dark') => {
     setThemeState(newTheme)
     applyTheme(newTheme)
-    setConfig(prev => ({ ...prev, mode: newTheme }))
+    setConfig((prev: ThemeConfig) => ({ ...prev, mode: newTheme }))
   }
 
   const setNeonAccent = (accent: 'green' | 'orange') => {
-    setConfig(prev => ({ ...prev, neonAccent: accent }))
-  }
-
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return <>{children}</>
+    setConfig((prev: ThemeConfig) => ({ ...prev, neonAccent: accent }))
   }
 
   const value: ThemeContextType = {

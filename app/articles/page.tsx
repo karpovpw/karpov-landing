@@ -1,9 +1,11 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+export const dynamic = 'force-dynamic'
+
+import dynamicImport from 'next/dynamic'
 import { Container } from '@/components/layout/Container'
 
-const ArticleList = dynamic(() => import('@/components/content/ArticleList').then(mod => mod.ArticleList), {
+const ArticleList = dynamicImport(() => import('@/components/content/ArticleList').then(mod => mod.ArticleList), {
   ssr: false,
   loading: () => <div>Loading articles...</div>
 })

@@ -3,8 +3,7 @@
 import { forwardRef, useState } from 'react'
 import { motion, HTMLMotionProps } from 'framer-motion'
 import { BaseComponentProps } from '@/types'
-import { getGlassBackground, getGlassBorder, getGlassShadow } from '@/lib/design-tokens'
-import { useTheme } from './ThemeProvider'
+import { getGlassShadow } from '@/lib/design-tokens'
 import { applyFocusRing } from '@/lib/accessibility-utils'
 
 interface GlassInputProps extends BaseComponentProps, Omit<HTMLMotionProps<"input">, keyof BaseComponentProps | 'size'> {
@@ -77,7 +76,6 @@ export const GlassInput = forwardRef<HTMLInputElement, GlassInputProps>(({
   onBlur,
   ...motionProps
 }, ref) => {
-  const { theme } = useTheme()
   const [isFocused, setIsFocused] = useState(false)
   const [inputValue, setInputValue] = useState(value || '')
 
@@ -85,13 +83,13 @@ export const GlassInput = forwardRef<HTMLInputElement, GlassInputProps>(({
   const showSuccess = success && !hasError
 
   const glassStyles = {
-    background: variant === 'filled' ? 'rgba(255, 255, 255, 0.1)' : getGlassBackground(theme),
-    border: `1px solid ${hasError ? 'hsl(var(--destructive))' : showSuccess ? 'hsl(var(--success))' : getGlassBorder(theme)}`,
+    background: variant === 'filled' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(var(--glass-background), var(--glass-opacity))',
+    border: `1px solid ${hasError ? 'hsl(var(--destructive))' : showSuccess ? 'hsl(var(--success))' : 'rgba(var(--glass-border), 0.2)'}`,
     boxShadow: hasError
       ? '0 0 0 2px hsl(var(--destructive) / 0.2)'
       : showSuccess
       ? '0 0 0 2px hsl(var(--success) / 0.2)'
-      : getGlassShadow(theme),
+      : '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(var(--glass-border), 0.2)',
   }
 
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
