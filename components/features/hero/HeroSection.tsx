@@ -51,13 +51,14 @@ export function HeroSection({ className }: BaseComponentProps) {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <GlassCard className="p-2 rounded-full">
-                  <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden">
+                <GlassCard className="p-2 rounded-full shadow-2xl border-2 border-dashed border-primary/50 animate-pulse">
+                  <div className="relative w-32 h-auto md:w-40 md:h-auto rounded-full overflow-hidden">
                     <Image
                       src={PROFILE_DATA.profileImage.src}
                       alt={PROFILE_DATA.profileImage.alt}
-                      fill
-                      className="object-cover"
+                      width={PROFILE_DATA.profileImage.width}
+                      height={PROFILE_DATA.profileImage.height}
+                      className="object-contain"
                       priority
                     />
                   </div>
