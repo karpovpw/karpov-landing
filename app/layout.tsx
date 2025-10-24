@@ -30,7 +30,7 @@ export default function RootLayout({
         <ThemeProvider>
           <SearchProvider>
             <NavigationBar />
-            <div className="relative min-h-screen bg-background pt-24">
+            <div className="relative min-h-screen pt-24">
               {children}
             </div>
           </SearchProvider>

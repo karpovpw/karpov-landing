@@ -54,7 +54,7 @@ export function HeroSection({ className }: BaseComponentProps) {
   return (
     <>
       <style>{waveKeyframes}</style>
-      <section className={`relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/20 via-background to-secondary/20 dark:from-primary/10 dark:via-background dark:to-secondary/10 ${className || ''}`}>
+      <section className={`relative min-h-screen flex items-center justify-center ${className || ''}`}>
         {/* Background Photo Collage */}
         <div className="absolute inset-0 overflow-hidden z-0">
           {photos.map((photo, index) => (

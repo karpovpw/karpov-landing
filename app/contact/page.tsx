@@ -50,9 +50,7 @@ export default function Contact() {
   return (
     <>
       <style>{waveKeyframes}</style>
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/20 via-background to-secondary/20 dark:from-primary/10 dark:via-background dark:to-secondary/10">
-        {/* Liquid Background */}
-        <div className="liquid-background absolute inset-0 z-0"></div>
+      <section className="relative min-h-screen flex items-center justify-center">
 
         {/* Background Photo Collage */}
         <div className="absolute inset-0 overflow-hidden z-0">
