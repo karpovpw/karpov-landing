@@ -62,7 +62,7 @@ export default function Articles() {
         ))}
       </div>
 
-      <Container size="xl" className="py-16 relative z-10">
+      <Container size="full" className="py-16 relative z-10">
         <GlassCard className="p-8 md:p-12">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-primary">

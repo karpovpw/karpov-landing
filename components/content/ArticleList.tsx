@@ -11,6 +11,8 @@ import { Grid } from '@/components/layout/Grid'
 import { BaseComponentProps } from '@/types'
 import { ARTICLE_CATEGORIES } from '@/content/articles'
 
+const ARTICLE_TECHNOLOGIES: string[] = []
+
 interface ArticleListProps extends BaseComponentProps {
   filterable?: boolean
   sortable?: boolean
@@ -99,6 +101,8 @@ export function ArticleList({
           selectedCategory={selectedCategory}
           selectedTechnology=""
           searchQuery={searchQuery}
+          categories={ARTICLE_CATEGORIES}
+          technologies={ARTICLE_TECHNOLOGIES}
         />
       )}
 
@@ -159,7 +163,7 @@ export function ArticleList({
       {/* Article Reader Modal */}
       {isReaderOpen && selectedArticle && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-          <div className="w-full max-w-4xl max-h-[90vh] overflow-y-auto">
+          <div className="w-full max-w-none max-h-none overflow-y-auto">
             <ArticleReader
               article={selectedArticle}
               onClose={handleCloseReader}

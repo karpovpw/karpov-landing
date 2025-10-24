@@ -51,7 +51,7 @@ export function ArticleReader({
 
   return (
     <motion.div
-      className={`max-w-4xl mx-auto ${className}`}
+      className={`max-w-none mx-auto ${className}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -138,9 +138,9 @@ export function ArticleReader({
 
         {/* Article Content */}
         <div className="prose prose-lg max-w-none">
-          <pre className="whitespace-pre-wrap text-muted-foreground leading-relaxed">
+          <div className="whitespace-pre-wrap text-muted-foreground leading-relaxed">
             {article.content}
-          </pre>
+          </div>
         </div>
 
         {/* Article Footer */}

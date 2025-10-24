@@ -14,6 +14,8 @@ interface FilterBarProps extends BaseComponentProps {
   selectedCategory: string
   selectedTechnology: string
   searchQuery: string
+  categories?: { value: string; label: string }[]
+  technologies?: string[]
 }
 
 export function FilterBar({
@@ -23,6 +25,8 @@ export function FilterBar({
   selectedCategory,
   selectedTechnology,
   searchQuery,
+  categories = PROJECT_CATEGORIES,
+  technologies = PROJECT_TECHNOLOGIES,
   className = '',
   ...props
 }: FilterBarProps) {
@@ -90,7 +94,7 @@ export function FilterBar({
             <div>
               <h3 className="text-sm font-medium mb-3 text-primary">Category</h3>
               <div className="flex flex-wrap gap-2">
-                {PROJECT_CATEGORIES.map((category) => (
+                {categories.map((category) => (
                   <button
                     key={category.value}
                     onClick={() => handleCategoryChange(category.value)}
@@ -110,7 +114,7 @@ export function FilterBar({
             <div>
               <h3 className="text-sm font-medium mb-3 text-primary">Technologies</h3>
               <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto">
-                {PROJECT_TECHNOLOGIES.map((technology) => (
+                {technologies.map((technology) => (
                   <button
                     key={technology}
                     onClick={() => handleTechnologyChange(

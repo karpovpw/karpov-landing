@@ -369,6 +369,7 @@ export const CONTAINER_MAX_WIDTHS = {
   lg: '1024px',
   xl: '1280px',
   '2xl': '1536px',
+  full: '100%',
 }
 
 export function getGridGap(size: keyof typeof DESIGN_TOKENS.spacing): string {
