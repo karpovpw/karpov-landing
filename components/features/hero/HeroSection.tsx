@@ -66,7 +66,6 @@ export function HeroSection({ className }: BaseComponentProps) {
                 top: `${Math.random() * 100}%`,
                 width: `${100 + Math.random() * 200}px`,
                 height: `${100 + Math.random() * 200}px`,
-                clipPath: `polygon(${Math.random() * 20 + 10}% ${Math.random() * 20 + 10}%, ${Math.random() * 20 + 70}% ${Math.random() * 20 + 10}%, ${Math.random() * 20 + 90}% ${Math.random() * 20 + 30}%, ${Math.random() * 20 + 90}% ${Math.random() * 20 + 70}%, ${Math.random() * 20 + 70}% ${Math.random() * 20 + 90}%, ${Math.random() * 20 + 10}% ${Math.random() * 20 + 90}%, ${Math.random() * 20 + 10}% ${Math.random() * 20 + 70}%)`,
               }}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{
@@ -84,7 +83,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                 src={photo}
                 alt={`Background photo ${index + 1}`}
                 fill
-                className="object-cover"
+                className="object-cover rounded-lg"
               />
             </motion.div>
           ))}
