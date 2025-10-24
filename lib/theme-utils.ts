@@ -58,17 +58,6 @@ export function generateThemeCSS(theme: Theme, accent: NeonAccent): string {
       --glass-shadow: ${theme === 'light' ? '0 8px 32px rgba(0, 0, 0, 0.1)' : '0 8px 32px rgba(0, 0, 0, 0.3)'};
     }
 
-    html.${theme}::before {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: env(safe-area-inset-top);
-      background: ${config.background} / 0.2;
-      backdrop-filter: blur(12px);
-      z-index: 1000;
-    }
   `
 }
 
