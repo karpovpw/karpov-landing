@@ -38,10 +38,59 @@ export function HeroSection({ className }: BaseComponentProps) {
     visible: { opacity: 1, y: 0 },
   }
 
+  const photos = [
+    '/myPhoto.jpeg',
+    '/Generated Image October 23, 2025 - 10_49PM.jpeg',
+    '/Generated Image October 23, 2025 - 11_07PM.jpeg',
+    '/Generated Image October 23, 2025 - 11_08PM.jpeg',
+    '/Generated Image October 23, 2025 - 11_18PM (1).jpeg',
+    '/Generated Image October 23, 2025 - 11_19PM.jpeg',
+    '/Generated Image October 23, 2025 - 11_33PM.jpeg',
+    '/Generated Image October 23, 2025 - 11_47PM.jpeg',
+    '/generated-image (2).jpeg',
+    '/generated-image (3).jpeg',
+    '/generated-image.jpeg'
+  ]
+
   return (
     <>
       <style>{waveKeyframes}</style>
-      <section className={`relative min-h-screen flex items-center justify-center ${className || ''}`}>
+      <section className={`relative min-h-screen flex items-center justify-center bg-gradient-to-br from-primary/20 via-background to-secondary/20 dark:from-primary/10 dark:via-background dark:to-secondary/10 ${className || ''}`}>
+        {/* Background Photo Collage */}
+        <div className="absolute inset-0 overflow-hidden z-0">
+          {photos.map((photo, index) => (
+            <motion.div
+              key={index}
+              className="absolute"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                width: `${100 + Math.random() * 200}px`,
+                height: `${100 + Math.random() * 200}px`,
+              }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{
+                opacity: [0.3, 0.6, 0.3],
+                scale: [0.8, 1.1, 0.8],
+                rotate: [0, 5, -5, 0],
+                clipPath: 'polygon(50% 0%, 60% 20%, 80% 0%, 100% 20%, 80% 40%, 100% 60%, 80% 80%, 100% 100%, 80% 80%, 60% 100%, 40% 80%, 20% 100%, 0% 80%, 20% 60%, 0% 40%, 20% 20%, 0% 0%, 20% 20%, 40% 0%, 50% 0%)'
+              }}
+              transition={{
+                duration: 10 + Math.random() * 10,
+                repeat: Infinity,
+                ease: 'easeInOut'
+              }}
+            >
+              <Image
+                src={photo}
+                alt={`Background photo ${index + 1}`}
+                fill
+                className="object-cover rounded-lg"
+                style={{ clipPath: 'polygon(50% 0%, 60% 20%, 80% 0%, 100% 20%, 80% 40%, 100% 60%, 80% 80%, 100% 100%, 80% 80%, 60% 100%, 40% 80%, 20% 100%, 0% 80%, 20% 60%, 0% 40%, 20% 20%, 0% 0%, 20% 20%, 40% 0%, 50% 0%)' }}
+              />
+            </motion.div>
+          ))}
+        </div>
       {/* Theme Toggle */}
       <div className="absolute top-6 right-6 z-50">
         <ThemeToggle />
@@ -78,9 +127,9 @@ export function HeroSection({ className }: BaseComponentProps) {
               </motion.div>
 
               {/* Name and Title */}
-              <div className="space-y-4">
+              <div className="space-y-4 z-10 relative">
                 <motion.h1
-                  className="text-5xl md:text-7xl font-bold text-primary"
+                  className="text-5xl md:text-7xl font-bold text-primary bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 shadow-2xl"
                   variants={itemVariants}
                 >
                   {PROFILE_DATA.personal.name}
@@ -90,12 +139,12 @@ export function HeroSection({ className }: BaseComponentProps) {
                   <AnimatedText
                     text={PROFILE_DATA.personal.title}
                     speed={100}
-                    className="text-xl md:text-2xl text-muted-foreground block"
+                    className="text-xl md:text-2xl text-primary bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 shadow-2xl block"
                   />
                 </motion.div>
 
                 <motion.p
-                  className="text-lg text-muted-foreground max-w-2xl mx-auto"
+                  className="text-lg text-primary bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-6 py-4 shadow-2xl max-w-2xl mx-auto"
                   variants={itemVariants}
                 >
                   {PROFILE_DATA.personal.tagline}
@@ -108,25 +157,25 @@ export function HeroSection({ className }: BaseComponentProps) {
                 variants={itemVariants}
               >
                 <motion.button
-                  className="px-8 py-4 text-lg font-semibold bg-white/10 backdrop-blur-lg text-primary border border-white/20 rounded-xl shadow-lg hover:bg-white/20 transition-all duration-300"
+                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl"
                   onClick={() => router.push('/portfolio')}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, rotate: 2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   View Portfolio
                 </motion.button>
                 <motion.button
-                  className="px-8 py-4 text-lg font-semibold bg-white/10 backdrop-blur-lg text-primary border border-white/20 rounded-xl shadow-lg hover:bg-white/20 transition-all duration-300"
+                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl"
                   onClick={() => router.push('/articles')}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, rotate: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Read Articles
                 </motion.button>
                 <motion.button
-                  className="px-8 py-4 text-lg font-semibold bg-white/10 backdrop-blur-lg text-primary border border-white/20 rounded-xl shadow-lg hover:bg-white/20 transition-all duration-300"
+                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl"
                   onClick={() => router.push('/contact')}
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.05, rotate: 1 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   Get In Touch
