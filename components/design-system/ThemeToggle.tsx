@@ -16,6 +16,7 @@ export function ThemeToggle() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}
+      suppressHydrationWarning
     >
       <GlassCard className="p-3 rounded-full">
         <motion.div

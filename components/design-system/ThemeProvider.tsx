@@ -28,9 +28,9 @@ interface ThemeProviderProps {
 }
 
 export function ThemeProvider({ children }: ThemeProviderProps) {
-  const [theme, setThemeState] = useState<'light' | 'dark'>(loadThemePreference())
+  const [theme, setThemeState] = useState<'light' | 'dark'>('light')
   const [config, setConfig] = useState<ThemeConfig>({
-    mode: loadThemePreference(),
+    mode: 'light',
     neonAccent: 'green',
     reducedMotion: false,
     highContrast: false,
