@@ -713,7 +713,7 @@ All inter-agent communication is encrypted using quantum-resistant algorithms.
 ## Conclusion
 
 The BMAD method represents a fundamental shift in software development methodology, combining multi-agent systems, artificial intelligence, and advanced computing techniques to create unprecedented development capabilities.`,
-    excerpt: 'Comprehensive deep dive into BMAD method's theoretical foundations, implementation architecture, and future directions.',
+    excerpt: 'Comprehensive deep dive into BMAD method\'s theoretical foundations, implementation architecture, and future directions.',
     publishedAt: '2025-02-10',
     updatedAt: '2025-02-10',
     tags: ['BMAD', 'Deep Dive', 'Architecture', 'Future'],
