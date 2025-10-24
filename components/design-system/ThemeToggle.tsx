@@ -2,16 +2,36 @@
 
 import { motion } from 'framer-motion'
 import { Moon, Sun } from 'lucide-react'
-import { useTheme } from './ThemeProvider'
+import { useState, useEffect } from 'react'
 import { GlassCard } from './GlassCard'
 
 export function ThemeToggle() {
-  const { theme, toggleTheme } = useTheme()
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
+
+  useEffect(() => {
+    const updateTheme = () => {
+      const isDark = document.documentElement.classList.contains('dark')
+      setTheme(isDark ? 'dark' : 'light')
+    }
+
+    updateTheme()
+
+    const observer = new MutationObserver(updateTheme)
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] })
+
+    return () => observer.disconnect()
+  }, [])
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light'
+    document.documentElement.classList.toggle('dark', newTheme === 'dark')
+    setTheme(newTheme)
+  }
 
   return (
     <motion.button
       onClick={toggleTheme}
-      className="relative p-2 rounded-full transition-colors"
+      className="relative p-2 rounded-full transition-colors animate-wiggle"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} theme`}

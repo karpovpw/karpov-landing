@@ -4,6 +4,7 @@ import './globals.css'
 import { ThemeProvider } from '@/components/design-system/ThemeProvider'
 import { SearchProvider } from '@/components/search/SearchProvider'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
+import { ThemeToggle } from '@/components/design-system/ThemeToggle'
 import { initializeAccessibility } from '@/lib/accessibility-utils'
 import { preloadCriticalResources } from '@/lib/optimization-utils'
 
@@ -30,6 +31,9 @@ export default function RootLayout({
           <SearchProvider>
             <div className="relative min-h-screen bg-background">
               {children}
+            </div>
+            <div className="fixed top-6 right-6 z-50">
+              <ThemeToggle />
             </div>
           </SearchProvider>
         </ThemeProvider>

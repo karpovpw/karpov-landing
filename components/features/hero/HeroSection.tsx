@@ -7,7 +7,6 @@ import { BaseComponentProps } from '@/types'
 import { PROFILE_DATA } from '@/content/profile'
 import { AnimatedText } from '@/components/hero/AnimatedText'
 import { GlassCard } from '@/components/design-system/GlassCard'
-import { ThemeToggle } from '@/components/design-system/ThemeToggle'
 
 const waveKeyframes = `
 @keyframes wave {
@@ -91,10 +90,6 @@ export function HeroSection({ className }: BaseComponentProps) {
             </motion.div>
           ))}
         </div>
-      {/* Theme Toggle */}
-      <div className="absolute top-6 right-6 z-50">
-        <ThemeToggle />
-      </div>
 
       <div className="container mx-auto px-4 py-16">
         <motion.div
@@ -138,7 +133,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                 variants={itemVariants}
               >
                 <motion.button
-                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl"
+                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
                   onClick={() => router.push('/portfolio')}
                   whileHover={{ scale: 1.05, rotate: 2 }}
                   whileTap={{ scale: 0.95 }}
@@ -146,7 +141,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                   View Portfolio
                 </motion.button>
                 <motion.button
-                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl"
+                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
                   onClick={() => router.push('/articles')}
                   whileHover={{ scale: 1.05, rotate: -2 }}
                   whileTap={{ scale: 0.95 }}
@@ -154,7 +149,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                   Read Articles
                 </motion.button>
                 <motion.button
-                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl"
+                  className="px-8 py-4 text-lg font-semibold bg-white/5 backdrop-blur-2xl text-primary border-2 border-white/30 rounded-2xl shadow-2xl hover:bg-white/15 hover:border-white/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
                   onClick={() => router.push('/contact')}
                   whileHover={{ scale: 1.05, rotate: 1 }}
                   whileTap={{ scale: 0.95 }}

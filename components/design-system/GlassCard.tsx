@@ -2,8 +2,7 @@
 
 import { motion, HTMLMotionProps } from 'framer-motion'
 import { BaseComponentProps } from '@/types'
-import { getGlassBackground, getGlassBorder, getGlassShadow, getGlassBlur, getRadiusToken } from '@/lib/design-tokens'
-import { useTheme } from './ThemeProvider'
+import { getGlassShadow, getGlassBlur, getRadiusToken } from '@/lib/design-tokens'
 
 interface GlassCardProps extends BaseComponentProps, Omit<HTMLMotionProps<"div">, keyof BaseComponentProps> {
   variant?: 'default' | 'elevated' | 'subtle' | 'outline'
@@ -40,16 +39,14 @@ export function GlassCard({
   animate = false,
   ...motionProps
 }: GlassCardProps) {
-  const { theme } = useTheme()
-
   const glassStyles = {
-    background: getGlassBackground(theme),
-    border: `1px solid ${getGlassBorder(theme)}`,
+    background: 'rgba(var(--glass-background), var(--glass-opacity))',
+    border: '1px solid rgba(var(--glass-border), 0.2)',
     boxShadow: variant === 'elevated'
-      ? `0 20px 40px rgba(0, 0, 0, 0.15), ${getGlassShadow(theme)}`
+      ? '0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(var(--glass-border), 0.2)'
       : variant === 'subtle'
-      ? `0 4px 16px rgba(0, 0, 0, 0.05), ${getGlassShadow(theme)}`
-      : getGlassShadow(theme),
+      ? '0 4px 16px rgba(0, 0, 0, 0.05), 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(var(--glass-border), 0.2)'
+      : '0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(var(--glass-border), 0.2)',
   }
 
   const Component = animate || hover ? motion.div : 'div'
