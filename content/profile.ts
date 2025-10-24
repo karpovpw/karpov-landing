@@ -2,7 +2,7 @@
 
 export const PROFILE_DATA = {
   personal: {
-    name: 'Karpov',
+    name: '👋 Hey, I\'m Pasha!',
     title: 'Context Engineer & Multi-Agent Systems Architect',
     location: 'Bangkok, Thailand',
     email: 'hello@karpov.dev',

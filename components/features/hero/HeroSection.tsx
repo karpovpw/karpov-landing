@@ -63,8 +63,8 @@ export function HeroSection({ className }: BaseComponentProps) {
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
               >
-                <GlassCard className="p-2 rounded-lg" style={{ borderStyle: 'wavy', borderWidth: '4px', borderColor: 'var(--primary)', animation: 'wave 2s infinite' }}>
-                  <div className="relative w-32 h-auto md:w-40 md:h-auto rounded-lg overflow-hidden">
+                <GlassCard className="p-2 rounded-lg border border-primary/20">
+                  <div className="relative w-32 h-auto md:w-40 md:h-auto rounded-lg overflow-hidden" style={{ clipPath: 'polygon(50% 0%, 60% 20%, 80% 0%, 100% 20%, 80% 40%, 100% 60%, 80% 80%, 100% 100%, 80% 80%, 60% 100%, 40% 80%, 20% 100%, 0% 80%, 20% 60%, 0% 40%, 20% 20%, 0% 0%, 20% 20%, 40% 0%, 50% 0%)' }}>
                     <Image
                       src={PROFILE_DATA.profileImage.src}
                       alt={PROFILE_DATA.profileImage.alt}
