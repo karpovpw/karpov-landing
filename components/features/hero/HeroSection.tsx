@@ -71,10 +71,12 @@ export function HeroSection({ className }: BaseComponentProps) {
               }}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{
-                opacity: [0.3, 0.6, 0.3],
-                scale: [0.8, 1.1, 0.8],
-                rotate: [0, 360],
-                y: -scrollYProgress * 100
+                opacity: [0.3, 0.6, 0, 0.6, 0.3],
+                scale: [0.8, 1.1, 0.8, 1.2, 0.8],
+                rotate: [0, 360, 180, 360],
+                x: [0, 100, -100, 0],
+                y: [0, 50, -50, 0, -scrollYProgress * 100],
+                left: [`${Math.random() * 100}%`, `${Math.random() * 100}%`, `${Math.random() * 100}%`, `${Math.random() * 100}%`]
               }}
               whileHover={{ scale: 1.2, rotate: 45, y: -50 }}
               transition={{
