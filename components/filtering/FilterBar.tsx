@@ -5,7 +5,6 @@ import { Search, Filter, X } from 'lucide-react'
 import { GlassCard } from '@/components/design-system/GlassCard'
 import { GlassInput } from '@/components/design-system/GlassInput'
 import { BaseComponentProps } from '@/types'
-import { PROJECT_CATEGORIES, PROJECT_TECHNOLOGIES } from '@/content/projects'
 
 interface FilterBarProps extends BaseComponentProps {
   onSearch: (query: string) => void
@@ -25,8 +24,8 @@ export function FilterBar({
   selectedCategory,
   selectedTechnology,
   searchQuery,
-  categories = PROJECT_CATEGORIES,
-  technologies = PROJECT_TECHNOLOGIES,
+  categories = [],
+  technologies = [],
   className = '',
   ...props
 }: FilterBarProps) {
@@ -60,7 +59,7 @@ export function FilterBar({
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <GlassInput
             type="text"
-            placeholder="Search projects..."
+            placeholder="Search..."
             value={searchQuery}
             onChange={handleSearchChange}
             className="pl-10 pr-4"

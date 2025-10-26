@@ -66,7 +66,7 @@ export function SearchProvider({
           type: 'project' as const,
           title: 'BMAD Multi-Agent System',
           description: 'A sophisticated multi-agent system for automated development workflows.',
-          url: '/portfolio#1',
+          url: 'https://www.linkedin.com/in/karpovpw/',
           relevance: 0.95,
         },
         {
@@ -82,7 +82,7 @@ export function SearchProvider({
           type: 'project' as const,
           title: 'DeFi Yield Optimizer',
           description: 'Smart contract-based decentralized finance protocol.',
-          url: '/portfolio#2',
+          url: 'https://www.linkedin.com/in/karpovpw/',
           relevance: 0.78,
         },
       ].filter(result =>

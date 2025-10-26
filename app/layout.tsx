@@ -15,9 +15,9 @@ const geist = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Karpov - Portfolio',
-  description: 'Professional portfolio showcasing expertise in modern web development, blockchain technology, and multi-agent systems.',
-  keywords: ['portfolio', 'web development', 'blockchain', 'typescript', 'react', 'next.js'],
+  title: 'Karpov - Developer',
+  description: 'Professional developer specializing in modern web development, blockchain technology, and multi-agent systems.',
+  keywords: ['web development', 'blockchain', 'typescript', 'react', 'next.js'],
 }
 
 export default function RootLayout({
