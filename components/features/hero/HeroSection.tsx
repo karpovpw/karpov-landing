@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, useScroll } from 'framer-motion'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { BaseComponentProps } from '@/types'
@@ -21,6 +21,7 @@ const waveKeyframes = `
 
 export function HeroSection({ className }: BaseComponentProps) {
   const router = useRouter()
+  const { scrollYProgress } = useScroll()
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -72,12 +73,14 @@ export function HeroSection({ className }: BaseComponentProps) {
               animate={{
                 opacity: [0.3, 0.6, 0.3],
                 scale: [0.8, 1.1, 0.8],
-                rotate: [0, 5, -5, 0]
+                rotate: [0, 360],
+                y: -scrollYProgress * 100
               }}
+              whileHover={{ scale: 1.2, rotate: 45, y: -50 }}
               transition={{
                 duration: 10 + Math.random() * 10,
                 repeat: Infinity,
-                ease: 'easeInOut'
+                ease: 'linear'
               }}
             >
               <Image
