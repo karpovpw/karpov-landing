@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Article } from '@/types'
 import { ARTICLES } from '@/content/articles'
@@ -33,6 +33,21 @@ export function ArticleList({
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null)
   const [isReaderOpen, setIsReaderOpen] = useState(false)
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [readingProgress, setReadingProgress] = useState(0)
+
+  useEffect(() => {
+    if (scrollRef.current && isReaderOpen) {
+      const handleScroll = () => {
+        const scrollTop = scrollRef.current!.scrollTop
+        const scrollHeight = scrollRef.current!.scrollHeight - scrollRef.current!.clientHeight
+        const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0
+        setReadingProgress(progress)
+      }
+      scrollRef.current.addEventListener('scroll', handleScroll)
+      return () => scrollRef.current?.removeEventListener('scroll', handleScroll)
+    }
+  }, [isReaderOpen])
 
   // Filter and sort articles
   const filteredArticles = useMemo(() => {
@@ -131,7 +146,7 @@ export function ArticleList({
           initial="hidden"
           animate="visible"
         >
-          <Grid cols={1} gap="lg" className="md:grid-cols-2 xl:grid-cols-3">
+          <Grid cols={1} gap="lg" minItemWidth="300px" autoFit={true}>
             {filteredArticles.map((article) => (
               <motion.div key={article.id} variants={itemVariants}>
                 <ArticleCard
@@ -163,11 +178,12 @@ export function ArticleList({
       {/* Article Reader Modal */}
       {isReaderOpen && selectedArticle && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-          <div className="w-full max-w-none max-h-none overflow-y-auto">
+          <div ref={scrollRef} className="w-full max-w-none h-[90vh] overflow-y-auto" style={{ touchAction: 'pan-y' }}>
             <ArticleReader
               article={selectedArticle}
               onClose={handleCloseReader}
               showProgress
+              readingProgress={readingProgress}
             />
           </div>
         </div>

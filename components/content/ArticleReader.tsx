@@ -12,6 +12,7 @@ interface ArticleReaderProps extends BaseComponentProps {
   showProgress?: boolean
   showTOC?: boolean
   onClose?: () => void
+  readingProgress?: number
 }
 
 export function ArticleReader({
@@ -19,18 +20,10 @@ export function ArticleReader({
   showProgress = false,
   showTOC = false,
   onClose,
+  readingProgress = 0,
   className = '',
   ...props
 }: ArticleReaderProps) {
-  const [readingProgress, setReadingProgress] = useState(0)
-
-  // Simulate reading progress (in a real app, you'd calculate this based on scroll position)
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setReadingProgress(100)
-    }, 2000)
-    return () => clearTimeout(timer)
-  }, [])
 
   const handleShare = async () => {
     if (navigator.share) {
