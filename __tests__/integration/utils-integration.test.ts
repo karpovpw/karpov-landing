@@ -581,7 +581,7 @@ describe('Utility Systems Integration Tests', () => {
         writable: true,
       })
 
-      expect(() => safePerformanceMark('test-mark')).toBe(false)
+      expect(safePerformanceMark('test-mark')).toBe(false)
 
       // Restore original performance
       Object.defineProperty(global, 'performance', {

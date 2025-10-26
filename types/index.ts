@@ -57,6 +57,7 @@ export interface NavigationItem {
 export interface BaseComponentProps {
   className?: string
   children?: React.ReactNode
+  'data-testid'?: string
 }
 
 // Form types

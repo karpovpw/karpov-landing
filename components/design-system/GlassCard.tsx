@@ -37,6 +37,7 @@ export function GlassCard({
   padding = 'md',
   hover = false,
   animate = false,
+  'data-testid': dataTestId,
   ...motionProps
 }: GlassCardProps) {
   const glassStyles = {
@@ -67,12 +68,14 @@ export function GlassCard({
   return (
     <Component
       className={`
+        glass-card
         ${blurClasses[blur]}
         ${paddingClasses[padding]}
         rounded-${rounded === 'full' ? 'full' : rounded === '3xl' ? '3xl' : rounded === '2xl' ? '2xl' : rounded}
         ${className}
       `}
       style={glassStyles}
+      data-testid={dataTestId}
       {...motionConfig}
     >
       {children}

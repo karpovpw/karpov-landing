@@ -75,6 +75,32 @@ Object.defineProperty(window, 'performance', {
   },
 })
 
+// PerformanceObserver mock
+global.PerformanceObserver = class PerformanceObserver {
+  constructor(callback) {
+    this.callback = callback
+  }
+
+  observe() {
+    // Mock implementation - simulate some entries
+    setTimeout(() => {
+      this.callback({
+        getEntries: () => [
+          { name: 'largest-contentful-paint', startTime: 2000 },
+          { name: 'first-input', processingStart: 100, startTime: 50 },
+          { name: 'layout-shift', value: 0.05, hadRecentInput: false },
+          { name: 'first-contentful-paint', startTime: 1500 },
+          { name: 'navigation', responseStart: 900, requestStart: 100 },
+        ],
+      })
+    }, 10)
+  }
+
+  unobserve() {}
+
+  disconnect() {}
+}
+
 // Service Worker mock
 Object.defineProperty(navigator, 'serviceWorker', {
   writable: true,

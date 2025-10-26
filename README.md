@@ -87,7 +87,15 @@ npm run dev
 - `npm run build` - Build for production
 - `npm run start` - Start production server
 - `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint issues
 - `npm run test` - Run tests
+- `npm run test:watch` - Run tests in watch mode
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run test:accessibility` - Run accessibility tests
+- `npm run test:performance` - Run performance tests with Lighthouse
+- `npm run test:bundle` - Analyze bundle size
+- `npm run test:e2e` - Run end-to-end tests with Playwright
+- `npm run test:e2e:ui` - Run E2E tests with UI
 
 ## 🎨 Design System
 
@@ -152,6 +160,40 @@ Components follow the established design system patterns and include:
 - Tailwind utilities for layout and responsive design
 - CSS custom properties for theme consistency
 - Glassmorphism design tokens
+
+## 🧪 Testing
+
+The project includes comprehensive testing strategies:
+
+### Unit and Integration Tests
+- **Jest** with jsdom for component and utility testing
+- **React Testing Library** for component interaction testing
+- **Custom matchers** from @testing-library/jest-dom
+- **Mocking** for external dependencies (Next.js, Framer Motion)
+
+### Test Coverage
+- Component rendering and behavior
+- Form validation and submission
+- Theme switching and responsive design
+- Error handling and edge cases
+- Performance utilities and accessibility features
+
+### Running Tests
+```bash
+npm run test              # Run all tests
+npm run test:watch        # Watch mode for development
+npm run test:coverage     # Generate coverage report
+```
+
+### Test Structure
+```
+__tests__/
+├── components/           # Component tests
+│   ├── design-system/    # Design system component tests
+│   ├── features/         # Feature component tests
+│   └── contact/          # Contact form tests
+└── integration/          # Integration tests for utilities
+```
 
 ## 🚀 Deployment
 
