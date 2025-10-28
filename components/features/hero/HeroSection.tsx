@@ -141,7 +141,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                   whileHover={{ scale: 1.05, rotate: 2 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  Watch videos
+                  Watch Videos
                 </motion.button>
                 <motion.button
                   className="px-8 py-4 text-lg font-semibold bg-card/5 backdrop-blur-2xl text-primary border-2 border-card/30 rounded-2xl shadow-2xl hover:bg-card/15 hover:border-card/50 transition-all duration-500 hover:shadow-3xl animate-wiggle"
