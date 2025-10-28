@@ -108,7 +108,7 @@ export default function Contact() {
 
                   <motion.div variants={itemVariants}>
                     <div className="text-xl md:text-2xl text-primary bg-card/10 backdrop-blur-xl border border-card/20 rounded-2xl px-6 py-4 shadow-2xl block max-w-3xl mx-auto">
-                      That was a lot of buzzwords on a landing page! I am a veteran developer with more than 10 years of experience. Whether it's a new project, collaboration, or just a chat about technology, I'd love to hear from you.
+                      My passion lies in software architecture, cloud technologies, and AI-powered development, but what I love most about my job is working directly with business teams to turn their ambitious ideas into working software. There's nothing quite like that moment when stakeholders see their vision come to life through thoughtful technical decisions. My superpower in knowledge how to translate business requirements into technical solutions that teams can actually build and maintain. I believe great technology serves business goals, not the other way around.
                     </div>
                   </motion.div>
                 </div>
