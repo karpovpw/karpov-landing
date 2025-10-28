@@ -90,7 +90,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                 alt={`Background photo ${index + 1}`}
                 fill
                 className="object-cover"
-                style={{ clipPath: 'circle(50% at 50% 50%)' }}
+                style={{ clipPath: 'polygon(50% 0%, 60% 20%, 80% 0%, 100% 20%, 80% 40%, 100% 60%, 80% 80%, 100% 100%, 80% 80%, 60% 100%, 40% 80%, 20% 100%, 0% 80%, 20% 60%, 0% 40%, 20% 20%, 0% 0%, 20% 20%, 40% 0%, 50% 0%)' }}
               />
             </motion.div>
           ))}
