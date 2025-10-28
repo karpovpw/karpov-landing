@@ -89,7 +89,7 @@ export function HeroSection({ className }: BaseComponentProps) {
                 src={photo}
                 alt={`Background photo ${index + 1}`}
                 fill
-                className="object-cover rounded-lg"
+                className="object-cover"
                 style={{ clipPath: 'circle(50% at 50% 50%)' }}
               />
             </motion.div>
