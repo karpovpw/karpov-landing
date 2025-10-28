@@ -108,7 +108,7 @@ export default function Contact() {
 
                   <motion.div variants={itemVariants}>
                     <div className="text-xl md:text-2xl text-primary bg-card/10 backdrop-blur-xl border border-card/20 rounded-2xl px-6 py-4 shadow-2xl block max-w-3xl mx-auto">
-                      There's nothing quite like that moment when stakeholders see their vision come to life through thoughtful technical decisions. My superpower lies in a knowledge on how to translate business requirements into technical solutions that teams can actually build and maintain. I believe great technology serves business goals, not the other way around.
+                      There's nothing quite like that moment when stakeholders see their vision come to life through thoughtful technical decisions. My superpower lies in a knowledge on how to translate business requirements into technical solutions that teams can actually build and maintain. I believe great technology serves business goals, not the other way around
                     </div>
                   </motion.div>
                 </div>

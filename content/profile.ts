@@ -7,7 +7,7 @@ export const PROFILE_DATA = {
     location: 'Bangkok, Thailand',
     email: 'hello@karpov.dev',
     bio: 'Passionate about creating innovative solutions through modern web technologies, blockchain systems, and AI-powered applications.',
-    tagline: 'I\'m a software engineer and technical leader with over a decade of experience creating innovative solutions. What drives me most is bridging the gap between business vision and technical reality—transforming complex business needs into elegant, scalable systems that actually deliver results.',
+    tagline: 'I\'m a software engineer and technical leader with over a decade of experience creating innovative solutions. What drives me most is bridging the gap between business vision and technical reality—transforming complex business needs into elegant, scalable systems that actually deliver results',
     availability: 'Available for opportunities',
   },
 
