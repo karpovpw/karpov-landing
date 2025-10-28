@@ -71,12 +71,10 @@ export function HeroSection({ className }: BaseComponentProps) {
               }}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{
-                opacity: [0.3, 0.6, 0, 0.6, 0.3],
-                scale: [0.8, 1.1, 0.8, 1.2, 0.8],
-                rotate: [0, 360, 180, 360],
-                x: [0, 100, -100, 0],
-                y: [0, 50, -50, 0, -scrollYProgress * 100],
-                left: [`${Math.random() * 100}%`, `${Math.random() * 100}%`, `${Math.random() * 100}%`, `${Math.random() * 100}%`]
+                opacity: [0.3, 0.6, 0.3],
+                scale: [0.8, 1.1, 0.8],
+                rotate: [0, 5, -5, 0],
+                clipPath: 'polygon(50% 0%, 60% 20%, 80% 0%, 100% 20%, 80% 40%, 100% 60%, 80% 80%, 100% 100%, 80% 80%, 60% 100%, 40% 80%, 20% 100%, 0% 80%, 20% 60%, 0% 40%, 20% 20%, 0% 0%, 20% 20%, 40% 0%, 50% 0%)'
               }}
               whileHover={{ scale: 1.2, rotate: 45, y: -50 }}
               transition={{
